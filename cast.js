@@ -4,18 +4,58 @@ const CAST_STREAM_URL =
 const RADIO_LOGO_URL =
     "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/44153165/44153165-1756027969361-fe65b85dada35.jpg";
 
+
 let castInitialized = false;
 
 
-/* ==============================
+/* ==========================================
+   GOOGLE CAST SDK CALLBACK
+========================================== */
+
+window.__onGCastApiAvailable = function(isAvailable) {
+
+    if (isAvailable) {
+
+        initializeCast();
+
+        console.log(
+            "Google Cast SDK pripravené."
+        );
+
+    } else {
+
+        console.error(
+            "Google Cast SDK nie je dostupné."
+        );
+
+    }
+
+};
+
+
+/* ==========================================
    INICIALIZÁCIA GOOGLE CAST
-============================== */
+========================================== */
 
 function initializeCast() {
 
     if (castInitialized) {
         return;
     }
+
+
+    if (
+        typeof cast === "undefined" ||
+        typeof chrome === "undefined"
+    ) {
+
+        console.log(
+            "Google Cast ešte nie je pripravené."
+        );
+
+        return;
+    }
+
 
     try {
 
@@ -36,9 +76,11 @@ function initializeCast() {
 
         castInitialized = true;
 
+
         console.log(
-            "Google Cast pripravený."
+            "Google Cast inicializovaný."
         );
+
 
     } catch (error) {
 
@@ -52,16 +94,38 @@ function initializeCast() {
 }
 
 
-/* ==============================
-   GOOGLE CAST TLAČIDLO
-============================== */
+/* ==========================================
+   GOOGLE CAST
+========================================== */
 
 async function startCast() {
 
     try {
 
+        /*
+         * Skúsime inicializovať,
+         * ak ešte nie je.
+         */
+
         if (!castInitialized) {
+
             initializeCast();
+
+        }
+
+
+        /*
+         * SDK ešte nie je pripravené.
+         */
+
+        if (!castInitialized) {
+
+            updateCastStatus(
+                "Google Cast sa načítava..."
+            );
+
+            return;
+
         }
 
 
@@ -94,7 +158,7 @@ async function startCast() {
 
 
         /*
-         * PRIPOJENIE
+         * OTVORIŤ VÝBER ZARIADENIA
          */
 
         await context.requestSession();
@@ -106,9 +170,7 @@ async function startCast() {
 
         if (!session) {
 
-            console.log(
-                "Google Cast nebol pripojený."
-            );
+            updateCastStatus("");
 
             return;
 
@@ -153,8 +215,11 @@ async function startCast() {
             const text =
                 songElement.textContent.trim();
 
+
             if (text) {
+
                 title = text;
+
             }
 
         }
@@ -204,7 +269,7 @@ async function startCast() {
 
 
         /*
-         * ZASTAVÍME LOKÁLNY PREHRÁVAČ
+         * ZASTAVÍME LOKÁLNE RÁDIO
          */
 
         const radio =
@@ -252,7 +317,7 @@ async function startCast() {
 
 
         console.log(
-            "Rádio Klub odoslané cez Google Cast."
+            "Rádio Klub hrá cez Google Cast."
         );
 
 
@@ -273,9 +338,9 @@ async function startCast() {
 }
 
 
-/* ==============================
+/* ==========================================
    STAV GOOGLE CAST
-============================== */
+========================================== */
 
 function updateCastStatus(text) {
 
