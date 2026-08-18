@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rádio Klub – Prehrávač</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-family: Arial, sans-serif;
+
+            color: white;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    #5120a0,
+                    #0d0d16 70%
+                );
+        }
+
+        .player {
+            width: 90%;
+            max-width: 430px;
+
+            padding: 40px 30px;
+
+            text-align: center;
+
+            background: rgba(24, 24, 36, 0.95);
+
+            border: 1px solid rgba(255, 255, 255, 0.1);
+
+            border-radius: 30px;
+
+            box-shadow:
+                0 20px 70px
+                rgba(0, 0, 0, 0.6);
+        }
+
+        .logo {
+            width: 130px;
+            height: 130px;
+
+            margin: 0 auto 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 55px;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6c2cff,
+                    #d51cff
+                );
+
+            box-shadow:
+                0 0 40px
+                rgba(213, 28, 255, 0.5);
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .status {
+            color: #aaa;
+            margin-bottom: 35px;
+        }
+
+        .status span {
+            color: #ff2d55;
+        }
+
+        .play-button {
+            width: 90px;
+            height: 90px;
+
+            border: none;
+            border-radius: 50%;
+
+            font-size: 30px;
+
+            cursor: pointer;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6c2cff,
+                    #d51cff
+                );
+
+            transition: 0.2s;
+
+            box-shadow:
+                0 10px 35px
+                rgba(108, 44, 255, 0.5);
+        }
+
+        .play-button:hover {
+            transform: scale(1.08);
+        }
+
+        .volume-box {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .volume-box label {
+            display: block;
+            margin-bottom: 10px;
+            color: #aaa;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .now-playing {
+            margin-top: 30px;
+            padding: 18px;
+
+            border-radius: 15px;
+
+            background: #11111b;
+        }
+
+        .now-playing small {
+            color: #888;
+        }
+
+        .now-playing p {
+            margin-top: 8px;
+            font-weight: bold;
+        }
+
+        .close-button {
+            display: inline-block;
+
+            margin-top: 30px;
+
+            padding: 12px 25px;
+
+            background: #252535;
+
+            border-radius: 25px;
+
+            color: white;
+
+            text-decoration: none;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .close-button:hover {
+            background: #353550;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="player">
+
+        <!-- LOGO -->
+
+        <div class="logo">
+            🎧
+        </div>
+
+        <!-- NÁZOV -->
+
+        <h1>Rádio Klub</h1>
+
+        <!-- STATUS -->
+
+        <p class="status">
+            <span>●</span> Živé vysielanie
+        </p>
+
+        <!-- PLAY / PAUSE -->
+
+        <button
+            class="play-button"
+            id="playButton"
+            onclick="toggleRadio()"
+        >
+            ▶
+        </button>
+
+        <!-- RÁDIO STREAM -->
+
+        <audio id="radioPlayer">
+            <!-- SEM VLOŽ URL SVOJHO RÁDIO STREAMU -->
+            <source
+                src="SEM_VLOZ_URL_STREAMU"
+                type="audio/mpeg"
+            >
+        </audio>
+
+        <!-- HLASITOSŤ -->
+
+        <div class="volume-box">
+
+            <label for="volume">
+                🔊 Hlasitosť
+            </label>
+
+            <input
+                type="range"
+                id="volume"
+                min="0"
+                max="1"
+                step="0.01"
+                value="0.8"
+            >
+
+        </div>
+
+        <!-- PRÁVE HRÁ -->
+
+        <div class="now-playing">
+
+            <small>
+                PRÁVE HRÁ
+            </small>
+
+            <p id="songName">
+                Rádio Klub – Živé vysielanie
+            </p>
+
+        </div>
+
+        <!-- ZATVORIŤ -->
+
+        <button
+            class="close-button"
+            onclick="window.close()"
+        >
+            ✕ Zavrieť prehrávač
+        </button>
+
+    </div>
+
+
+    <script>
+
+        const radio =
+            document.getElementById("radioPlayer");
+
+        const playButton =
+            document.getElementById("playButton");
+
+        const volume =
+            document.getElementById("volume");
+
+        let playing = false;
+
+
+        function toggleRadio() {
+
+            if (!playing) {
+
+                radio.play()
+
+                    .then(() => {
+
+                        playing = true;
+
+                        playButton.innerHTML = "❚❚";
+
+                    })
+
+                    .catch(() => {
+
+                        alert(
+                            "Nastav správnu URL adresu rádio streamu."
+                        );
+
+                    });
+
+            } else {
+
+                radio.pause();
+
+                playing = false;
+
+                playButton.innerHTML = "▶";
+
+            }
+
+        }
+
+
+        volume.addEventListener(
+            "input",
+            function () {
+
+                radio.volume =
+                    volume.value;
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>
