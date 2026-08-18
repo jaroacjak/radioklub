@@ -55,8 +55,9 @@
 
         .logo-link {
             display: block;
-            width: 130px;
-            height: 130px;
+
+            width: 150px;
+            height: 150px;
 
             margin: 0 auto 25px;
 
@@ -64,23 +65,15 @@
         }
 
         .logo {
-            width: 130px;
-            height: 130px;
+            width: 150px;
+            height: 150px;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 55px;
+            object-fit: cover;
 
             border-radius: 50%;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #6c2cff,
-                    #d51cff
-                );
+            border: 3px solid
+                rgba(255, 255, 255, 0.15);
 
             box-shadow:
                 0 0 40px
@@ -155,7 +148,9 @@
             width: 50px;
             height: 50px;
 
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid
+                rgba(255, 255, 255, 0.15);
+
             border-radius: 50%;
 
             background: #252535;
@@ -229,7 +224,6 @@
         .loading {
             color: #888;
         }
-
     </style>
 </head>
 
@@ -245,9 +239,11 @@
             target="_blank"
             title="Otvoriť Rádio Klub na myTuner"
         >
-            <div class="logo">
-                🎧
-            </div>
+            <img
+                class="logo"
+                src="https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/44153165/44153165-1756027969361-fe65b85dada35.jpg"
+                alt="Rádio Klub"
+            >
         </a>
 
 
@@ -279,7 +275,7 @@
             </button>
 
 
-            <!-- GOOGLE CAST - PRIPRAVENÉ NA DOKONČENIE -->
+            <!-- GOOGLE CAST -->
 
             <button
                 class="cast-button"
@@ -287,11 +283,9 @@
                 onclick="startCast()"
                 title="Google Cast"
             >
-
                 <svg viewBox="0 0 24 24">
                     <path d="M1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm0-4v2c4.97 0 9 4.03 9 9h2c0-6.08-4.92-11-11-11zM3 3h18v14h-2V5H3V3z"/>
                 </svg>
-
             </button>
 
         </div>
@@ -347,13 +341,9 @@
     </div>
 
 
-    <script>
+    <!-- HLAVNÝ JAVASCRIPT -->
 
-        /*
-        ==============================
-        NASTAVENIA
-        ==============================
-        */
+    <script>
 
         const STREAM_URL =
             "https://listen.radioking.com/radio/917921/stream/988836";
@@ -361,12 +351,6 @@
         const METADATA_API =
             "https://api.radioking.io/widget/radio/radioklubslovak/track/current?format=text";
 
-
-        /*
-        ==============================
-        ELEMENTY
-        ==============================
-        */
 
         const radio =
             document.getElementById("radioPlayer");
@@ -384,11 +368,7 @@
         let playing = false;
 
 
-        /*
-        ==============================
-        PLAY / PAUSE
-        ==============================
-        */
+        /* PLAY / PAUSE */
 
         function toggleRadio() {
 
@@ -433,11 +413,7 @@
         }
 
 
-        /*
-        ==============================
-        HLASITOSŤ
-        ==============================
-        */
+        /* HLASITOSŤ */
 
         radio.volume = volume.value;
 
@@ -452,29 +428,26 @@
         );
 
 
-        /*
-        ==============================
-        AKTUÁLNA SKLADBA
-        ==============================
-        */
+        /* METADATA */
 
         async function updateMetadata() {
 
             try {
 
                 const response =
-                    await fetch(
-                        METADATA_API
-                    );
+                    await fetch(METADATA_API);
 
                 if (!response.ok) {
+
                     throw new Error(
                         "Metadata API neodpovedá"
                     );
+
                 }
 
                 const text =
                     await response.text();
+
 
                 if (
                     text &&
@@ -510,44 +483,30 @@
         }
 
 
-        /*
-        Načíta metadata hneď
-        */
+        /* NAČÍTAŤ METADATA */
 
         updateMetadata();
 
 
-        /*
-        Obnovuje aktuálnu skladbu
-        každých 15 sekúnd
-        */
+        /* AKTUALIZOVAŤ KAŽDÝCH 15 SEKÚND */
 
         setInterval(
             updateMetadata,
             15000
         );
 
+    </script>
 
-        /*
-        ==============================
-        GOOGLE CAST
-        ==============================
 
-        Tlačidlo a ikona sú pripravené.
+    <!-- GOOGLE CAST JAVASCRIPT -->
 
-        Ďalší krok bude pripojenie
-        Google Cast SDK a odoslanie
-        STREAM_URL do Chromecast zariadenia.
-        */
+    <script src="cast.js"></script>
 
-        function startCast() {
 
-            alert(
-                "Google Cast funkciu teraz dokončíme."
-            );
+    <!-- GOOGLE CAST SDK -->
 
-        }
-
+    <script
+        src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1">
     </script>
 
 </body>
