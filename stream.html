@@ -15,13 +15,11 @@
 
         body {
             min-height: 100vh;
-
             display: flex;
             align-items: center;
             justify-content: center;
 
             font-family: Arial, sans-serif;
-
             color: white;
 
             background:
@@ -35,7 +33,6 @@
         .player {
             width: 90%;
             max-width: 430px;
-
             padding: 40px 30px;
 
             text-align: center;
@@ -43,7 +40,6 @@
             background: rgba(24, 24, 36, 0.95);
 
             border: 1px solid rgba(255, 255, 255, 0.1);
-
             border-radius: 30px;
 
             box-shadow:
@@ -51,26 +47,15 @@
                 rgba(0, 0, 0, 0.6);
         }
 
-        /* =========================
-           LOGO
-        ========================= */
-
-        .logo-link {
-            display: block;
-
-            width: 150px;
-            height: 150px;
-
-            margin: 0 auto 25px;
-
-            text-decoration: none;
-        }
+        /* LOGO - UŽ NIE JE ODKAZ */
 
         .logo {
             width: 150px;
             height: 150px;
 
             display: block;
+
+            margin: 0 auto 25px;
 
             object-fit: cover;
 
@@ -82,27 +67,15 @@
             box-shadow:
                 0 0 40px
                 rgba(213, 28, 255, 0.5);
-
-            transition: 0.2s;
         }
-
-        .logo:hover {
-            transform: scale(1.08);
-        }
-
-        /* =========================
-           NÁZOV
-        ========================= */
 
         h1 {
             font-size: 34px;
-
             margin-bottom: 10px;
         }
 
         .status {
             color: #aaa;
-
             margin-bottom: 30px;
         }
 
@@ -110,35 +83,27 @@
             color: #ff2d55;
         }
 
-        /* =========================
-           OVLÁDANIE
-        ========================= */
+        /* OVLÁDANIE */
 
         .controls {
             display: flex;
-
             align-items: center;
             justify-content: center;
 
             gap: 20px;
-
             margin-bottom: 25px;
         }
-
-        /* PLAY */
 
         .play-button {
             width: 90px;
             height: 90px;
 
             border: none;
-
             border-radius: 50%;
 
             font-size: 30px;
 
             cursor: pointer;
-
             color: white;
 
             background:
@@ -159,9 +124,7 @@
             transform: scale(1.08);
         }
 
-        /* =========================
-           GOOGLE CAST
-        ========================= */
+        /* GOOGLE CAST */
 
         .cast-button {
             width: 50px;
@@ -179,7 +142,6 @@
             cursor: pointer;
 
             display: flex;
-
             align-items: center;
             justify-content: center;
 
@@ -188,48 +150,37 @@
 
         .cast-button:hover {
             background: #353550;
-
             transform: scale(1.08);
         }
 
         .cast-button svg {
             width: 25px;
             height: 25px;
-
             fill: currentColor;
         }
 
-        /* =========================
-           HLASITOSŤ
-        ========================= */
+        /* HLASITOSŤ */
 
         .volume-box {
             margin-top: 25px;
-
             text-align: left;
         }
 
         .volume-box label {
             display: block;
-
             margin-bottom: 10px;
-
             color: #aaa;
         }
 
         input[type="range"] {
             width: 100%;
-
             cursor: pointer;
         }
 
-        /* =========================
-           PRÁVE HRÁ
-        ========================= */
+        /* PRÁVE HRÁ */
 
         .now-playing {
             margin-top: 30px;
-
             padding: 20px;
 
             border-radius: 15px;
@@ -239,9 +190,7 @@
 
         .now-playing small {
             color: #888;
-
             font-size: 11px;
-
             letter-spacing: 1px;
         }
 
@@ -251,9 +200,7 @@
             font-weight: bold;
 
             white-space: nowrap;
-
             overflow: hidden;
-
             text-overflow: ellipsis;
         }
 
@@ -261,22 +208,19 @@
             color: #888;
         }
 
-        /* =========================
-           CAST STAV
-        ========================= */
+        /* CAST STAV */
 
         .cast-status {
-            margin-top: 12px;
+            min-height: 18px;
+
+            margin-top: 10px;
 
             font-size: 12px;
 
-            color: #777;
-
-            min-height: 16px;
+            color: #888;
         }
     </style>
 </head>
-
 
 <body>
 
@@ -284,37 +228,24 @@
 
         <!-- =========================
              LOGO
+             NIE JE KLIKATEĽNÉ
         ========================= -->
 
-        <a
-            class="logo-link"
-            href="https://mytuner-radio.com/radio/radio-klub-513497/"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Otvoriť Rádio Klub na myTuner"
+        <img
+            class="logo"
+            src="https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/44153165/44153165-1756027969361-fe65b85dada35.jpg"
+            alt="Rádio Klub"
         >
 
-            <img
-                class="logo"
-                src="https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/44153165/44153165-1756027969361-fe65b85dada35.jpg"
-                alt="Rádio Klub"
-            >
 
-        </a>
-
-
-        <!-- =========================
-             NÁZOV
-        ========================= -->
+        <!-- NÁZOV -->
 
         <h1>
             Rádio Klub
         </h1>
 
 
-        <!-- =========================
-             STATUS
-        ========================= -->
+        <!-- STATUS -->
 
         <p class="status">
             <span>●</span>
@@ -322,9 +253,7 @@
         </p>
 
 
-        <!-- =========================
-             OVLÁDANIE
-        ========================= -->
+        <!-- OVLÁDANIE -->
 
         <div class="controls">
 
@@ -376,9 +305,7 @@
         ></div>
 
 
-        <!-- =========================
-             RÁDIO STREAM
-        ========================= -->
+        <!-- RÁDIO STREAM -->
 
         <audio
             id="radioPlayer"
@@ -396,9 +323,7 @@
         </audio>
 
 
-        <!-- =========================
-             HLASITOSŤ
-        ========================= -->
+        <!-- HLASITOSŤ -->
 
         <div class="volume-box">
 
@@ -418,9 +343,7 @@
         </div>
 
 
-        <!-- =========================
-             PRÁVE HRÁ
-        ========================= -->
+        <!-- PRÁVE HRÁ -->
 
         <div class="now-playing">
 
@@ -440,17 +363,11 @@
     </div>
 
 
-    <!-- ==================================================
+    <!-- =========================
          HLAVNÝ JAVASCRIPT
-    ================================================== -->
+    ========================= -->
 
     <script>
-
-        /*
-        ==============================
-        NASTAVENIA
-        ==============================
-        */
 
         const STREAM_URL =
             "https://listen.radioking.com/radio/917921/stream/988836";
@@ -459,12 +376,6 @@
         const METADATA_API =
             "https://api.radioking.io/widget/radio/radioklubslovak/track/current?format=text";
 
-
-        /*
-        ==============================
-        ELEMENTY
-        ==============================
-        */
 
         const radio =
             document.getElementById(
@@ -490,26 +401,12 @@
             );
 
 
-        const castStatus =
-            document.getElementById(
-                "castStatus"
-            );
-
-
-        /*
-        ==============================
-        STAV
-        ==============================
-        */
-
         let playing = false;
 
 
-        /*
-        ==============================
-        PLAY / PAUSE
-        ==============================
-        */
+        /* =========================
+           PLAY / PAUSE
+        ========================= */
 
         async function toggleRadio() {
 
@@ -526,11 +423,6 @@
 
                     playButton.title =
                         "Pozastaviť rádio";
-
-
-                    castStatus.textContent =
-                        "";
-
 
                 } catch (error) {
 
@@ -562,11 +454,9 @@
         }
 
 
-        /*
-        ==============================
-        HLASITOSŤ
-        ==============================
-        */
+        /* =========================
+           HLASITOSŤ
+        ========================= */
 
         radio.volume =
             Number(volume.value);
@@ -583,11 +473,9 @@
         );
 
 
-        /*
-        ==============================
-        AKTUÁLNA SKLADBA
-        ==============================
-        */
+        /* =========================
+           METADATA
+        ========================= */
 
         async function updateMetadata() {
 
@@ -615,14 +503,10 @@
                     await response.text();
 
 
-                const currentSong =
-                    text.trim();
-
-
-                if (currentSong) {
+                if (text.trim()) {
 
                     songName.textContent =
-                        currentSong;
+                        text.trim();
 
                     songName.classList.remove(
                         "loading"
@@ -643,7 +527,6 @@
                     error
                 );
 
-
                 songName.textContent =
                     "Rádio Klub – Živé vysielanie";
 
@@ -652,67 +535,35 @@
         }
 
 
-        /*
-        ==============================
-        NAČÍTANIE METADATA
-        ==============================
-        */
+        /* NAČÍTAŤ HNEĎ */
 
         updateMetadata();
 
 
-        /*
-        ==============================
-        AKTUALIZÁCIA KAŽDÝCH 15 SEKÚND
-        ==============================
-        */
+        /* AKTUALIZOVAŤ KAŽDÝCH 15 SEKÚND */
 
         setInterval(
             updateMetadata,
             15000
         );
 
-
-        /*
-        ==============================
-        CAST STAV
-        ==============================
-        */
-
-        window.addEventListener(
-            "load",
-            function () {
-
-                /*
-                Cast SDK sa načítava
-                samostatne cez cast.js.
-                */
-
-                console.log(
-                    "Rádio Klub prehrávač načítaný."
-                );
-
-            }
-        );
-
     </script>
 
 
-    <!-- ==================================================
-         VLASTNÝ GOOGLE CAST JAVASCRIPT
-    ================================================== -->
+    <!-- =========================
+         TVOJ CAST.JS
+    ========================= -->
 
     <script src="cast.js"></script>
 
 
-    <!-- ==================================================
-         GOOGLE CAST WEB SENDER SDK
-    ================================================== -->
+    <!-- =========================
+         GOOGLE CAST SDK
+    ========================= -->
 
     <script
         src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1">
     </script>
-
 
 </body>
 </html>
