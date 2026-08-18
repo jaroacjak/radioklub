@@ -8,7 +8,7 @@ let castInitialized = false;
 
 
 /* ==============================
-   INICIALIZÁCIA
+   INICIALIZÁCIA GOOGLE CAST
 ============================== */
 
 function initializeCast() {
@@ -22,13 +22,17 @@ function initializeCast() {
         const context =
             cast.framework.CastContext.getInstance();
 
+
         context.setOptions({
+
             receiverApplicationId:
                 chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
 
             autoJoinPolicy:
                 chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
+
         });
+
 
         castInitialized = true;
 
@@ -39,16 +43,17 @@ function initializeCast() {
     } catch (error) {
 
         console.error(
-            "Google Cast inicializácia:",
+            "Google Cast chyba:",
             error
         );
 
     }
+
 }
 
 
 /* ==============================
-   CAST TLAČIDLO
+   GOOGLE CAST TLAČIDLO
 ============================== */
 
 async function startCast() {
@@ -65,12 +70,13 @@ async function startCast() {
 
 
         /*
-         * AK UŽ JE PRIPOJENÝ
-         * → ODPOJÍME HO
+         * AK JE GOOGLE CAST PRIPOJENÝ
+         * → ODPOJIŤ
          */
 
         let session =
             context.getCurrentSession();
+
 
         if (session) {
 
@@ -83,12 +89,12 @@ async function startCast() {
             );
 
             return;
+
         }
 
 
         /*
-         * AK NIE JE PRIPOJENÝ
-         * → OTVORÍME VÝBER ZARIADENIA
+         * PRIPOJENIE
          */
 
         await context.requestSession();
@@ -101,10 +107,11 @@ async function startCast() {
         if (!session) {
 
             console.log(
-                "Nebolo vybrané Cast zariadenie."
+                "Google Cast nebol pripojený."
             );
 
             return;
+
         }
 
 
@@ -149,23 +156,28 @@ async function startCast() {
             if (text) {
                 title = text;
             }
+
         }
 
 
         metadata.title =
             title;
 
+
         metadata.artist =
             "Rádio Klub";
+
 
         metadata.albumName =
             "Rádio Klub";
 
 
         metadata.images = [
+
             new chrome.cast.Image(
                 RADIO_LOGO_URL
             )
+
         ];
 
 
@@ -174,7 +186,7 @@ async function startCast() {
 
 
         /*
-         * LOAD
+         * SPUSTENIE STREAMU
          */
 
         const request =
@@ -192,7 +204,7 @@ async function startCast() {
 
 
         /*
-         * ZASTAVÍME LOKÁLNE RÁDIO
+         * ZASTAVÍME LOKÁLNY PREHRÁVAČ
          */
 
         const radio =
@@ -208,7 +220,9 @@ async function startCast() {
 
 
         if (radio) {
+
             radio.pause();
+
         }
 
 
@@ -226,7 +240,9 @@ async function startCast() {
         if (
             typeof playing !== "undefined"
         ) {
+
             playing = false;
+
         }
 
 
@@ -236,7 +252,7 @@ async function startCast() {
 
 
         console.log(
-            "Rádio Klub odoslané na Chromecast."
+            "Rádio Klub odoslané cez Google Cast."
         );
 
 
@@ -246,6 +262,7 @@ async function startCast() {
             "Google Cast chyba:",
             error
         );
+
 
         updateCastStatus(
             "Google Cast sa nepodarilo pripojiť."
@@ -257,7 +274,7 @@ async function startCast() {
 
 
 /* ==============================
-   STAV
+   STAV GOOGLE CAST
 ============================== */
 
 function updateCastStatus(text) {
@@ -267,48 +284,12 @@ function updateCastStatus(text) {
             "castStatus"
         );
 
+
     if (element) {
-        element.textContent = text;
-    }
 
-}
-
-
-/* ==============================
-   AUTOMATICKÁ INICIALIZÁCIA
-============================== */
-
-function onCastReady() {
-
-    if (
-        typeof cast !== "undefined" &&
-        typeof chrome !== "undefined"
-    ) {
-
-        initializeCast();
+        element.textContent =
+            text;
 
     }
 
 }
-
-
-/* ==============================
-   GOOGLE CAST SDK CALLBACK
-============================== */
-
-window.__onGCastApiAvailable =
-    function(isAvailable) {
-
-        if (isAvailable) {
-
-            onCastReady();
-
-        } else {
-
-            console.error(
-                "Google Cast SDK nie je dostupné."
-            );
-
-        }
-
-    };
