@@ -51,7 +51,9 @@
                 rgba(0, 0, 0, 0.6);
         }
 
-        /* LOGO */
+        /* =========================
+           LOGO
+        ========================= */
 
         .logo-link {
             display: block;
@@ -67,6 +69,8 @@
         .logo {
             width: 150px;
             height: 150px;
+
+            display: block;
 
             object-fit: cover;
 
@@ -86,13 +90,19 @@
             transform: scale(1.08);
         }
 
+        /* =========================
+           NÁZOV
+        ========================= */
+
         h1 {
             font-size: 34px;
+
             margin-bottom: 10px;
         }
 
         .status {
             color: #aaa;
+
             margin-bottom: 30px;
         }
 
@@ -100,22 +110,29 @@
             color: #ff2d55;
         }
 
-        /* OVLÁDANIE */
+        /* =========================
+           OVLÁDANIE
+        ========================= */
 
         .controls {
             display: flex;
+
             align-items: center;
             justify-content: center;
+
             gap: 20px;
 
             margin-bottom: 25px;
         }
+
+        /* PLAY */
 
         .play-button {
             width: 90px;
             height: 90px;
 
             border: none;
+
             border-radius: 50%;
 
             font-size: 30px;
@@ -142,7 +159,9 @@
             transform: scale(1.08);
         }
 
-        /* GOOGLE CAST */
+        /* =========================
+           GOOGLE CAST
+        ========================= */
 
         .cast-button {
             width: 50px;
@@ -160,6 +179,7 @@
             cursor: pointer;
 
             display: flex;
+
             align-items: center;
             justify-content: center;
 
@@ -168,37 +188,48 @@
 
         .cast-button:hover {
             background: #353550;
+
             transform: scale(1.08);
         }
 
         .cast-button svg {
             width: 25px;
             height: 25px;
+
             fill: currentColor;
         }
 
-        /* HLASITOSŤ */
+        /* =========================
+           HLASITOSŤ
+        ========================= */
 
         .volume-box {
             margin-top: 25px;
+
             text-align: left;
         }
 
         .volume-box label {
             display: block;
+
             margin-bottom: 10px;
+
             color: #aaa;
         }
 
         input[type="range"] {
             width: 100%;
+
             cursor: pointer;
         }
 
-        /* PRÁVE HRÁ */
+        /* =========================
+           PRÁVE HRÁ
+        ========================= */
 
         .now-playing {
             margin-top: 30px;
+
             padding: 20px;
 
             border-radius: 15px;
@@ -208,58 +239,92 @@
 
         .now-playing small {
             color: #888;
+
             font-size: 11px;
+
             letter-spacing: 1px;
         }
 
         .now-playing p {
             margin-top: 10px;
+
             font-weight: bold;
 
             white-space: nowrap;
+
             overflow: hidden;
+
             text-overflow: ellipsis;
         }
 
         .loading {
             color: #888;
         }
+
+        /* =========================
+           CAST STAV
+        ========================= */
+
+        .cast-status {
+            margin-top: 12px;
+
+            font-size: 12px;
+
+            color: #777;
+
+            min-height: 16px;
+        }
     </style>
 </head>
+
 
 <body>
 
     <div class="player">
 
-        <!-- LOGO S ODKAZOM -->
+        <!-- =========================
+             LOGO
+        ========================= -->
 
         <a
             class="logo-link"
             href="https://mytuner-radio.com/radio/radio-klub-513497/"
             target="_blank"
+            rel="noopener noreferrer"
             title="Otvoriť Rádio Klub na myTuner"
         >
+
             <img
                 class="logo"
                 src="https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/44153165/44153165-1756027969361-fe65b85dada35.jpg"
                 alt="Rádio Klub"
             >
+
         </a>
 
 
-        <!-- NÁZOV -->
+        <!-- =========================
+             NÁZOV
+        ========================= -->
 
-        <h1>Rádio Klub</h1>
+        <h1>
+            Rádio Klub
+        </h1>
 
 
-        <!-- STATUS -->
+        <!-- =========================
+             STATUS
+        ========================= -->
 
         <p class="status">
-            <span>●</span> Živé vysielanie
+            <span>●</span>
+            Živé vysielanie
         </p>
 
 
-        <!-- OVLÁDANIE -->
+        <!-- =========================
+             OVLÁDANIE
+        ========================= -->
 
         <div class="controls">
 
@@ -268,6 +333,7 @@
             <button
                 class="play-button"
                 id="playButton"
+                type="button"
                 onclick="toggleRadio()"
                 title="Prehrať rádio"
             >
@@ -280,28 +346,59 @@
             <button
                 class="cast-button"
                 id="castButton"
+                type="button"
                 onclick="startCast()"
                 title="Google Cast"
+                aria-label="Google Cast"
             >
-                <svg viewBox="0 0 24 24">
-                    <path d="M1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm0-4v2c4.97 0 9 4.03 9 9h2c0-6.08-4.92-11-11-11zM3 3h18v14h-2V5H3V3z"/>
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+
+                    <path
+                        d="M1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm0-4v2c4.97 0 9 4.03 9 9h2c0-6.08-4.92-11-11-11zM3 3h18v14h-2V5H3V3z"
+                    />
+
                 </svg>
+
             </button>
 
         </div>
 
 
-        <!-- RÁDIO STREAM -->
+        <!-- CAST STAV -->
 
-        <audio id="radioPlayer">
+        <div
+            id="castStatus"
+            class="cast-status"
+        ></div>
+
+
+        <!-- =========================
+             RÁDIO STREAM
+        ========================= -->
+
+        <audio
+            id="radioPlayer"
+            preload="none"
+        >
+
             <source
                 src="https://listen.radioking.com/radio/917921/stream/988836"
                 type="audio/mpeg"
             >
+
+            Váš prehliadač nepodporuje
+            prehrávanie rádia.
+
         </audio>
 
 
-        <!-- HLASITOSŤ -->
+        <!-- =========================
+             HLASITOSŤ
+        ========================= -->
 
         <div class="volume-box">
 
@@ -321,7 +418,9 @@
         </div>
 
 
-        <!-- PRÁVE HRÁ -->
+        <!-- =========================
+             PRÁVE HRÁ
+        ========================= -->
 
         <div class="now-playing">
 
@@ -341,61 +440,110 @@
     </div>
 
 
-    <!-- HLAVNÝ JAVASCRIPT -->
+    <!-- ==================================================
+         HLAVNÝ JAVASCRIPT
+    ================================================== -->
 
     <script>
 
+        /*
+        ==============================
+        NASTAVENIA
+        ==============================
+        */
+
         const STREAM_URL =
             "https://listen.radioking.com/radio/917921/stream/988836";
+
 
         const METADATA_API =
             "https://api.radioking.io/widget/radio/radioklubslovak/track/current?format=text";
 
 
+        /*
+        ==============================
+        ELEMENTY
+        ==============================
+        */
+
         const radio =
-            document.getElementById("radioPlayer");
+            document.getElementById(
+                "radioPlayer"
+            );
+
 
         const playButton =
-            document.getElementById("playButton");
+            document.getElementById(
+                "playButton"
+            );
+
 
         const volume =
-            document.getElementById("volume");
+            document.getElementById(
+                "volume"
+            );
+
 
         const songName =
-            document.getElementById("songName");
+            document.getElementById(
+                "songName"
+            );
 
+
+        const castStatus =
+            document.getElementById(
+                "castStatus"
+            );
+
+
+        /*
+        ==============================
+        STAV
+        ==============================
+        */
 
         let playing = false;
 
 
-        /* PLAY / PAUSE */
+        /*
+        ==============================
+        PLAY / PAUSE
+        ==============================
+        */
 
-        function toggleRadio() {
+        async function toggleRadio() {
 
             if (!playing) {
 
-                radio.play()
+                try {
 
-                    .then(() => {
+                    await radio.play();
 
-                        playing = true;
+                    playing = true;
 
-                        playButton.innerHTML = "❚❚";
+                    playButton.innerHTML =
+                        "❚❚";
 
-                        playButton.title =
-                            "Pozastaviť rádio";
+                    playButton.title =
+                        "Pozastaviť rádio";
 
-                    })
 
-                    .catch((error) => {
+                    castStatus.textContent =
+                        "";
 
-                        console.error(error);
 
-                        alert(
-                            "Nepodarilo sa spustiť rádio."
-                        );
+                } catch (error) {
 
-                    });
+                    console.error(
+                        "Chyba prehrávania:",
+                        error
+                    );
+
+                    alert(
+                        "Nepodarilo sa spustiť rádio."
+                    );
+
+                }
 
             } else {
 
@@ -403,7 +551,8 @@
 
                 playing = false;
 
-                playButton.innerHTML = "▶";
+                playButton.innerHTML =
+                    "▶";
 
                 playButton.title =
                     "Prehrať rádio";
@@ -413,49 +562,67 @@
         }
 
 
-        /* HLASITOSŤ */
+        /*
+        ==============================
+        HLASITOSŤ
+        ==============================
+        */
 
-        radio.volume = volume.value;
+        radio.volume =
+            Number(volume.value);
+
 
         volume.addEventListener(
             "input",
             function () {
 
                 radio.volume =
-                    volume.value;
+                    Number(volume.value);
 
             }
         );
 
 
-        /* METADATA */
+        /*
+        ==============================
+        AKTUÁLNA SKLADBA
+        ==============================
+        */
 
         async function updateMetadata() {
 
             try {
 
                 const response =
-                    await fetch(METADATA_API);
+                    await fetch(
+                        METADATA_API,
+                        {
+                            cache: "no-store"
+                        }
+                    );
+
 
                 if (!response.ok) {
 
                     throw new Error(
-                        "Metadata API neodpovedá"
+                        "Metadata API neodpovedá."
                     );
 
                 }
+
 
                 const text =
                     await response.text();
 
 
-                if (
-                    text &&
-                    text.trim().length > 0
-                ) {
+                const currentSong =
+                    text.trim();
+
+
+                if (currentSong) {
 
                     songName.textContent =
-                        text.trim();
+                        currentSong;
 
                     songName.classList.remove(
                         "loading"
@@ -468,12 +635,14 @@
 
                 }
 
+
             } catch (error) {
 
                 console.error(
                     "Chyba metadata:",
                     error
                 );
+
 
                 songName.textContent =
                     "Rádio Klub – Živé vysielanie";
@@ -483,31 +652,67 @@
         }
 
 
-        /* NAČÍTAŤ METADATA */
+        /*
+        ==============================
+        NAČÍTANIE METADATA
+        ==============================
+        */
 
         updateMetadata();
 
 
-        /* AKTUALIZOVAŤ KAŽDÝCH 15 SEKÚND */
+        /*
+        ==============================
+        AKTUALIZÁCIA KAŽDÝCH 15 SEKÚND
+        ==============================
+        */
 
         setInterval(
             updateMetadata,
             15000
         );
 
+
+        /*
+        ==============================
+        CAST STAV
+        ==============================
+        */
+
+        window.addEventListener(
+            "load",
+            function () {
+
+                /*
+                Cast SDK sa načítava
+                samostatne cez cast.js.
+                */
+
+                console.log(
+                    "Rádio Klub prehrávač načítaný."
+                );
+
+            }
+        );
+
     </script>
 
 
-    <!-- GOOGLE CAST JAVASCRIPT -->
+    <!-- ==================================================
+         VLASTNÝ GOOGLE CAST JAVASCRIPT
+    ================================================== -->
 
     <script src="cast.js"></script>
 
 
-    <!-- GOOGLE CAST SDK -->
+    <!-- ==================================================
+         GOOGLE CAST WEB SENDER SDK
+    ================================================== -->
 
     <script
         src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1">
     </script>
+
 
 </body>
 </html>
