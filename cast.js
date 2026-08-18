@@ -1,13 +1,16 @@
 const CAST_STREAM_URL =
     "https://listen.radioking.com/radio/917921/stream/988836";
 
+const RADIO_LOGO_URL =
+    "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/44153165/44153165-1756027969361-fe65b85dada35.jpg";
+
 let castInitialized = false;
 
 
 /*
-================================
-GOOGLE CAST SDK JE PRIPRAVENÉ
-================================
+========================================
+GOOGLE CAST SDK
+========================================
 */
 
 window.__onGCastApiAvailable = function(isAvailable) {
@@ -28,9 +31,9 @@ window.__onGCastApiAvailable = function(isAvailable) {
 
 
 /*
-================================
-INICIALIZÁCIA GOOGLE CAST
-================================
+========================================
+INICIALIZÁCIA CAST
+========================================
 */
 
 function initializeCast() {
@@ -47,24 +50,14 @@ function initializeCast() {
 
         castContext.setOptions({
 
-            /*
-            Používame Default Media Receiver.
-            Nie je potrebné vlastné Cast App ID.
-            */
-
             receiverApplicationId:
                 chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
-
 
             autoJoinPolicy:
                 chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
 
         });
 
-
-        /*
-        Sledovanie stavu Cast pripojenia
-        */
 
         castContext.addEventListener(
 
@@ -74,7 +67,7 @@ function initializeCast() {
             function(event) {
 
                 console.log(
-                    "Google Cast stav:",
+                    "Google Cast:",
                     event.sessionState
                 );
 
@@ -86,13 +79,14 @@ function initializeCast() {
         castInitialized = true;
 
         console.log(
-            "Google Cast bol úspešne inicializovaný."
+            "Google Cast je pripravený."
         );
+
 
     } catch (error) {
 
         console.error(
-            "Chyba pri inicializácii Google Cast:",
+            "Chyba Google Cast:",
             error
         );
 
@@ -102,26 +96,49 @@ function initializeCast() {
 
 
 /*
-================================
-SPUSTENIE CAST
-================================
+========================================
+SPUSTENIE GOOGLE CAST
+========================================
 */
 
 async function startCast() {
 
     try {
 
+        /*
+        Skontrolujeme, či je Cast SDK
+        načítané.
+        */
+
+        if (
+            typeof cast === "undefined" ||
+            typeof chrome === "undefined"
+        ) {
+
+            console.error(
+                "Google Cast SDK ešte nie je načítané."
+            );
+
+            return;
+
+        }
+
+
         const castContext =
             cast.framework.CastContext.getInstance();
 
+
+        /*
+        Aktuálna Cast session
+        */
 
         let castSession =
             castContext.getCurrentSession();
 
 
         /*
-        Ak ešte nie je vybrané zariadenie,
-        otvorí sa okno na výber Chromecast.
+        Ak nie je pripojené zariadenie,
+        otvorí sa výber Chromecast zariadenia.
         */
 
         if (!castSession) {
@@ -135,13 +152,13 @@ async function startCast() {
 
 
         /*
-        Ak používateľ zruší výber zariadenia
+        Používateľ nezvolil zariadenie.
         */
 
         if (!castSession) {
 
             console.log(
-                "Nebolo vybrané žiadne Cast zariadenie."
+                "Nebolo vybrané Cast zariadenie."
             );
 
             return;
@@ -150,7 +167,9 @@ async function startCast() {
 
 
         /*
-        VYTVORENIE INFORMÁCIÍ O RÁDIU
+        ========================================
+        STREAM
+        ========================================
         */
 
         const mediaInfo =
@@ -161,7 +180,7 @@ async function startCast() {
 
 
         /*
-        ŽIVÉ VYSIELANIE
+        Rádio je LIVE stream.
         */
 
         mediaInfo.streamType =
@@ -169,16 +188,14 @@ async function startCast() {
 
 
         /*
+        ========================================
         METADATA
+        ========================================
         */
 
         const metadata =
             new chrome.cast.media.MusicTrackMediaMetadata();
 
-
-        /*
-        Aktuálna skladba zo stream.html
-        */
 
         const songElement =
             document.getElementById(
@@ -186,10 +203,20 @@ async function startCast() {
             );
 
 
-        const currentSong =
-            songElement
-                ? songElement.textContent.trim()
-                : "Rádio Klub – Živé vysielanie";
+        let currentSong =
+            "Rádio Klub – Živé vysielanie";
+
+
+        if (songElement) {
+
+            const text =
+                songElement.textContent.trim();
+
+            if (text) {
+                currentSong = text;
+            }
+
+        }
 
 
         metadata.title =
@@ -199,7 +226,20 @@ async function startCast() {
             "Rádio Klub";
 
         metadata.albumName =
-            "Rádio Klub – Živé vysielanie";
+            "Rádio Klub";
+
+
+        /*
+        Logo Rádio Klub
+        */
+
+        metadata.images = [
+
+            new chrome.cast.Image(
+                RADIO_LOGO_URL
+            )
+
+        ];
 
 
         mediaInfo.metadata =
@@ -207,7 +247,9 @@ async function startCast() {
 
 
         /*
-        VYTVORENIE POŽIADAVKY
+        ========================================
+        LOAD REQUEST
+        ========================================
         */
 
         const request =
@@ -220,7 +262,9 @@ async function startCast() {
 
 
         /*
-        SPUSTENIE RÁDIA NA CHROMECAST
+        ========================================
+        SPUSTENIE NA CHROMECASTE
+        ========================================
         */
 
         await castSession.loadMedia(
@@ -229,12 +273,14 @@ async function startCast() {
 
 
         console.log(
-            "Rádio Klub hrá cez Google Cast."
+            "Rádio Klub sa prehráva cez Google Cast."
         );
 
 
         /*
-        ZASTAVÍ LOKÁLNY PREHRÁVAČ
+        ========================================
+        ZASTAVÍME LOKÁLNE RÁDIO
+        ========================================
         */
 
         const localRadio =
@@ -261,12 +307,16 @@ async function startCast() {
             localPlayButton.innerHTML =
                 "▶";
 
+            localPlayButton.title =
+                "Prehrať rádio";
+
         }
 
 
         /*
-        Ak používaš premennú playing
-        v stream.html
+        Ak existuje premenná playing
+        v stream.html, nastavíme ju
+        na false.
         */
 
         if (
@@ -277,13 +327,8 @@ async function startCast() {
 
         }
 
-    } catch (error) {
 
-        /*
-        Používateľ môže jednoducho
-        zavrieť okno s výberom zariadenia,
-        preto chybu iba vypíšeme.
-        */
+    } catch (error) {
 
         console.error(
             "Google Cast chyba:",
@@ -296,9 +341,9 @@ async function startCast() {
 
 
 /*
-================================
+========================================
 UKONČENIE CAST
-================================
+========================================
 */
 
 function stopCast() {
@@ -321,12 +366,44 @@ function stopCast() {
 
         }
 
+
     } catch (error) {
 
         console.error(
             "Chyba pri ukončení Cast:",
             error
         );
+
+    }
+
+}
+
+
+/*
+========================================
+KONTROLA STAVU CAST
+========================================
+*/
+
+function getCastState() {
+
+    try {
+
+        const castContext =
+            cast.framework.CastContext.getInstance();
+
+
+        return castContext.getCastState();
+
+
+    } catch (error) {
+
+        console.error(
+            "Nepodarilo sa zistiť Cast stav.",
+            error
+        );
+
+        return null;
 
     }
 
