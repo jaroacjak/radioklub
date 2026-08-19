@@ -13,6 +13,10 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background: #0d0d16;
@@ -20,42 +24,171 @@
             min-height: 100vh;
         }
 
-        .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: auto;
-            padding: 50px 0;
+        /* HLAVIČKA */
+
+        header {
+            background: linear-gradient(135deg, #6c2cff, #d51cff);
+
+            padding: 20px 8%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        h1 {
+        .logo-link {
+            display: flex;
+            align-items: center;
+
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo-image {
+            width: 55px;
+            height: 55px;
+
+            object-fit: cover;
+            border-radius: 50%;
+
+            margin-right: 12px;
+
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        /* MENU */
+
+        nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+
+            margin-left: 22px;
+
+            font-weight: bold;
+
+            padding-bottom: 6px;
+
+            border-bottom: 3px solid transparent;
+
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        nav a.active {
+            border-bottom: 3px solid white;
+            opacity: 1;
+        }
+
+        /* HLAVNÁ SEKCIA */
+
+        .hero {
+            min-height: 45vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
             text-align: center;
-            font-size: 48px;
-            margin-bottom: 45px;
+
+            padding: 60px 20px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #30205c 0%,
+                    #0d0d16 65%
+                );
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: clamp(50px, 8vw, 80px);
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #d51cff;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #bbb;
+        }
+
+        /* MODERÁTORI */
+
+        .moderatori-section {
+            padding: 80px 8%;
         }
 
         .moderatori {
+            max-width: 1100px;
+            margin: auto;
+
             display: grid;
-            grid-template-columns: repeat(
-                auto-fit,
-                minmax(250px, 1fr)
-            );
-            gap: 30px;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(240px, 1fr)
+                );
+
+            gap: 25px;
         }
 
-        .moderator {
+        /* KARTA */
+
+        .moderator-card {
             background: #181824;
+
+            padding: 30px 25px;
+
+            border-radius: 20px;
+
             border: 1px solid #292938;
-            border-radius: 25px;
-            padding: 25px;
+
             text-align: center;
+
+            transition: 0.2s;
         }
 
-        .foto {
+        .moderator-card:hover {
+            transform: translateY(-7px);
+
+            border-color: #8b45ff;
+        }
+
+        /* FOTKA */
+
+        .moderator-photo {
             width: 200px;
             height: 200px;
+
             margin: 0 auto 25px;
 
             border-radius: 50%;
+
             overflow: hidden;
 
             background:
@@ -64,44 +197,104 @@
                     #6c2cff,
                     #d51cff
                 );
+
+            border:
+                4px solid
+                rgba(255,255,255,0.12);
+
+            box-shadow:
+                0 0 35px
+                rgba(213,28,255,0.3);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .foto img {
+        .moderator-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .foto-placeholder {
-            width: 100%;
-            height: 100%;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
+        .placeholder {
             font-size: 60px;
         }
 
-        .moderator h2 {
+        /* TEXT */
+
+        .moderator-card h2 {
             font-size: 26px;
             margin-bottom: 10px;
         }
 
-        .moderator p {
+        .moderator-card p {
             color: #d51cff;
+
             font-weight: bold;
+
             line-height: 1.5;
         }
 
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 38px;
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+
+            padding: 35px;
+
+            background: #090910;
+
+            color: #777;
+        }
+
+        .social {
+            margin-top: 15px;
+        }
+
+        .social a {
+            color: #d51cff;
+
+            text-decoration: none;
+
+            margin: 0 10px;
+        }
+
+        .social a:hover {
+            color: white;
+        }
+
+        /* MOBIL */
+
+        @media (max-width: 850px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
             }
 
-            .foto {
-                width: 170px;
-                height: 170px;
+            nav {
+                justify-content: center;
+            }
+
+            nav a {
+                margin: 5px 8px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .hero h1 {
+                font-size: 55px;
+            }
+
+            .moderator-photo {
+                width: 175px;
+                height: 175px;
+            }
+
+            .logo-text {
+                font-size: 23px;
             }
         }
     </style>
@@ -109,19 +302,95 @@
 
 <body>
 
-    <main class="container">
+    <!-- HLAVIČKA -->
 
-        <h1>Moderátori</h1>
+    <header>
+
+        <a
+            class="logo-link"
+            href="https://jaroacjak.github.io/radioklub/#domov"
+            title="Rádio Klub – Domov"
+        >
+
+            <img
+                class="logo-image"
+                src="https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/44153165/44153165-1756027969361-fe65b85dada35.jpg"
+                alt="Rádio Klub"
+            >
+
+            <span class="logo-text">
+                Rádio Klub
+            </span>
+
+        </a>
+
+        <nav>
+
+            <a href="https://jaroacjak.github.io/radioklub/#domov">
+                Domov
+            </a>
+
+            <a href="https://jaroacjak.github.io/radioklub/#program">
+                Program
+            </a>
+
+            <a href="https://jaroacjak.github.io/radioklub/#onas">
+                O nás
+            </a>
+
+            <a
+                href="moderator.html"
+                class="active"
+            >
+                Moderátori
+            </a>
+
+            <a href="dopravnyservis.html">
+                Dopravný servis
+            </a>
+
+            <a href="spravy.html">
+                Správy
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- HLAVNÁ SEKCIA -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                Rádio <span>Klub</span>
+            </h1>
+
+            <p>
+                Moderátori Rádia Klub
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- MODERÁTORI -->
+
+    <section class="moderatori-section">
 
         <div class="moderatori">
 
+
             <!-- JARKO AČJAK -->
 
-            <div class="moderator">
+            <div class="moderator-card">
 
-                <div class="foto">
+                <div class="moderator-photo">
 
-                    <div class="foto-placeholder">
+                    <div class="placeholder">
                         🎙️
                     </div>
 
@@ -141,11 +410,11 @@
 
             <!-- JAKUB BREZANI -->
 
-            <div class="moderator">
+            <div class="moderator-card">
 
-                <div class="foto">
+                <div class="moderator-photo">
 
-                    <div class="foto-placeholder">
+                    <div class="placeholder">
                         🎙️
                     </div>
 
@@ -162,31 +431,73 @@
             </div>
 
 
-            <!-- LEO KOVAČKA -->
+            <!-- JAKUB POZLÁTKA -->
 
-            <div class="moderator">
+            <div class="moderator-card">
 
-                <div class="foto">
+                <div class="moderator-photo">
 
-                    <div class="foto-placeholder">
-                        🎧
+                    <div class="placeholder">
+                        🎙️
                     </div>
 
                 </div>
 
                 <h2>
-                    Leo Kovačka
+                    Jakub Pozlátka
                 </h2>
 
                 <p>
-                    DJ
+                    Moderátor
                 </p>
 
             </div>
 
+
         </div>
 
-    </main>
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Rádio Klub.
+            Všetky práva vyhradené.
+        </p>
+
+        <div class="social">
+
+            <a
+                href="https://youtube.com/@radioklubsk?si=EdVbZFttInCv1r5e"
+                target="_blank"
+                rel="noopener"
+                aria-label="YouTube"
+            >
+                ▶️
+            </a>
+
+            <a
+                href="https://www.instagram.com/radioklubsk?igsh=cXBqMDZ6YWkycmxo"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+            >
+                📷
+            </a>
+
+            <a
+                href="#"
+                aria-label="Facebook"
+            >
+                f
+            </a>
+
+        </div>
+
+    </footer>
 
 </body>
 </html>
