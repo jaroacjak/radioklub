@@ -7,6 +7,7 @@
     <title>Moderátori – Rádio Klub</title>
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -24,7 +25,9 @@
             min-height: 100vh;
         }
 
-        /* HLAVIČKA */
+        /* =========================
+           HLAVIČKA
+        ========================= */
 
         header {
             background: linear-gradient(135deg, #6c2cff, #d51cff);
@@ -37,6 +40,7 @@
 
             position: sticky;
             top: 0;
+
             z-index: 100;
         }
 
@@ -53,6 +57,7 @@
             height: 55px;
 
             object-fit: cover;
+
             border-radius: 50%;
 
             margin-right: 12px;
@@ -65,7 +70,9 @@
             font-weight: bold;
         }
 
-        /* MENU */
+        /* =========================
+           MENU
+        ========================= */
 
         nav {
             display: flex;
@@ -75,6 +82,7 @@
 
         nav a {
             color: white;
+
             text-decoration: none;
 
             margin-left: 22px;
@@ -97,7 +105,9 @@
             opacity: 1;
         }
 
-        /* HLAVNÁ SEKCIA */
+        /* =========================
+           HLAVNÁ SEKCIA
+        ========================= */
 
         .hero {
             min-height: 45vh;
@@ -124,6 +134,7 @@
 
         .hero h1 {
             font-size: clamp(50px, 8vw, 80px);
+
             margin-bottom: 15px;
         }
 
@@ -136,7 +147,9 @@
             color: #bbb;
         }
 
-        /* MODERÁTORI */
+        /* =========================
+           MODERÁTORI
+        ========================= */
 
         .moderatori-section {
             padding: 80px 8%;
@@ -144,6 +157,7 @@
 
         .moderatori {
             max-width: 1100px;
+
             margin: auto;
 
             display: grid;
@@ -157,9 +171,13 @@
             gap: 25px;
         }
 
-        /* KARTA */
+        /* =========================
+           KARTA
+        ========================= */
 
         .moderator-card {
+            display: block;
+
             background: #181824;
 
             padding: 30px 25px;
@@ -170,6 +188,10 @@
 
             text-align: center;
 
+            text-decoration: none;
+
+            color: white;
+
             transition: 0.2s;
         }
 
@@ -177,9 +199,15 @@
             transform: translateY(-7px);
 
             border-color: #8b45ff;
+
+            box-shadow:
+                0 15px 40px
+                rgba(108,44,255,0.25);
         }
 
-        /* FOTKA */
+        /* =========================
+           FOTKA
+        ========================= */
 
         .moderator-photo {
             width: 200px;
@@ -207,6 +235,7 @@
                 rgba(213,28,255,0.3);
 
             display: flex;
+
             align-items: center;
             justify-content: center;
         }
@@ -214,13 +243,23 @@
         .moderator-photo img {
             width: 100%;
             height: 100%;
+
             object-fit: cover;
+
+            transition: 0.25s;
         }
 
-        /* TEXT */
+        .moderator-card:hover .moderator-photo img {
+            transform: scale(1.05);
+        }
+
+        /* =========================
+           TEXT
+        ========================= */
 
         .moderator-card h2 {
             font-size: 26px;
+
             margin-bottom: 10px;
         }
 
@@ -232,7 +271,9 @@
             line-height: 1.5;
         }
 
-        /* FOOTER */
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
             text-align: center;
@@ -246,30 +287,55 @@
 
         .social {
             margin-top: 15px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 18px;
         }
 
         .social a {
-            color: #d51cff;
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            width: 45px;
+            height: 45px;
 
             text-decoration: none;
 
-            margin: 0 10px;
-
-            font-size: 22px;
+            border-radius: 50%;
 
             transition: 0.2s;
         }
 
         .social a:hover {
-            color: white;
+            transform: scale(1.12);
         }
 
-        /* MOBIL */
+        .social img {
+            width: 38px;
+            height: 38px;
+
+            object-fit: contain;
+
+            border-radius: 8px;
+        }
+
+        /* =========================
+           MOBIL
+        ========================= */
 
         @media (max-width: 850px) {
 
             header {
                 flex-direction: column;
+
                 gap: 15px;
             }
 
@@ -297,14 +363,19 @@
                 font-size: 23px;
             }
         }
+
     </style>
 </head>
 
 <body>
 
-    <!-- HLAVIČKA -->
+    <!-- =========================
+         HLAVIČKA
+    ========================= -->
 
     <header>
+
+        <!-- LOGO -->
 
         <a
             class="logo-link"
@@ -325,22 +396,26 @@
         </a>
 
 
+        <!-- MENU -->
+
         <nav>
 
-            <a href="https://jaroacjak.github.io/radioklub/#domov">
+            <a
+                href="https://jaroacjak.github.io/radioklub/#domov"
+            >
                 Domov
             </a>
 
-            <a href="https://jaroacjak.github.io/radioklub/#program">
+            <a href="program.html">
                 Program
             </a>
 
-            <a href="https://jaroacjak.github.io/radioklub/#onas">
+            <a href="onas.html">
                 O nás
             </a>
 
             <a
-                href="moderator.html"
+                href="moderatori.html"
                 class="active"
             >
                 Moderátori
@@ -354,12 +429,18 @@
                 Správy
             </a>
 
+            <a href="podcast.html">
+                Podcast
+            </a>
+
         </nav>
 
     </header>
 
 
-    <!-- HLAVNÁ SEKCIA -->
+    <!-- =========================
+         HLAVNÁ SEKCIA
+    ========================= -->
 
     <section class="hero">
 
@@ -378,16 +459,24 @@
     </section>
 
 
-    <!-- MODERÁTORI -->
+    <!-- =========================
+         MODERÁTORI
+    ========================= -->
 
     <section class="moderatori-section">
 
         <div class="moderatori">
 
 
-            <!-- JARKO AČJAK -->
+            <!-- =========================
+                 JARKO AČJAK
+            ========================= -->
 
-            <div class="moderator-card">
+            <a
+                href="jarkoacjak.html"
+                class="moderator-card"
+                title="Jarko Ačjak"
+            >
 
                 <div class="moderator-photo">
 
@@ -407,12 +496,18 @@
                     Moderátor
                 </p>
 
-            </div>
+            </a>
 
 
-            <!-- JAKUB BREZANI -->
+            <!-- =========================
+                 JAKUB BREZANI
+            ========================= -->
 
-            <div class="moderator-card">
+            <a
+                href="jakubbrezani.html"
+                class="moderator-card"
+                title="Jakub Brezani"
+            >
 
                 <div class="moderator-photo">
 
@@ -431,12 +526,18 @@
                     Moderátor
                 </p>
 
-            </div>
+            </a>
 
 
-            <!-- JAKUB POZLÁTKA -->
+            <!-- =========================
+                 JAKUB POZLÁTKA
+            ========================= -->
 
-            <div class="moderator-card">
+            <a
+                href="jakubpozlatka.html"
+                class="moderator-card"
+                title="Jakub Pozlátka"
+            >
 
                 <div class="moderator-photo">
 
@@ -455,15 +556,16 @@
                     Moderátor
                 </p>
 
-            </div>
-
+            </a>
 
         </div>
 
     </section>
 
 
-    <!-- FOOTER -->
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
     <footer>
 
@@ -472,7 +574,10 @@
             Všetky práva vyhradené.
         </p>
 
+
         <div class="social">
+
+            <!-- YOUTUBE -->
 
             <a
                 href="https://youtube.com/@radioklubsk?si=EdVbZFttInCv1r5e"
@@ -481,8 +586,16 @@
                 aria-label="YouTube"
                 title="YouTube"
             >
-                ▶
+
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRluxvnOBRSErZP_KFyE1_WJhpbSP77KBZmWH1KTXqPGQ&s=10"
+                    alt="YouTube"
+                >
+
             </a>
+
+
+            <!-- INSTAGRAM -->
 
             <a
                 href="https://www.instagram.com/radioklubsk?igsh=cXBqMDZ6YWkycmxo"
@@ -491,15 +604,30 @@
                 aria-label="Instagram"
                 title="Instagram"
             >
-                ◎
+
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5osI0qmctv4jqC_8kp4HJidRE1Zzhadm6Lo3g4SyYoQ&s=10"
+                    alt="Instagram"
+                >
+
             </a>
 
+
+            <!-- FACEBOOK -->
+
             <a
-                href="#"
-                aria-label="Facebook"
-                title="Facebook"
+                href="https://www.facebook.com/radioklubsk?locale=sk_SK"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook Rádio Klub"
+                title="Facebook Rádio Klub"
             >
-                f
+
+                <img
+                    src="https://static.vecteezy.com/system/resources/previews/018/930/476/non_2x/facebook-logo-facebook-icon-transparent-free-png.png"
+                    alt="Facebook Rádio Klub"
+                >
+
             </a>
 
         </div>
