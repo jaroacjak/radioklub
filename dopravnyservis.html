@@ -33,14 +33,17 @@
         min-height: 100vh;
     }
 
-    /* HLAVIČKA */
+    /* ==============================
+       HLAVIČKA
+    ============================== */
 
     header {
-        background: linear-gradient(
-            135deg,
-            #6c2cff,
-            #d51cff
-        );
+        background:
+            linear-gradient(
+                135deg,
+                #6c2cff,
+                #d51cff
+            );
 
         padding: 20px 8%;
 
@@ -56,6 +59,7 @@
     .logo-link {
         display: flex;
         align-items: center;
+
         color: white;
         text-decoration: none;
     }
@@ -63,11 +67,15 @@
     .logo-image {
         width: 55px;
         height: 55px;
+
         object-fit: cover;
         border-radius: 50%;
+
         margin-right: 12px;
 
-        border: 2px solid rgba(255,255,255,0.4);
+        border:
+            2px solid
+            rgba(255,255,255,0.4);
     }
 
     .logo-text {
@@ -75,7 +83,9 @@
         font-weight: bold;
     }
 
-    /* MENU */
+    /* ==============================
+       MENU
+    ============================== */
 
     nav {
         display: flex;
@@ -86,11 +96,15 @@
     nav a {
         color: white;
         text-decoration: none;
+
         margin-left: 22px;
+
         font-weight: bold;
+
         padding-bottom: 6px;
 
-        border-bottom: 3px solid transparent;
+        border-bottom:
+            3px solid transparent;
 
         transition: 0.2s;
     }
@@ -100,11 +114,15 @@
     }
 
     nav a.active {
-        border-bottom: 3px solid white;
+        border-bottom:
+            3px solid white;
+
         opacity: 1;
     }
 
-    /* HERO */
+    /* ==============================
+       HERO
+    ============================== */
 
     .hero {
         padding: 70px 20px 50px;
@@ -125,7 +143,13 @@
     }
 
     .hero h1 {
-        font-size: clamp(40px, 7vw, 70px);
+        font-size:
+            clamp(
+                40px,
+                7vw,
+                70px
+            );
+
         margin-bottom: 15px;
     }
 
@@ -135,22 +159,32 @@
 
     .hero p {
         color: #bbb;
+
         font-size: 19px;
+
         line-height: 1.6;
     }
 
-    /* MAPA */
+    /* ==============================
+       MAPA
+    ============================== */
 
     .map-section {
         max-width: 1200px;
+
         margin: 50px auto;
+
         padding: 0 20px;
     }
 
     .map-box {
         background: #181824;
-        border: 1px solid #292938;
+
+        border:
+            1px solid #292938;
+
         border-radius: 25px;
+
         overflow: hidden;
 
         box-shadow:
@@ -160,62 +194,87 @@
 
     .map-header {
         padding: 30px;
+
         text-align: center;
     }
 
     .map-header h2 {
         font-size: 30px;
+
         margin-bottom: 10px;
     }
 
     .map-header p {
         color: #999;
+
         line-height: 1.6;
+
+        margin-bottom: 20px;
+    }
+
+    .map-open-button {
+        display: inline-block;
+
+        color: white;
+
+        text-decoration: none;
+
+        background:
+            linear-gradient(
+                135deg,
+                #6c2cff,
+                #d51cff
+            );
+
+        padding: 13px 22px;
+
+        border-radius: 25px;
+
+        font-weight: bold;
+
+        transition: 0.2s;
+    }
+
+    .map-open-button:hover {
+        transform:
+            translateY(-2px);
     }
 
     .map-frame {
         width: 100%;
+
         height: 650px;
+
         background: #11111b;
     }
 
     .map-frame iframe {
         width: 100%;
         height: 100%;
+
         border: none;
     }
 
-    .map-link {
-        display: inline-block;
-        margin-top: 15px;
-
-        color: white;
-        text-decoration: none;
-
-        background: linear-gradient(
-            135deg,
-            #6c2cff,
-            #d51cff
-        );
-
-        padding: 13px 22px;
-        border-radius: 25px;
-
-        font-weight: bold;
-    }
-
-    /* NAHLÁSENIE UDALOSTI */
+    /* ==============================
+       FORMULÁR
+    ============================== */
 
     .report-section {
         max-width: 900px;
+
         margin: 70px auto 80px;
+
         padding: 0 20px;
     }
 
     .report-box {
         background: #181824;
-        border: 1px solid #292938;
+
+        border:
+            1px solid #292938;
+
         border-radius: 25px;
+
         padding: 40px;
 
         box-shadow:
@@ -225,23 +284,29 @@
 
     .report-box h2 {
         font-size: 32px;
+
         margin-bottom: 12px;
     }
 
     .report-description {
         color: #999;
+
         line-height: 1.6;
+
         margin-bottom: 30px;
     }
 
     .report-form {
         display: flex;
+
         flex-direction: column;
+
         gap: 14px;
     }
 
     .report-form label {
         font-weight: bold;
+
         margin-top: 5px;
     }
 
@@ -251,14 +316,20 @@
         width: 100%;
 
         background: #11111b;
+
         color: white;
 
-        border: 1px solid #292938;
+        border:
+            1px solid #292938;
+
         border-radius: 12px;
 
         padding: 14px;
 
-        font-family: Arial, sans-serif;
+        font-family:
+            Arial,
+            sans-serif;
+
         font-size: 15px;
 
         outline: none;
@@ -272,6 +343,7 @@
 
     .report-form textarea {
         min-height: 140px;
+
         resize: vertical;
     }
 
@@ -281,45 +353,57 @@
 
     .file-info {
         color: #888;
+
         font-size: 13px;
+
         line-height: 1.5;
     }
 
-    /* NÁHĽAD FOTKY */
+    /* ==============================
+       NÁHĽAD OBRÁZKA
+    ============================== */
 
     .image-preview {
         display: none;
 
         width: 100%;
+
         max-height: 400px;
 
         object-fit: contain;
 
         background: #11111b;
 
-        border: 1px solid #292938;
+        border:
+            1px solid #292938;
+
         border-radius: 15px;
 
         margin-top: 5px;
     }
 
-    /* TLAČIDLO */
+    /* ==============================
+       TLAČIDLO
+    ============================== */
 
     .report-button {
         border: none;
 
-        background: linear-gradient(
-            135deg,
-            #6c2cff,
-            #d51cff
-        );
+        background:
+            linear-gradient(
+                135deg,
+                #6c2cff,
+                #d51cff
+            );
 
         color: white;
 
         padding: 15px 25px;
+
         border-radius: 25px;
 
         font-weight: bold;
+
         font-size: 16px;
 
         cursor: pointer;
@@ -330,53 +414,65 @@
     }
 
     .report-button:hover {
-        transform: translateY(-2px);
+        transform:
+            translateY(-2px);
     }
 
     .report-button:disabled {
         opacity: 0.6;
+
         cursor: wait;
     }
 
-    /* ÚSPECH */
+    /* ==============================
+       ÚSPEŠNÁ SPRÁVA
+    ============================== */
 
     .success-message {
         display: none;
 
         background: #17251c;
 
-        border: 1px solid #315c3d;
+        border:
+            1px solid #315c3d;
 
         color: #9ee6ae;
 
         border-radius: 12px;
 
         padding: 15px;
+
         margin-top: 20px;
 
         line-height: 1.5;
     }
 
-    /* CHYBA */
+    /* ==============================
+       CHYBOVÁ SPRÁVA
+    ============================== */
 
     .error-message {
         display: none;
 
         background: #2a171b;
 
-        border: 1px solid #6b303b;
+        border:
+            1px solid #6b303b;
 
         color: #ffabb8;
 
         border-radius: 12px;
 
         padding: 15px;
+
         margin-top: 20px;
 
         line-height: 1.5;
     }
 
-    /* FOOTER */
+    /* ==============================
+       FOOTER
+    ============================== */
 
     footer {
         text-align: center;
@@ -408,12 +504,15 @@
         color: white;
     }
 
-    /* MOBIL */
+    /* ==============================
+       MOBIL
+    ============================== */
 
     @media (max-width: 850px) {
 
         header {
             flex-direction: column;
+
             gap: 15px;
         }
 
@@ -428,10 +527,13 @@
         .map-frame {
             height: 500px;
         }
-
     }
 
     @media (max-width: 600px) {
+
+        .hero h1 {
+            font-size: 55px;
+        }
 
         .logo-text {
             font-size: 23px;
@@ -444,7 +546,6 @@
         .map-frame {
             height: 450px;
         }
-
     }
 
 </style>
@@ -455,7 +556,9 @@
 <body>
 
 ```
-<!-- HLAVIČKA -->
+<!-- ==============================
+     HLAVIČKA
+============================== -->
 
 <header>
 
@@ -477,21 +580,32 @@
 
     </a>
 
+
+    <!-- HORNÉ MENU -->
+
     <nav>
 
-        <a href="https://jaroacjak.github.io/radioklub/#domov">
+        <a
+            href="https://jaroacjak.github.io/radioklub/#domov"
+        >
             Domov
         </a>
 
-        <a href="program.html">
+        <a
+            href="https://jaroacjak.github.io/radioklub/#program"
+        >
             Program
         </a>
 
-        <a href="onas.html">
+        <a
+            href="https://jaroacjak.github.io/radioklub/#onas"
+        >
             O nás
         </a>
 
-        <a href="moderatori.html">
+        <a
+            href="moderator.html"
+        >
             Moderátori
         </a>
 
@@ -502,7 +616,9 @@
             Dopravný servis
         </a>
 
-        <a href="spravy.html">
+        <a
+            href="spravy.html"
+        >
             Správy
         </a>
 
@@ -510,7 +626,10 @@
 
 </header>
 
-<!-- HERO -->
+
+<!-- ==============================
+     HLAVNÁ SEKCIA
+============================== -->
 
 <section class="hero">
 
@@ -531,7 +650,10 @@
 
 </section>
 
-<!-- MAPA -->
+
+<!-- ==============================
+     DOPRAVNÁ MAPA
+============================== -->
 
 <section class="map-section">
 
@@ -544,20 +666,22 @@
             </h2>
 
             <p>
-                Sledujte aktuálnu situáciu
-                a stav ciest.
+                Sledujte aktuálnu situáciu,
+                dopravné nehody,
+                obmedzenia a stav ciest.
             </p>
 
             <a
-                class="map-link"
+                class="map-open-button"
                 href="https://www.zjazdnost.sk/map/view.html"
                 target="_blank"
                 rel="noopener"
             >
-                Otvoriť dopravnú mapu
+                Otvoriť mapu samostatne
             </a>
 
         </div>
+
 
         <div class="map-frame">
 
@@ -565,6 +689,7 @@
                 src="https://www.zjazdnost.sk/map/view.html"
                 title="Dopravná mapa Zjazdnosť"
                 loading="lazy"
+                allowfullscreen
             ></iframe>
 
         </div>
@@ -573,7 +698,10 @@
 
 </section>
 
-<!-- NAHLÁSENIE DOPRAVNEJ UDALOSTI -->
+
+<!-- ==============================
+     NAHLÁSENIE
+============================== -->
 
 <section class="report-section">
 
@@ -586,14 +714,18 @@
         <p class="report-description">
 
             Videli ste dopravnú nehodu,
-            zápchu alebo inú udalosť?
+            zápchu alebo inú udalosť na ceste?
 
             <br><br>
 
-            Pošlite nám informácie.
-            Môžete priložiť aj fotografiu.
+            Vyplňte formulár nižšie.
+            E-mailová adresa je povinná.
+            Môžete tiež priložiť fotografiu.
 
         </p>
+
+
+        <!-- FORMSPREE -->
 
         <form
             class="report-form"
@@ -606,19 +738,20 @@
             <input
                 type="hidden"
                 name="_subject"
-                value="Nové hlásenie z Dopravného servisu Rádio Klub"
+                value="Nové hlásenie – Dopravný servis Rádio Klub"
             >
 
             <input
                 type="hidden"
                 name="Zdroj"
-                value="Dopravný servis Rádio Klub"
+                value="Rádio Klub – Dopravný servis"
             >
+
 
             <!-- MENO -->
 
             <label for="reportName">
-                Vaše meno
+                👤 Vaše meno
             </label>
 
             <input
@@ -629,6 +762,7 @@
                 maxlength="50"
                 required
             >
+
 
             <!-- EMAIL -->
 
@@ -642,8 +776,10 @@
                 name="email"
                 placeholder="vas@email.sk"
                 maxlength="100"
+                autocomplete="email"
                 required
             >
+
 
             <!-- MIESTO -->
 
@@ -660,7 +796,8 @@
                 required
             >
 
-            <!-- TYP UDALOSTI -->
+
+            <!-- TYP -->
 
             <label for="reportType">
                 🚗 Typ udalosti
@@ -698,6 +835,7 @@
 
             </select>
 
+
             <!-- POPIS -->
 
             <label for="reportDescription">
@@ -712,10 +850,11 @@
                 required
             ></textarea>
 
-            <!-- FOTKA -->
+
+            <!-- FOTOGRAFIA -->
 
             <label for="reportPhoto">
-                📷 Priložiť obrázok
+                📷 Priložiť fotografiu
             </label>
 
             <input
@@ -726,17 +865,19 @@
             >
 
             <p class="file-info">
-                Môžete priložiť fotografiu
-                dopravnej udalosti.
+                Fotografia je nepovinná.
+                Vyberte obrázok zo svojho zariadenia.
             </p>
 
-            <!-- NÁHĽAD FOTKY -->
+
+            <!-- NÁHĽAD -->
 
             <img
                 id="imagePreview"
                 class="image-preview"
-                alt="Náhľad priloženého obrázka"
+                alt="Náhľad fotografie"
             >
+
 
             <!-- ODOSLAŤ -->
 
@@ -750,31 +891,37 @@
 
         </form>
 
-        <!-- ÚSPEŠNÁ SPRÁVA -->
+
+        <!-- ÚSPECH -->
 
         <div
             class="success-message"
             id="successMessage"
         >
 
-            ✅ Ďakujeme!
+            ✅ <strong>Hlásenie bolo odoslané.</strong>
 
-            Vaše dopravné hlásenie
-            bolo úspešne odoslané
-            do Rádia Klub.
+            <br><br>
+
+            Ďakujeme za informáciu.
+            Rádio Klub vaše hlásenie prijal.
 
         </div>
 
-        <!-- CHYBOVÁ SPRÁVA -->
+
+        <!-- CHYBA -->
 
         <div
             class="error-message"
             id="errorMessage"
         >
 
-            ❌ Hlásenie sa nepodarilo odoslať.
+            ❌ <strong>Hlásenie sa nepodarilo odoslať.</strong>
 
-            Skúste to prosím znova.
+            <br><br>
+
+            Skontrolujte internetové pripojenie
+            a skúste to znova.
 
         </div>
 
@@ -782,7 +929,10 @@
 
 </section>
 
-<!-- FOOTER -->
+
+<!-- ==============================
+     FOOTER
+============================== -->
 
 <footer>
 
@@ -791,7 +941,11 @@
         Všetky práva vyhradené.
     </p>
 
+
     <div class="social">
+
+
+        <!-- YOUTUBE -->
 
         <a
             href="https://youtube.com/@radioklubsk?si=EdVbZFttInCv1r5e"
@@ -803,6 +957,9 @@
             ▶
         </a>
 
+
+        <!-- INSTAGRAM -->
+
         <a
             href="https://www.instagram.com/radioklubsk?igsh=cXBqMDZ6YWkycmxo"
             target="_blank"
@@ -812,6 +969,9 @@
         >
             ◎
         </a>
+
+
+        <!-- FACEBOOK -->
 
         <a
             href="https://www.facebook.com/radioklubsk?locale=sk_SK"
@@ -827,11 +987,16 @@
 
 </footer>
 
-<!-- JAVASCRIPT -->
+
+<!-- ==============================
+     JAVASCRIPT
+============================== -->
 
 <script>
 
-    /* PREMENNÉ */
+    /* ==========================
+       PRVKY
+    ========================== */
 
     const reportForm =
         document.getElementById(
@@ -863,7 +1028,10 @@
             "errorMessage"
         );
 
-    /* NÁHĽAD FOTKY */
+
+    /* ==========================
+       NÁHĽAD FOTOGRAFIE
+    ========================== */
 
     reportPhoto.addEventListener(
         "change",
@@ -871,6 +1039,7 @@
 
             const file =
                 reportPhoto.files[0];
+
 
             if (!file) {
 
@@ -882,8 +1051,8 @@
                 );
 
                 return;
-
             }
+
 
             if (
                 !file.type.startsWith(
@@ -900,12 +1069,17 @@
                 imagePreview.style.display =
                     "none";
 
-                return;
+                imagePreview.removeAttribute(
+                    "src"
+                );
 
+                return;
             }
+
 
             const reader =
                 new FileReader();
+
 
             reader.onload =
                 function(event) {
@@ -915,8 +1089,8 @@
 
                     imagePreview.style.display =
                         "block";
-
                 };
+
 
             reader.readAsDataURL(
                 file
@@ -925,7 +1099,10 @@
         }
     );
 
-    /* ODOSLANIE FORMULÁRA */
+
+    /* ==========================
+       ODOSLANIE FORMSPREE
+    ========================== */
 
     reportForm.addEventListener(
         "submit",
@@ -933,11 +1110,28 @@
 
             event.preventDefault();
 
+
             successMessage.style.display =
                 "none";
 
             errorMessage.style.display =
                 "none";
+
+
+            /*
+               HTML VALIDÁCIA
+               vrátane povinného e-mailu
+            */
+
+            if (
+                !reportForm.checkValidity()
+            ) {
+
+                reportForm.reportValidity();
+
+                return;
+            }
+
 
             reportButton.disabled =
                 true;
@@ -945,10 +1139,12 @@
             reportButton.textContent =
                 "⏳ Odosielam hlásenie...";
 
+
             const formData =
                 new FormData(
                     reportForm
                 );
+
 
             try {
 
@@ -967,12 +1163,17 @@
                         }
                     );
 
-                if (response.ok) {
+
+                if (
+                    response.ok
+                ) {
 
                     successMessage.style.display =
                         "block";
 
+
                     reportForm.reset();
+
 
                     imagePreview.style.display =
                         "none";
@@ -981,10 +1182,14 @@
                         "src"
                     );
 
+
                     successMessage.scrollIntoView(
                         {
-                            behavior: "smooth",
-                            block: "center"
+                            behavior:
+                                "smooth",
+
+                            block:
+                                "center"
                         }
                     );
 
@@ -997,12 +1202,17 @@
 
             } catch (error) {
 
-                console.error(error);
+                console.error(
+                    "Formspree chyba:",
+                    error
+                );
+
 
                 errorMessage.style.display =
                     "block";
 
             }
+
 
             reportButton.disabled =
                 false;
@@ -1014,6 +1224,7 @@
     );
 
 </script>
+```
 
 </body>
 
