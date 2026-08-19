@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="sk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Playlist – Rádio Klub</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0d0d16;
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* ==============================
+           HLAVIČKA
+        ============================== */
+
+        header {
+            background: linear-gradient(
+                135deg,
+                #6c2cff,
+                #d51cff
+            );
+
+            padding: 20px 8%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 1000;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo-image {
+            width: 55px;
+            height: 55px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            margin-right: 12px;
+
+            border: 2px solid
+                rgba(255,255,255,0.4);
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        /* ==============================
+           MENU
+        ============================== */
+
+        nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+
+            text-decoration: none;
+
+            margin-left: 22px;
+
+            font-weight: bold;
+
+            padding-bottom: 6px;
+
+            border-bottom: 3px solid transparent;
+
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        nav a.active {
+            border-bottom: 3px solid white;
+            opacity: 1;
+        }
+
+        /* ==============================
+           HERO
+        ============================== */
+
+        .hero {
+            min-height: 38vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 60px 20px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #30205c 0%,
+                    #0d0d16 70%
+                );
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size:
+                clamp(50px, 8vw, 80px);
+
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #d51cff;
+        }
+
+        .hero p {
+            color: #bbb;
+
+            font-size: 20px;
+
+            line-height: 1.6;
+        }
+
+        /* ==============================
+           PLAYLIST
+        ============================== */
+
+        .playlist-section {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 70px 20px 90px;
+        }
+
+        .playlist-header {
+            text-align: center;
+
+            margin-bottom: 35px;
+        }
+
+        .playlist-header h2 {
+            font-size: 38px;
+
+            margin-bottom: 12px;
+        }
+
+        .playlist-header h2 span {
+            color: #d51cff;
+        }
+
+        .playlist-header p {
+            color: #999;
+
+            line-height: 1.6;
+        }
+
+        /* ==============================
+           AKTUÁLNE HRÁ
+        ============================== */
+
+        .current-box {
+            background:
+                linear-gradient(
+                    135deg,
+                    #181824,
+                    #21182c
+                );
+
+            border:
+                1px solid
+                #8b45ff;
+
+            border-radius: 22px;
+
+            padding: 25px;
+
+            margin-bottom: 30px;
+
+            box-shadow:
+                0 15px 50px
+                rgba(108,44,255,0.18);
+
+            animation:
+                currentPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes currentPulse {
+
+            0% {
+                box-shadow:
+                    0 15px 50px
+                    rgba(108,44,255,0.12);
+            }
+
+            50% {
+                box-shadow:
+                    0 15px 50px
+                    rgba(213,28,255,0.28);
+            }
+
+            100% {
+                box-shadow:
+                    0 15px 50px
+                    rgba(108,44,255,0.12);
+            }
+
+        }
+
+        .current-label {
+            color: #d51cff;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+        }
+
+        .current-title {
+            font-size: 25px;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+        }
+
+        .current-artist {
+            color: #bbb;
+
+            font-size: 16px;
+
+            margin-bottom: 8px;
+        }
+
+        .current-time {
+            color: #999;
+
+            font-size: 14px;
+        }
+
+        /* ==============================
+           AUTOMATICKÁ AKTUALIZÁCIA
+        ============================== */
+
+        .update-info {
+            text-align: center;
+
+            color: #666;
+
+            font-size: 13px;
+
+            margin-bottom: 25px;
+        }
+
+        .live-dot {
+            display: inline-block;
+
+            width: 8px;
+            height: 8px;
+
+            background: #d51cff;
+
+            border-radius: 50%;
+
+            margin-right: 6px;
+
+            animation:
+                liveBlink 1.2s infinite;
+        }
+
+        @keyframes liveBlink {
+
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+
+            100% {
+                opacity: 1;
+            }
+
+        }
+
+        /* ==============================
+           ZOZNAM SKLADIEB
+        ============================== */
+
+        .playlist {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+        .track {
+            display: grid;
+
+            grid-template-columns:
+                80px
+                1fr
+                auto;
+
+            align-items: center;
+
+            gap: 20px;
+
+            background: #181824;
+
+            border:
+                1px solid
+                #292938;
+
+            border-radius: 18px;
+
+            padding: 18px 22px;
+
+            color: white;
+
+            text-decoration: none;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .track:hover {
+            transform:
+                translateY(-3px);
+
+            border-color:
+                #8b45ff;
+
+            box-shadow:
+                0 10px 30px
+                rgba(108,44,255,0.15);
+        }
+
+        .track.current-track {
+            border-color:
+                #d51cff;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #181824,
+                    #21182c
+                );
+        }
+
+        .track-number {
+            width: 50px;
+            height: 50px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6c2cff,
+                    #d51cff
+                );
+
+            font-weight: bold;
+
+            font-size: 16px;
+        }
+
+        .track-info {
+            min-width: 0;
+        }
+
+        .track-title {
+            font-size: 18px;
+
+            font-weight: bold;
+
+            line-height: 1.4;
+
+            margin-bottom: 6px;
+
+            word-break: break-word;
+        }
+
+        .track-subtitle {
+            color: #999;
+
+            font-size: 14px;
+
+            margin-bottom: 5px;
+        }
+
+        .youtube-text {
+            color: #d51cff;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+        .track-time {
+            text-align: right;
+
+            color: #aaa;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+
+            white-space: nowrap;
+        }
+
+        /* ==============================
+           LOADING
+        ============================== */
+
+        .loading {
+            text-align: center;
+
+            padding: 50px 20px;
+
+            color: #aaa;
+
+            font-size: 17px;
+        }
+
+        .loading-spinner {
+            width: 38px;
+            height: 38px;
+
+            margin:
+                0 auto 15px;
+
+            border:
+                4px solid
+                #292938;
+
+            border-top-color:
+                #d51cff;
+
+            border-radius: 50%;
+
+            animation:
+                spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+        /* ==============================
+           CHYBA
+        ============================== */
+
+        .error {
+            display: none;
+
+            background: #2a171b;
+
+            border:
+                1px solid
+                #6b303b;
+
+            color: #ffabb8;
+
+            border-radius: 15px;
+
+            padding: 20px;
+
+            text-align: center;
+
+            margin-bottom: 20px;
+        }
+
+        /* ==============================
+           FOOTER
+        ============================== */
+
+        footer {
+            text-align: center;
+
+            padding: 35px;
+
+            background: #090910;
+
+            color: #777;
+        }
+
+        .social {
+            margin-top: 20px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 18px;
+        }
+
+        .social a {
+            width: 52px;
+            height: 52px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            text-decoration: none;
+
+            border-radius: 50%;
+
+            background: #181824;
+
+            border:
+                1px solid
+                #292938;
+
+            transition: 0.25s;
+
+            overflow: hidden;
+        }
+
+        .social a:hover {
+            transform: scale(1.12);
+
+            border-color: #d51cff;
+
+            box-shadow:
+                0 0 20px
+                rgba(213,28,255,0.35);
+        }
+
+        .social img {
+            width: 38px;
+            height: 38px;
+
+            object-fit: contain;
+
+            border-radius: 8px;
+        }
+
+        /* ==============================
+           MOBIL
+        ============================== */
+
+        @media (max-width: 850px) {
+
+            header {
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            nav a {
+                margin: 5px 8px;
+            }
+
+            .track {
+                grid-template-columns:
+                    60px 1fr;
+            }
+
+            .track-time {
+                grid-column: 2;
+
+                text-align: left;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .logo-text {
+                font-size: 23px;
+            }
+
+            .hero h1 {
+                font-size: 55px;
+            }
+
+            .playlist-section {
+                padding-top: 50px;
+            }
+
+            .playlist-header h2 {
+                font-size: 30px;
+            }
+
+            .track {
+                padding: 15px;
+
+                gap: 14px;
+            }
+
+            .track-number {
+                width: 45px;
+                height: 45px;
+            }
+
+            .track-title {
+                font-size: 16px;
+            }
+
+            .current-title {
+                font-size: 21px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- ==============================
+     HLAVIČKA
+============================== -->
+
+<header>
+
+    <a
+        class="logo-link"
+        href="https://jaroacjak.github.io/radioklub/#domov"
+        title="Rádio Klub – Domov"
+    >
+
+        <img
+            class="logo-image"
+            src="https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/44153165/44153165-1756027969361-fe65b85dada35.jpg"
+            alt="Rádio Klub"
+        >
+
+        <span class="logo-text">
+            Rádio Klub
+        </span>
+
+    </a>
+
+
+    <nav>
+
+        <a
+            href="https://jaroacjak.github.io/radioklub/#domov"
+        >
+            Domov
+        </a>
+
+        <a
+            href="https://jaroacjak.github.io/radioklub/#program"
+        >
+            Program
+        </a>
+
+        <a
+            href="playlist.html"
+            class="active"
+        >
+            Playlist
+        </a>
+
+        <a
+            href="https://jaroacjak.github.io/radioklub/#podcast"
+        >
+            Podcast
+        </a>
+
+        <a
+            href="https://jaroacjak.github.io/radioklub/#onas"
+        >
+            O nás
+        </a>
+
+        <a href="moderatori.html">
+            Moderátori
+        </a>
+
+        <a href="dopravnyservis.html">
+            Dopravný servis
+        </a>
+
+        <a href="spravy.html">
+            Správy
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- ==============================
+     HERO
+============================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Rádio <span>Playlist</span>
+        </h1>
+
+        <p>
+            Pozrite si skladby, ktoré zazneli
+            v Rádiu Klub.
+            Kliknutím na skladbu ju vyhľadáte
+            na YouTube.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     PLAYLIST
+============================== -->
+
+<main>
+
+    <section class="playlist-section">
+
+        <div class="playlist-header">
+
+            <h2>
+                🎵 <span>Playlist</span>
+            </h2>
+
+            <p>
+                História prehrávania Rádia Klub.
+                Zoznam sa automaticky aktualizuje.
+            </p>
+
+        </div>
+
+
+        <!-- AKTUÁLNA SKLADBA -->
+
+        <div
+            id="currentBox"
+            class="current-box"
+            style="display:none;"
+        >
+
+            <div class="current-label">
+                🔴 PRÁVE HRÁ
+            </div>
+
+            <div
+                id="currentTitle"
+                class="current-title"
+            >
+                —
+            </div>
+
+            <div
+                id="currentArtist"
+                class="current-artist"
+            >
+                —
+            </div>
+
+            <div
+                id="currentTime"
+                class="current-time"
+            >
+                —
+            </div>
+
+        </div>
+
+
+        <!-- INFO O AUTOMATICKEJ AKTUALIZÁCII -->
+
+        <div class="update-info">
+
+            <span class="live-dot"></span>
+
+            Playlist sa automaticky aktualizuje
+
+        </div>
+
+
+        <!-- CHYBA -->
+
+        <div
+            id="error"
+            class="error"
+        >
+            Nepodarilo sa načítať playlist.
+            Skúste to prosím neskôr.
+        </div>
+
+
+        <!-- LOADING -->
+
+        <div
+            id="loading"
+            class="loading"
+        >
+
+            <div class="loading-spinner"></div>
+
+            Načítavam playlist...
+
+        </div>
+
+
+        <!-- ZOZNAM -->
+
+        <div
+            id="playlist"
+            class="playlist"
+        ></div>
+
+    </section>
+
+</main>
+
+
+<!-- ==============================
+     FOOTER
+============================== -->
+
+<footer>
+
+    <p>
+        © 2026 Rádio Klub.
+        Všetky práva vyhradené.
+    </p>
+
+
+    <div class="social">
+
+        <!-- YOUTUBE -->
+
+        <a
+            href="https://youtube.com/@radioklubsk?si=EdVbZFttInCv1r5e"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="YouTube"
+            title="YouTube"
+        >
+
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRluxvnOBRSErZP_KFyE1_WJhpbSP77KBZmWH1KTXqPGQ&s=10"
+                alt="YouTube"
+            >
+
+        </a>
+
+
+        <!-- INSTAGRAM -->
+
+        <a
+            href="https://www.instagram.com/radioklubsk?igsh=cXBqMDZ6YWkycmxo"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            title="Instagram"
+        >
+
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5osI0qmctv4jqC_8kp4HJidRE1Zzhadm6Lo3g4SyYoQ&s=10"
+                alt="Instagram"
+            >
+
+        </a>
+
+
+        <!-- FACEBOOK -->
+
+        <a
+            href="https://www.facebook.com/radioklubsk?locale=sk_SK"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook Rádio Klub"
+            title="Facebook Rádio Klub"
+        >
+
+            <img
+                src="https://static.vecteezy.com/system/resources/previews/018/930/476/non_2x/facebook-logo-facebook-icon-transparent-free-png.png"
+                alt="Facebook Rádio Klub"
+            >
+
+        </a>
+
+    </div>
+
+</footer>
+
+
+<!-- ==============================
+     JAVASCRIPT
+============================== -->
+
+<script>
+
+    /* ==============================
+       RADIOKING API
+    ============================== */
+
+    const API_URL =
+        "https://api.radioking.io/widget/radio/radioklubslovak/track/ckoi?limit=1000";
+
+
+    /* ==============================
+       PRVKY
+    ============================== */
+
+    const playlistElement =
+        document.getElementById("playlist");
+
+    const loadingElement =
+        document.getElementById("loading");
+
+    const errorElement =
+        document.getElementById("error");
+
+    const currentBox =
+        document.getElementById("currentBox");
+
+    const currentTitle =
+        document.getElementById("currentTitle");
+
+    const currentArtist =
+        document.getElementById("currentArtist");
+
+    const currentTime =
+        document.getElementById("currentTime");
+
+
+    /* ==============================
+       FORMÁT ČASU
+    ============================== */
+
+    function formatTime(date) {
+
+        if (
+            !date ||
+            isNaN(date.getTime())
+        ) {
+            return "—";
+        }
+
+        return date.toLocaleTimeString(
+            "sk-SK",
+            {
+                hour: "2-digit",
+                minute: "2-digit"
+            }
+        );
+    }
+
+
+    /* ==============================
+       FORMÁT DÁTUMU
+    ============================== */
+
+    function formatDate(date) {
+
+        if (
+            !date ||
+            isNaN(date.getTime())
+        ) {
+            return "—";
+        }
+
+        return date.toLocaleDateString(
+            "sk-SK",
+            {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric"
+            }
+        );
+    }
+
+
+    /* ==============================
+       ČAS PREHRÁVANIA
+    ============================== */
+
+    function getTrackTime(track) {
+
+        const start =
+            new Date(track.started_at);
+
+        const end =
+            new Date(track.end_at);
+
+        if (
+            isNaN(start.getTime())
+        ) {
+            return "Čas neuvedený";
+        }
+
+        if (
+            isNaN(end.getTime())
+        ) {
+            return (
+                formatDate(start)
+                + " • "
+                + formatTime(start)
+            );
+        }
+
+        return (
+            formatDate(start)
+            + " • "
+            + formatTime(start)
+            + " – "
+            + formatTime(end)
+        );
+    }
+
+
+    /* ==============================
+       YOUTUBE VYHĽADÁVANIE
+    ============================== */
+
+    function openYouTube(
+        title,
+        artist
+    ) {
+
+        let query = "";
+
+        if (artist) {
+
+            query =
+                artist
+                + " "
+                + title;
+
+        } else {
+
+            query = title;
+        }
+
+        const url =
+            "https://www.youtube.com/results?search_query="
+            +
+            encodeURIComponent(query);
+
+        window.open(
+            url,
+            "_blank",
+            "noopener,noreferrer"
+        );
+    }
+
+
+    /* ==============================
+       KONTROLA AKTUÁLNEJ SKLADBY
+    ============================== */
+
+    function isCurrentTrack(track) {
+
+        const now =
+            new Date();
+
+        const start =
+            new Date(track.started_at);
+
+        const end =
+            new Date(track.end_at);
+
+        if (
+            isNaN(start.getTime())
+        ) {
+            return false;
+        }
+
+        if (
+            isNaN(end.getTime())
+        ) {
+            return false;
+        }
+
+        return (
+            now >= start &&
+            now <= end
+        );
+    }
+
+
+    /* ==============================
+       VYTVORENIE KARTY
+    ============================== */
+
+    function createTrackElement(
+        track,
+        index
+    ) {
+
+        const trackElement =
+            document.createElement("div");
+
+        trackElement.className =
+            "track";
+
+        if (
+            isCurrentTrack(track)
+        ) {
+            trackElement.classList.add(
+                "current-track"
+            );
+        }
+
+
+        trackElement.title =
+            "Kliknutím vyhľadať skladbu na YouTube";
+
+
+        /* ČÍSLO */
+
+        const number =
+            document.createElement("div");
+
+        number.className =
+            "track-number";
+
+        number.textContent =
+            index + 1;
+
+
+        /* INFORMÁCIE */
+
+        const info =
+            document.createElement("div");
+
+        info.className =
+            "track-info";
+
+
+        const title =
+            document.createElement("div");
+
+        title.className =
+            "track-title";
+
+        title.textContent =
+            track.title ||
+            "Neznáma skladba";
+
+
+        const subtitle =
+            document.createElement("div");
+
+        subtitle.className =
+            "track-subtitle";
+
+        subtitle.textContent =
+            track.artist ||
+            "Rádio Klub";
+
+
+        const youtube =
+            document.createElement("div");
+
+        youtube.className =
+            "youtube-text";
+
+        youtube.textContent =
+            "▶ Vyhľadať na YouTube";
+
+
+        info.appendChild(title);
+
+        info.appendChild(subtitle);
+
+        info.appendChild(youtube);
+
+
+        /* ČAS */
+
+        const time =
+            document.createElement("div");
+
+        time.className =
+            "track-time";
+
+        time.textContent =
+            getTrackTime(track);
+
+
+        /* POSKLADANIE */
+
+        trackElement.appendChild(
+            number
+        );
+
+        trackElement.appendChild(
+            info
+        );
+
+        trackElement.appendChild(
+            time
+        );
+
+
+        /* KLIKNUTIE */
+
+        trackElement.addEventListener(
+            "click",
+            function() {
+
+                openYouTube(
+                    track.title ||
+                    "Neznáma skladba",
+
+                    track.artist ||
+                    ""
+                );
+
+            }
+        );
+
+
+        return trackElement;
+    }
+
+
+    /* ==============================
+       AKTUÁLNA SKLADBA
+    ============================== */
+
+    function updateCurrentTrack(
+        data
+    ) {
+
+        const currentTrack =
+            data.find(
+                function(track) {
+
+                    return isCurrentTrack(
+                        track
+                    );
+
+                }
+            );
+
+
+        if (!currentTrack) {
+
+            currentBox.style.display =
+                "none";
+
+            return;
+        }
+
+
+        currentBox.style.display =
+            "block";
+
+
+        currentTitle.textContent =
+            currentTrack.title ||
+            "Neznáma skladba";
+
+
+        currentArtist.textContent =
+            currentTrack.artist ||
+            "Rádio Klub";
+
+
+        const start =
+            new Date(
+                currentTrack.started_at
+            );
+
+        const end =
+            new Date(
+                currentTrack.end_at
+            );
+
+
+        currentTime.textContent =
+            "Hrá od "
+            +
+            formatTime(start)
+            +
+            " do "
+            +
+            formatTime(end);
+    }
+
+
+    /* ==============================
+       NAČÍTANIE PLAYLISTU
+    ============================== */
+
+    async function loadPlaylist(
+        firstLoad = false
+    ) {
+
+        if (firstLoad) {
+
+            loadingElement.style.display =
+                "block";
+
+        }
+
+        errorElement.style.display =
+            "none";
+
+
+        try {
+
+            const response =
+                await fetch(
+                    API_URL,
+                    {
+                        method: "GET",
+                        cache: "no-store"
+                    }
+                );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "HTTP "
+                    +
+                    response.status
+                );
+            }
+
+
+            const data =
+                await response.json();
+
+
+            if (
+                !Array.isArray(data)
+                ||
+                data.length === 0
+            ) {
+
+                throw new Error(
+                    "Playlist je prázdny."
+                );
+            }
+
+
+            /* ==============================
+               ZORADENIE OD NAJNOVŠEJ
+            ============================== */
+
+            data.sort(
+                function(a, b) {
+
+                    return (
+                        new Date(
+                            b.started_at
+                        )
+                        -
+                        new Date(
+                            a.started_at
+                        )
+                    );
+
+                }
+            );
+
+
+            /* AKTUÁLNA SKLADBA */
+
+            updateCurrentTrack(
+                data
+            );
+
+
+            /* ==============================
+               VYKRESLENIE
+            ============================== */
+
+            playlistElement.innerHTML =
+                "";
+
+
+            data.forEach(
+                function(track, index) {
+
+                    const element =
+                        createTrackElement(
+                            track,
+                            index
+                        );
+
+                    playlistElement.appendChild(
+                        element
+                    );
+
+                }
+            );
+
+
+            loadingElement.style.display =
+                "none";
+
+
+        } catch (error) {
+
+            console.error(
+                "RadioKing API chyba:",
+                error
+            );
+
+
+            loadingElement.style.display =
+                "none";
+
+
+            /*
+             * Pri automatickej aktualizácii
+             * necháme starý playlist na stránke.
+             */
+
+            if (
+                playlistElement.children.length === 0
+            ) {
+
+                errorElement.style.display =
+                    "block";
+            }
+
+        }
+
+    }
+
+
+    /* ==============================
+       PRVÉ NAČÍTANIE
+    ============================== */
+
+    loadPlaylist(true);
+
+
+    /* ==============================
+       AUTOMATICKÁ AKTUALIZÁCIA
+       KAŽDÝCH 30 SEKÚND
+    ============================== */
+
+    setInterval(
+        function() {
+
+            loadPlaylist(false);
+
+        },
+        30000
+    );
+
+
+    /* ==============================
+       AKTUALIZÁCIA AKTUÁLNEJ SKLADBY
+       KAŽDÚ SEKUNDU
+    ============================== */
+
+    setInterval(
+        function() {
+
+            /*
+             * Znova načítame API po 30 sekundách.
+             * Toto iba kontroluje vizuálny stav
+             * aktuálnej skladby.
+             */
+
+            const cards =
+                document.querySelectorAll(
+                    ".track"
+                );
+
+            cards.forEach(
+                function(card) {
+
+                    card.classList.remove(
+                        "current-track"
+                    );
+
+                }
+            );
+
+        },
+        1000
+    );
+
+
+    /* ==============================
+       OBNOVENIE PRI NÁVRATE NA STRÁNKU
+    ============================== */
+
+    document.addEventListener(
+        "visibilitychange",
+        function() {
+
+            if (
+                document.visibilityState ===
+                "visible"
+            ) {
+
+                loadPlaylist(false);
+
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+</html>
+```
