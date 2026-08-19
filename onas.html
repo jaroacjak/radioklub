@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>O nás – Rádio Klub</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0d0d16;
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* =========================
+           HLAVIČKA
+        ========================= */
+
+        header {
+            background: linear-gradient(135deg, #6c2cff, #d51cff);
+
+            padding: 20px 8%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo-image {
+            width: 55px;
+            height: 55px;
+
+            object-fit: cover;
+            border-radius: 50%;
+
+            margin-right: 12px;
+
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        /* =========================
+           MENU
+        ========================= */
+
+        nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+
+            margin-left: 22px;
+
+            font-weight: bold;
+
+            padding-bottom: 6px;
+
+            border-bottom: 3px solid transparent;
+
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        nav a.active {
+            border-bottom: 3px solid white;
+            opacity: 1;
+        }
+
+        /* =========================
+           HLAVNÁ SEKCIA
+        ========================= */
+
+        .hero {
+            min-height: 45vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 60px 20px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #30205c 0%,
+                    #0d0d16 65%
+                );
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: clamp(50px, 8vw, 80px);
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #d51cff;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #bbb;
+        }
+
+        /* =========================
+           O NÁS
+        ========================= */
+
+        .about-section {
+            padding: 80px 8%;
+        }
+
+        .about-box {
+            max-width: 950px;
+
+            margin: auto;
+
+            background: #181824;
+
+            padding: 40px;
+
+            border-radius: 22px;
+
+            border: 1px solid #292938;
+
+            box-shadow:
+                0 15px 50px
+                rgba(0,0,0,0.3);
+
+            transition: 0.2s;
+        }
+
+        .about-box:hover {
+            border-color: #8b45ff;
+        }
+
+        .about-box h2 {
+            text-align: center;
+
+            font-size: 38px;
+
+            margin-bottom: 30px;
+        }
+
+        .about-box h2 span {
+            color: #d51cff;
+        }
+
+        .about-box p {
+            color: #bbb;
+
+            font-size: 18px;
+
+            line-height: 1.8;
+
+            margin-bottom: 22px;
+        }
+
+        .about-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .welcome {
+            text-align: center;
+
+            color: white !important;
+
+            font-size: 21px !important;
+
+            font-weight: bold;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+
+            padding: 35px;
+
+            background: #090910;
+
+            color: #777;
+        }
+
+        .social {
+            margin-top: 15px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 18px;
+        }
+
+        .social a {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            width: 45px;
+            height: 45px;
+
+            text-decoration: none;
+
+            border-radius: 50%;
+
+            transition: 0.2s;
+        }
+
+        .social a:hover {
+            transform: scale(1.12);
+        }
+
+        .social img {
+            width: 38px;
+            height: 38px;
+
+            object-fit: contain;
+
+            border-radius: 8px;
+        }
+
+        /* =========================
+           MOBIL
+        ========================= */
+
+        @media (max-width: 850px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            nav a {
+                margin: 5px 8px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .hero h1 {
+                font-size: 55px;
+            }
+
+            .about-box {
+                padding: 25px 20px;
+            }
+
+            .about-box h2 {
+                font-size: 30px;
+            }
+
+            .about-box p {
+                font-size: 16px;
+            }
+
+            .logo-text {
+                font-size: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HLAVIČKA
+    ========================= -->
+
+    <header>
+
+        <!-- LOGO -->
+
+        <a
+            class="logo-link"
+            href="https://jaroacjak.github.io/radioklub/#domov"
+            title="Rádio Klub – Domov"
+        >
+
+            <img
+                class="logo-image"
+                src="https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/44153165/44153165-1756027969361-fe65b85dada35.jpg"
+                alt="Rádio Klub"
+            >
+
+            <span class="logo-text">
+                Rádio Klub
+            </span>
+
+        </a>
+
+
+        <!-- MENU -->
+
+        <nav>
+
+            <a
+                href="https://jaroacjak.github.io/radioklub/#domov"
+            >
+                Domov
+            </a>
+
+            <a href="program.html">
+                Program
+            </a>
+
+            <a
+                href="onas.html"
+                class="active"
+            >
+                O nás
+            </a>
+
+            <a href="moderatori.html">
+                Moderátori
+            </a>
+
+            <a href="dopravnyservis.html">
+                Dopravný servis
+            </a>
+
+            <a href="spravy.html">
+                Správy
+            </a>
+
+            <a href="podcast.html">
+                Podcast
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         HLAVNÁ SEKCIA
+    ========================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                O Rádio <span>Klub</span>
+            </h1>
+
+            <p>
+                Hudba, atmosféra a komunita
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         O NÁS
+    ========================= -->
+
+    <main>
+
+        <section class="about-section">
+
+            <div class="about-box">
+
+                <h2>
+                    O Rádio <span>Klub</span>
+                </h2>
+
+
+                <p>
+                    Rádio Klub je dynamické a priateľské miesto
+                    v srdci Veľkej Bytče, kde sa stretávajú
+                    hudobní nadšenci a milovníci dobrej atmosféry.
+                    Klub ponúka pestrú hudobnú paletu – od retro
+                    hitov cez rock až po moderné elektronické rytmy.
+                </p>
+
+
+                <p>
+                    V jeho útulnom prostredí nájdete pohodlné
+                    posedenie, skvelé osvetlenie a kvalitný zvukový
+                    systém, ktorý zabezpečuje dokonalý hudobný
+                    zážitok. Okrem pravidelných DJ večerov sa tu
+                    organizujú tematické podujatia, živé koncerty
+                    miestnych kapiel a diskusie o hudbe.
+                </p>
+
+
+                <p>
+                    Rádio Klub je tiež známy svojou komunitou –
+                    ľudia sem chodia nielen za hudbou, ale aj za
+                    rozhovormi, priateľskou atmosférou a skvelým
+                    drinkom od skúsených barmanov. Či už ste
+                    pravidelný návštevník alebo nováčik, vždy sa
+                    tu cítite vítaný. 🎶🥂
+                </p>
+
+
+                <p class="welcome">
+                    Znie to ako klub, do ktorého by si rád zavítal? 😃
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Rádio Klub.
+            Všetky práva vyhradené.
+        </p>
+
+
+        <div class="social">
+
+            <!-- YOUTUBE -->
+
+            <a
+                href="https://youtube.com/@radioklubsk?si=EdVbZFttInCv1r5e"
+                target="_blank"
+                rel="noopener"
+                aria-label="YouTube"
+                title="YouTube"
+            >
+
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRluxvnOBRSErZP_KFyE1_WJhpbSP77KBZmWH1KTXqPGQ&s=10"
+                    alt="YouTube"
+                >
+
+            </a>
+
+
+            <!-- INSTAGRAM -->
+
+            <a
+                href="https://www.instagram.com/radioklubsk?igsh=cXBqMDZ6YWkycmxo"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+                title="Instagram"
+            >
+
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5osI0qmctv4jqC_8kp4HJidRE1Zzhadm6Lo3g4SyYoQ&s=10"
+                    alt="Instagram"
+                >
+
+            </a>
+
+
+            <!-- FACEBOOK -->
+
+            <a
+                href="https://www.facebook.com/radioklubsk?locale=sk_SK"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook Rádio Klub"
+                title="Facebook Rádio Klub"
+            >
+
+                <img
+                    src="https://static.vecteezy.com/system/resources/previews/018/930/476/non_2x/facebook-logo-facebook-icon-transparent-free-png.png"
+                    alt="Facebook Rádio Klub"
+                >
+
+            </a>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
