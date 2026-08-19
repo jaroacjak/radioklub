@@ -23,29 +23,69 @@
             color: white;
         }
 
-        /* HLAVIČKA */
+        /* =========================
+           HLAVIČKA
+        ========================= */
 
         header {
             background: linear-gradient(135deg, #6c2cff, #d51cff);
+
             padding: 20px 8%;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
+
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
-        .logo {
+        .logo-link {
+            display: flex;
+            align-items: center;
+
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo-image {
+            width: 55px;
+            height: 55px;
+
+            object-fit: cover;
+            border-radius: 50%;
+
+            margin-right: 12px;
+
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+
+        .logo-text {
             font-size: 28px;
             font-weight: bold;
+        }
+
+        /* MENU */
+
+        nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin-left: 25px;
+
+            margin-left: 22px;
+
             font-weight: bold;
+
+            padding-bottom: 6px;
+
+            border-bottom: 3px solid transparent;
+
             transition: 0.2s;
         }
 
@@ -53,15 +93,26 @@
             opacity: 0.7;
         }
 
-        /* HLAVNÁ SEKCIa */
+        nav a.active {
+            border-bottom: 3px solid white;
+            opacity: 1;
+        }
+
+        /* =========================
+           HLAVNÁ SEKCIA
+        ========================= */
 
         .hero {
             min-height: 75vh;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             text-align: center;
+
             padding: 60px 20px;
+
             background:
                 radial-gradient(
                     circle at center,
@@ -89,7 +140,9 @@
             margin-bottom: 35px;
         }
 
-        /* LIVE STATUS */
+        /* =========================
+           LIVE STATUS
+        ========================= */
 
         .live {
             display: inline-flex;
@@ -97,7 +150,9 @@
             gap: 10px;
 
             background: #191925;
+
             padding: 15px 25px;
+
             border-radius: 50px;
 
             margin-bottom: 25px;
@@ -108,6 +163,7 @@
             height: 12px;
 
             background: #ff2d55;
+
             border-radius: 50%;
 
             box-shadow: 0 0 15px #ff2d55;
@@ -122,7 +178,9 @@
             }
         }
 
-        /* TLAČIDLO */
+        /* =========================
+           TLAČIDLO PREHRÁVAČA
+        ========================= */
 
         .play-button {
             display: inline-block;
@@ -135,12 +193,15 @@
                 );
 
             color: white;
+
             text-decoration: none;
 
             padding: 17px 40px;
+
             border-radius: 35px;
 
             font-size: 18px;
+
             font-weight: bold;
 
             transition: 0.2s;
@@ -154,7 +215,9 @@
             transform: scale(1.05);
         }
 
-        /* SEKCIe */
+        /* =========================
+           SEKcie
+        ========================= */
 
         section {
             padding: 80px 8%;
@@ -162,11 +225,15 @@
 
         section h2 {
             text-align: center;
+
             font-size: 38px;
+
             margin-bottom: 45px;
         }
 
-        /* PROGRAM */
+        /* =========================
+           PROGRAM
+        ========================= */
 
         .program {
             display: grid;
@@ -180,6 +247,7 @@
             gap: 20px;
 
             max-width: 1100px;
+
             margin: auto;
         }
 
@@ -190,8 +258,7 @@
 
             border-radius: 18px;
 
-            border:
-                1px solid #292938;
+            border: 1px solid #292938;
 
             transition: 0.2s;
         }
@@ -218,10 +285,13 @@
             color: #aaa;
         }
 
-        /* O NÁS */
+        /* =========================
+           O NÁS
+        ========================= */
 
         .about {
             background: #12121c;
+
             text-align: center;
         }
 
@@ -237,7 +307,9 @@
             font-size: 17px;
         }
 
-        /* FOOTER */
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
             text-align: center;
@@ -259,19 +331,30 @@
             text-decoration: none;
 
             margin: 0 10px;
+
+            font-size: 22px;
+
+            transition: 0.2s;
         }
 
         .social a:hover {
             color: white;
         }
 
-        /* MOBIL */
+        /* =========================
+           MOBIL
+        ========================= */
 
         @media (max-width: 650px) {
 
             header {
                 flex-direction: column;
+
                 gap: 15px;
+            }
+
+            nav {
+                justify-content: center;
             }
 
             nav a {
@@ -282,25 +365,73 @@
                 font-size: 55px;
             }
 
+            .logo-text {
+                font-size: 23px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- HLAVIČKA -->
+    <!-- =========================
+         HLAVIČKA
+    ========================= -->
 
     <header>
 
-        <div class="logo">
-            🎧 Rádio Klub
-        </div>
+        <!-- LOGO -->
+
+        <a
+            class="logo-link"
+            href="https://jaroacjak.github.io/radioklub/#domov"
+            title="Rádio Klub – Domov"
+        >
+
+            <img
+                class="logo-image"
+                src="https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/44153165/44153165-1756027969361-fe65b85dada35.jpg"
+                alt="Rádio Klub"
+            >
+
+            <span class="logo-text">
+                Rádio Klub
+            </span>
+
+        </a>
+
+
+        <!-- MENU -->
 
         <nav>
-            <a href="#domov">Domov</a>
-            <a href="#program">Program</a>
-            <a href="#onas">O nás</a>
-            <a href="#kontakt">Kontakt</a>
+
+            <a
+                href="https://jaroacjak.github.io/radioklub/#domov"
+                class="active"
+            >
+                Domov
+            </a>
+
+            <a href="#program">
+                Program
+            </a>
+
+            <a href="#onas">
+                O nás
+            </a>
+
+            <a href="moderator.html">
+                Moderátori
+            </a>
+
+            <a href="dopravnyservis.html">
+                Dopravný servis
+            </a>
+
+            <a href="spravy.html">
+                Správy
+            </a>
+
         </nav>
 
     </header>
@@ -308,9 +439,14 @@
 
     <main>
 
-        <!-- DOMOV -->
+        <!-- =========================
+             DOMOV
+        ========================= -->
 
-        <section class="hero" id="domov">
+        <section
+            class="hero"
+            id="domov"
+        >
 
             <div class="hero-content">
 
@@ -322,14 +458,17 @@
 
                 </div>
 
+
                 <h1>
                     Rádio <span>Klub</span>
                 </h1>
+
 
                 <p>
                     Hudba, zábava a dobrá nálada
                     24 hodín denne.
                 </p>
+
 
                 <!-- OTVORÍ STREAM.HTML V NOVOM OKNE -->
 
@@ -353,7 +492,9 @@
         </section>
 
 
-        <!-- PROGRAM -->
+        <!-- =========================
+             PROGRAM
+        ========================= -->
 
         <section id="program">
 
@@ -361,7 +502,9 @@
                 📻 Program
             </h2>
 
+
             <div class="program">
+
 
                 <div class="card">
 
@@ -434,14 +577,20 @@
 
                 </div>
 
+
             </div>
 
         </section>
 
 
-        <!-- O NÁS -->
+        <!-- =========================
+             O NÁS
+        ========================= -->
 
-        <section class="about" id="onas">
+        <section
+            class="about"
+            id="onas"
+        >
 
             <h2>
                 O Rádio Klub
@@ -458,7 +607,9 @@
     </main>
 
 
-    <!-- FOOTER -->
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
     <footer id="kontakt">
 
@@ -467,18 +618,37 @@
             Všetky práva vyhradené.
         </p>
 
+
         <div class="social">
 
-            <a href="#">
-                Instagram
+            <a
+                href="https://www.instagram.com/radioklubsk?igsh=cXBqMDZ6YWkycmxo"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+                title="Instagram"
+            >
+                ◎
             </a>
 
-            <a href="#">
-                YouTube
+
+            <a
+                href="https://youtube.com/@radioklubsk?si=EdVbZFttInCv1r5e"
+                target="_blank"
+                rel="noopener"
+                aria-label="YouTube"
+                title="YouTube"
+            >
+                ▶
             </a>
 
-            <a href="#">
-                Facebook
+
+            <a
+                href="#"
+                aria-label="Facebook"
+                title="Facebook"
+            >
+                f
             </a>
 
         </div>
