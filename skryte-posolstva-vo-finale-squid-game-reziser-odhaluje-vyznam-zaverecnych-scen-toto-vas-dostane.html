@@ -1,0 +1,1267 @@
+```html
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Skryté posolstvá vo finále Squid Game – Rádio Klub</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0d0d16;
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* ==============================
+           HLAVIČKA
+        ============================== */
+
+        header {
+            background: linear-gradient(135deg, #6c2cff, #d51cff);
+            padding: 20px 8%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo-image {
+            width: 55px;
+            height: 55px;
+
+            object-fit: cover;
+            border-radius: 50%;
+
+            margin-right: 12px;
+
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        /* ==============================
+           MENU
+        ============================== */
+
+        nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+
+            margin-left: 22px;
+
+            font-weight: bold;
+
+            padding-bottom: 6px;
+
+            border-bottom: 3px solid transparent;
+
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        nav a.active {
+            border-bottom: 3px solid white;
+            opacity: 1;
+        }
+
+        /* ==============================
+           HLAVNÁ SEKCIA
+        ============================== */
+
+        .hero {
+            padding: 70px 20px 50px;
+
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #30205c 0%,
+                    #0d0d16 70%
+                );
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .category {
+            display: inline-block;
+
+            background: #191925;
+
+            color: #d51cff;
+
+            padding: 10px 18px;
+
+            border-radius: 30px;
+
+            font-weight: bold;
+
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(35px, 6vw, 65px);
+
+            line-height: 1.15;
+
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #d51cff;
+        }
+
+        .date {
+            color: #aaa;
+            font-size: 15px;
+        }
+
+        /* ==============================
+           ČLÁNOK
+        ============================== */
+
+        .article-container {
+            max-width: 950px;
+
+            margin: 50px auto;
+
+            padding: 0 20px;
+        }
+
+        .article {
+            background: #181824;
+
+            border: 1px solid #292938;
+
+            border-radius: 25px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 20px 60px
+                rgba(0,0,0,0.35);
+        }
+
+        .article-image {
+            width: 100%;
+
+            display: block;
+
+            max-height: 700px;
+
+            object-fit: cover;
+        }
+
+        .article-content {
+            padding: 40px;
+        }
+
+        .article-content p {
+            color: #ccc;
+
+            font-size: 18px;
+
+            line-height: 1.8;
+
+            margin-bottom: 25px;
+        }
+
+        .article-content h2 {
+            font-size: 30px;
+
+            margin: 35px 0 18px;
+
+            color: white;
+        }
+
+        /* ==============================
+           AUTOR
+        ============================== */
+
+        .author-box {
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 20px;
+
+            margin-bottom: 30px;
+
+            background: #11111b;
+
+            border-radius: 18px;
+        }
+
+        .author-link {
+            text-decoration: none;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+        .author-photo {
+            width: 60px;
+            height: 60px;
+
+            border-radius: 50%;
+
+            object-fit: cover;
+
+            border: 2px solid #d51cff;
+        }
+
+        .author-name {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .author-role {
+            color: #aaa;
+
+            margin-top: 4px;
+
+            font-size: 14px;
+        }
+
+        /* ==============================
+           ZDIEĽANIE
+        ============================== */
+
+        .share-box {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-top: 30px;
+
+            padding-top: 25px;
+
+            border-top: 1px solid #292938;
+        }
+
+        .share-title {
+            font-weight: bold;
+
+            margin-right: 5px;
+        }
+
+        .share-button {
+            border: none;
+
+            background: #252535;
+
+            color: white;
+
+            padding: 12px 18px;
+
+            border-radius: 25px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .share-button:hover {
+            background: #6c2cff;
+
+            transform: translateY(-2px);
+        }
+
+        /* ==============================
+           KOMENTÁRE
+        ============================== */
+
+        .comments {
+            max-width: 950px;
+
+            margin: 50px auto 80px;
+
+            padding: 0 20px;
+        }
+
+        .comments-box {
+            background: #181824;
+
+            border: 1px solid #292938;
+
+            border-radius: 25px;
+
+            padding: 35px;
+        }
+
+        .comments-box h2 {
+            margin-bottom: 10px;
+        }
+
+        .comments-info {
+            color: #999;
+
+            margin-bottom: 25px;
+
+            line-height: 1.6;
+        }
+
+        .comment-form {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+        .comment-form input,
+        .comment-form textarea {
+            width: 100%;
+
+            background: #11111b;
+
+            color: white;
+
+            border: 1px solid #292938;
+
+            border-radius: 12px;
+
+            padding: 14px;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+        .comment-form input:focus,
+        .comment-form textarea:focus {
+            border-color: #8b45ff;
+        }
+
+        .comment-form textarea {
+            min-height: 120px;
+
+            resize: vertical;
+        }
+
+        .comment-submit {
+            border: none;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6c2cff,
+                    #d51cff
+                );
+
+            color: white;
+
+            padding: 14px 25px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            align-self: flex-start;
+        }
+
+        .comment-submit:hover {
+            transform: scale(1.03);
+        }
+
+        #commentsList {
+            margin-top: 30px;
+        }
+
+        .comment {
+            background: #11111b;
+
+            border: 1px solid #292938;
+
+            border-radius: 15px;
+
+            padding: 18px;
+
+            margin-top: 15px;
+        }
+
+        .comment strong {
+            color: #d51cff;
+        }
+
+        .comment-date {
+            color: #777;
+
+            font-size: 12px;
+
+            margin-left: 8px;
+        }
+
+        .comment p {
+            color: #ccc;
+
+            margin-top: 10px;
+
+            line-height: 1.5;
+        }
+
+        /* ==============================
+           SPÄŤ
+        ============================== */
+
+        .back-button {
+            display: block;
+
+            width: fit-content;
+
+            margin: 0 auto 50px;
+
+            color: white;
+
+            text-decoration: none;
+
+            background: #252535;
+
+            padding: 13px 22px;
+
+            border-radius: 25px;
+
+            transition: 0.2s;
+        }
+
+        .back-button:hover {
+            background: #6c2cff;
+        }
+
+        /* ==============================
+           FOOTER
+        ============================== */
+
+        footer {
+            text-align: center;
+
+            padding: 35px;
+
+            background: #090910;
+
+            color: #777;
+        }
+
+        .social {
+            margin-top: 15px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 18px;
+        }
+
+        .social a {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-decoration: none;
+
+            transition: 0.2s;
+        }
+
+        .social a:hover {
+            transform: scale(1.1);
+        }
+
+        .social img {
+            width: 38px;
+
+            height: 38px;
+
+            object-fit: contain;
+
+            display: block;
+        }
+
+        /* ==============================
+           MOBIL
+        ============================== */
+
+        @media (max-width: 850px) {
+
+            header {
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            nav a {
+                margin: 5px 8px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .logo-text {
+                font-size: 23px;
+            }
+
+            .article-content {
+                padding: 25px 20px;
+            }
+
+            .article-content p {
+                font-size: 16px;
+            }
+
+            .comments-box {
+                padding: 25px 20px;
+            }
+
+            .author-box {
+                padding: 15px;
+            }
+
+            .social img {
+                width: 34px;
+                height: 34px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ==============================
+         HLAVIČKA
+    ============================== -->
+
+    <header>
+
+        <a
+            class="logo-link"
+            href="https://jaroacjak.github.io/radioklub/#domov"
+            title="Rádio Klub – Domov"
+        >
+
+            <img
+                class="logo-image"
+                src="https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/44153165/44153165-1756027969361-fe65b85dada35.jpg"
+                alt="Rádio Klub"
+            >
+
+            <span class="logo-text">
+                Rádio Klub
+            </span>
+
+        </a>
+
+
+        <nav>
+
+            <a href="https://jaroacjak.github.io/radioklub/#domov">
+                Domov
+            </a>
+
+            <a href="program.html">
+                Program
+            </a>
+
+            <a href="onas.html">
+                O nás
+            </a>
+
+            <a href="moderatori.html">
+                Moderátori
+            </a>
+
+            <a href="dopravnyservis.html">
+                Dopravný servis
+            </a>
+
+            <a
+                href="spravy.html"
+                class="active"
+            >
+                Správy
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ==============================
+         HLAVNÝ NADPIS
+    ============================== -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="category">
+                📰 SPRÁVY
+            </div>
+
+            <h1>
+                Skryté posolstvá vo finále
+                <span>Squid Game</span>:
+                Režisér odhaľuje význam
+                záverečných scén.
+                Toto vás dostane
+            </h1>
+
+            <div class="date">
+                📅 29. 6. 2025
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         ČLÁNOK
+    ============================== -->
+
+    <main class="article-container">
+
+        <article class="article">
+
+            <img
+                class="article-image"
+                src="https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/514506387_122118101372880563_6646150823789960867_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1350&ctp=s1080x1350&_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_ohc=970lEj_ecm4Q7kNvwHgjSUV&_nc_oc=AdpubSx9a0wyPKsU7rszV_xDAQbXlvoc_cGz8Ekjw5q_ODdKfPAw85eXQoo80uNGRiU&_nc_zt=23&_nc_ht=scontent-vie1-1.xx&_nc_gid=I1ypr1hHOVmIV_AnUDoFdQ&_nc_ss=7b2a8&oh=00_AQEYkrEw5-izaglLN3nBEr-Ghv4cSa81BVpX9Nue3qzvuA&oe=6A8B9467"
+                alt="Squid Game – článok"
+            >
+
+
+            <div class="article-content">
+
+                <!-- ==============================
+                     AUTOR
+                ============================== -->
+
+                <div class="author-box">
+
+                    <a
+                        class="author-link"
+                        href="jarkoacjak.html"
+                        title="Jarko Ačjak"
+                    >
+
+                        <img
+                            class="author-photo"
+                            src="https://i.postimg.cc/0NRSfHr3/FB-IMG-1787124063947.jpg"
+                            alt="Jarko Ačjak"
+                        >
+
+                        <div>
+
+                            <div class="author-name">
+                                Jarko Ačjak
+                            </div>
+
+                            <div class="author-role">
+                                Vytvoril článok · Rádio Klub
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+
+                <!-- ==============================
+                     TEXT ČLÁNKU
+                ============================== -->
+
+                <p>
+                    Finále seriálu Squid Game zanechalo medzi
+                    divákmi množstvo otázok. Záverečné scény
+                    priniesli viacero symbolov a momentov,
+                    ktoré môžu mať hlbší význam.
+                </p>
+
+                <p>
+                    Režisér v rozhovoroch upozornil, že niektoré
+                    detaily neboli v príbehu náhodou. Fanúšikovia
+                    preto začali podrobne rozoberať posledné
+                    momenty seriálu a hľadať ich význam.
+                </p>
+
+
+                <h2>
+                    Čo znamenajú záverečné scény?
+                </h2>
+
+                <p>
+                    Jedným z najdiskutovanejších prvkov finále
+                    je spôsob, akým tvorcovia pracovali so
+                    symbolmi, postavami a samotným prostredím.
+                    Niektoré zábery môžu fungovať ako odkazy
+                    na udalosti, ktoré sa odohrali skôr
+                    v príbehu.
+                </p>
+
+                <p>
+                    Práve tieto detaily dávajú fanúšikom priestor
+                    na vlastné teórie a interpretácie. Finále
+                    tak nemusí byť iba jednoduchým ukončením
+                    príbehu, ale zároveň ponúka ďalšie otázky.
+                </p>
+
+
+                <h2>
+                    Čo si z toho odniesli fanúšikovia?
+                </h2>
+
+                <p>
+                    Squid Game sa aj vďaka podobným detailom
+                    stal seriálom, o ktorom sa diskutuje ešte
+                    dlho po skončení jednotlivých epizód.
+                    Každý nový detail môže viesť k ďalšej
+                    interpretácii príbehu.
+                </p>
+
+                <p>
+                    Záverečné scény preto zostávajú predmetom
+                    diskusií a fanúšikovských teórií.
+                </p>
+
+
+                <!-- ==============================
+                     ZDIEĽANIE
+                ============================== -->
+
+                <div class="share-box">
+
+                    <span class="share-title">
+                        📤 Zdieľať:
+                    </span>
+
+                    <button
+                        class="share-button"
+                        onclick="shareArticle()"
+                    >
+                        Zdieľať článok
+                    </button>
+
+                    <button
+                        class="share-button"
+                        onclick="copyArticleLink()"
+                    >
+                        🔗 Kopírovať odkaz
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </main>
+
+
+    <!-- ==============================
+         KOMENTÁRE
+    ============================== -->
+
+    <section class="comments">
+
+        <div class="comments-box">
+
+            <h2>
+                💬 Komentáre
+            </h2>
+
+            <p class="comments-info">
+                Napíš svoj názor na tento článok.
+                Komentáre sa ukladajú v tomto
+                prehliadači.
+            </p>
+
+
+            <form
+                class="comment-form"
+                id="commentForm"
+            >
+
+                <input
+                    type="text"
+                    id="commentName"
+                    placeholder="Tvoje meno"
+                    maxlength="50"
+                    required
+                >
+
+                <textarea
+                    id="commentText"
+                    placeholder="Napíš komentár..."
+                    maxlength="500"
+                    required
+                ></textarea>
+
+                <button
+                    class="comment-submit"
+                    type="submit"
+                >
+                    Pridať komentár
+                </button>
+
+            </form>
+
+
+            <div id="commentsList"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         SPÄŤ NA SPRÁVY
+    ============================== -->
+
+    <a
+        class="back-button"
+        href="spravy.html"
+    >
+        ← Späť na Správy
+    </a>
+
+
+    <!-- ==============================
+         FOOTER
+    ============================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Rádio Klub.
+            Všetky práva vyhradené.
+        </p>
+
+
+        <div class="social">
+
+            <!-- YOUTUBE -->
+
+            <a
+                href="https://youtube.com/@radioklubsk?si=EdVbZFttInCv1r5e"
+                target="_blank"
+                rel="noopener"
+                aria-label="YouTube"
+                title="YouTube"
+            >
+
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRluxvnOBRSErZP_KFyE1_WJhpbSP77KBZmWH1KTXqPGQ&s=10"
+                    alt="YouTube"
+                >
+
+            </a>
+
+
+            <!-- FACEBOOK -->
+
+            <a
+                href="https://www.facebook.com/radioklubsk?locale=sk_SK"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook"
+                title="Facebook"
+            >
+
+                <img
+                    src="https://static.vecteezy.com/system/resources/previews/018/930/476/non_2x/facebook-logo-facebook-icon-transparent-free-png.png"
+                    alt="Facebook"
+                >
+
+            </a>
+
+
+            <!-- INSTAGRAM -->
+
+            <a
+                href="https://www.instagram.com/radioklubsk?igsh=cXBqMDZ6YWkycmxo"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+                title="Instagram"
+            >
+
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5osI0qmctv4jqC_8kp4HJidRE1Zzhadm6Lo3g4SyYoQ&s=10"
+                    alt="Instagram"
+                >
+
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ==============================
+         JAVASCRIPT
+    ============================== -->
+
+    <script>
+
+        /* ==============================
+           ZDIEĽANIE ČLÁNKU
+        ============================== */
+
+        async function shareArticle() {
+
+            const shareData = {
+
+                title:
+                    "Skryté posolstvá vo finále Squid Game",
+
+                text:
+                    "Prečítaj si článok na Rádio Klub.",
+
+                url:
+                    window.location.href
+
+            };
+
+
+            try {
+
+                if (navigator.share) {
+
+                    await navigator.share(
+                        shareData
+                    );
+
+                } else {
+
+                    await copyArticleLink();
+
+                    alert(
+                        "Odkaz na článok bol skopírovaný."
+                    );
+
+                }
+
+            } catch (error) {
+
+                console.log(
+                    "Zdieľanie bolo zrušené."
+                );
+
+            }
+
+        }
+
+
+        /* ==============================
+           KOPÍROVANIE ODKAZU
+        ============================== */
+
+        async function copyArticleLink() {
+
+            try {
+
+                await navigator.clipboard.writeText(
+                    window.location.href
+                );
+
+                alert(
+                    "Odkaz na článok bol skopírovaný."
+                );
+
+            } catch (error) {
+
+                alert(
+                    "Odkaz sa nepodarilo skopírovať."
+                );
+
+            }
+
+        }
+
+
+        /* ==============================
+           KOMENTÁRE
+           LOCAL STORAGE
+        ============================== */
+
+        const commentForm =
+            document.getElementById(
+                "commentForm"
+            );
+
+
+        const commentsList =
+            document.getElementById(
+                "commentsList"
+            );
+
+
+        const STORAGE_KEY =
+            "radioklub_squid_game_comments";
+
+
+        /* ==============================
+           NAČÍTANIE KOMENTÁROV
+        ============================== */
+
+        function loadComments() {
+
+            const comments =
+                JSON.parse(
+                    localStorage.getItem(
+                        STORAGE_KEY
+                    )
+                ) || [];
+
+
+            commentsList.innerHTML = "";
+
+
+            comments.forEach(
+                function(comment) {
+
+                    addCommentToPage(
+                        comment
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* ==============================
+           PRIDANIE KOMENTÁRA
+        ============================== */
+
+        function addCommentToPage(
+            comment
+        ) {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.className =
+                "comment";
+
+
+            const name =
+                document.createElement(
+                    "strong"
+                );
+
+
+            name.textContent =
+                comment.name;
+
+
+            const date =
+                document.createElement(
+                    "span"
+                );
+
+
+            date.className =
+                "comment-date";
+
+
+            date.textContent =
+                comment.date;
+
+
+            const text =
+                document.createElement(
+                    "p"
+                );
+
+
+            text.textContent =
+                comment.text;
+
+
+            div.appendChild(
+                name
+            );
+
+
+            div.appendChild(
+                date
+            );
+
+
+            div.appendChild(
+                text
+            );
+
+
+            commentsList.appendChild(
+                div
+            );
+
+        }
+
+
+        /* ==============================
+           ODOSLANIE KOMENTÁRA
+        ============================== */
+
+        commentForm.addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const name =
+                    document
+                        .getElementById(
+                            "commentName"
+                        )
+                        .value
+                        .trim();
+
+
+                const text =
+                    document
+                        .getElementById(
+                            "commentText"
+                        )
+                        .value
+                        .trim();
+
+
+                if (
+                    name === "" ||
+                    text === ""
+                ) {
+
+                    return;
+
+                }
+
+
+                const comment = {
+
+                    name: name,
+
+                    text: text,
+
+                    date:
+                        new Date()
+                            .toLocaleString(
+                                "sk-SK"
+                            )
+
+                };
+
+
+                const comments =
+                    JSON.parse(
+                        localStorage.getItem(
+                            STORAGE_KEY
+                        )
+                    ) || [];
+
+
+                comments.push(
+                    comment
+                );
+
+
+                localStorage.setItem(
+                    STORAGE_KEY,
+                    JSON.stringify(
+                        comments
+                    )
+                );
+
+
+                addCommentToPage(
+                    comment
+                );
+
+
+                commentForm.reset();
+
+            }
+        );
+
+
+        /* ==============================
+           SPUSTENIE KOMENTÁROV
+        ============================== */
+
+        loadComments();
+
+    </script>
+
+</body>
+</html>
+```
