@@ -66,7 +66,9 @@
             font-weight: bold;
         }
 
-        /* MENU */
+        /* =========================
+           MENU
+        ========================= */
 
         nav {
             display: flex;
@@ -179,7 +181,7 @@
         }
 
         /* =========================
-           TLAČIDLO PREHRÁVAČA
+           TLAČIDLO RÁDIA
         ========================= */
 
         .play-button {
@@ -193,7 +195,6 @@
                 );
 
             color: white;
-
             text-decoration: none;
 
             padding: 17px 40px;
@@ -201,7 +202,6 @@
             border-radius: 35px;
 
             font-size: 18px;
-
             font-weight: bold;
 
             transition: 0.2s;
@@ -349,7 +349,6 @@
 
             header {
                 flex-direction: column;
-
                 gap: 15px;
             }
 
@@ -375,12 +374,10 @@
 <body>
 
     <!-- =========================
-         HLAVIČKA
+         HLAVIČKA / DOMOV
     ========================= -->
 
     <header>
-
-        <!-- LOGO -->
 
         <a
             class="logo-link"
@@ -400,10 +397,9 @@
 
         </a>
 
-
-        <!-- MENU -->
-
         <nav>
+
+            <!-- DOMOV -->
 
             <a
                 href="https://jaroacjak.github.io/radioklub/#domov"
@@ -412,24 +408,40 @@
                 Domov
             </a>
 
+            <!-- PROGRAM -->
+
             <a href="#program">
                 Program
             </a>
+
+            <!-- O NÁS -->
 
             <a href="#onas">
                 O nás
             </a>
 
-            <a href="moderator.html">
+            <!-- MODERÁTORI -->
+
+            <a href="moderatori.html">
                 Moderátori
             </a>
+
+            <!-- DOPRAVNÝ SERVIS -->
 
             <a href="dopravnyservis.html">
                 Dopravný servis
             </a>
 
+            <!-- SPRÁVY -->
+
             <a href="spravy.html">
                 Správy
+            </a>
+
+            <!-- PODCAST -->
+
+            <a href="podcast.html">
+                Podcast
             </a>
 
         </nav>
@@ -458,29 +470,31 @@
 
                 </div>
 
-
                 <h1>
                     Rádio <span>Klub</span>
                 </h1>
-
 
                 <p>
                     Hudba, zábava a dobrá nálada
                     24 hodín denne.
                 </p>
 
-
-                <!-- OTVORÍ STREAM.HTML V NOVOM OKNE -->
+                <!--
+                    OTVORÍ STREAM.HTML
+                    V NOVOM OKNE
+                -->
 
                 <a
                     href="stream.html"
                     class="play-button"
+
                     onclick="
                         window.open(
                             'stream.html',
                             'RadioKlub',
                             'width=500,height=700,resizable=yes,scrollbars=no'
                         );
+
                         return false;
                     "
                 >
@@ -502,9 +516,9 @@
                 📻 Program
             </h2>
 
-
             <div class="program">
 
+                <!-- RANNÝ KLUB -->
 
                 <div class="card">
 
@@ -524,6 +538,8 @@
                 </div>
 
 
+                <!-- KLUB MIX -->
+
                 <div class="card">
 
                     <div class="time">
@@ -541,6 +557,8 @@
 
                 </div>
 
+
+                <!-- POPOLUDNIE -->
 
                 <div class="card">
 
@@ -560,6 +578,8 @@
                 </div>
 
 
+                <!-- VEČERNÝ KLUB -->
+
                 <div class="card">
 
                     <div class="time">
@@ -576,7 +596,6 @@
                     </p>
 
                 </div>
-
 
             </div>
 
@@ -597,8 +616,9 @@
             </h2>
 
             <p>
-                Rádio Klub prináša hudbu, zábavu
-                a dobrú náladu. Počúvaj nás online
+                Rádio Klub prináša hudbu,
+                zábavu a dobrú náladu.
+                Počúvaj nás online
                 kdekoľvek a kedykoľvek.
             </p>
 
@@ -611,15 +631,16 @@
          FOOTER
     ========================= -->
 
-    <footer id="kontakt">
+    <footer>
 
         <p>
             © 2026 Rádio Klub.
             Všetky práva vyhradené.
         </p>
 
-
         <div class="social">
+
+            <!-- INSTAGRAM -->
 
             <a
                 href="https://www.instagram.com/radioklubsk?igsh=cXBqMDZ6YWkycmxo"
@@ -632,6 +653,8 @@
             </a>
 
 
+            <!-- YOUTUBE -->
+
             <a
                 href="https://youtube.com/@radioklubsk?si=EdVbZFttInCv1r5e"
                 target="_blank"
@@ -642,6 +665,8 @@
                 ▶
             </a>
 
+
+            <!-- FACEBOOK -->
 
             <a
                 href="#"
