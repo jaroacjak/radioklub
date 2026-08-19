@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Správy – Rádio Klub</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0d0d16;
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* HLAVIČKA */
+
+        header {
+            background: linear-gradient(135deg, #6c2cff, #d51cff);
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo-image {
+            width: 55px;
+            height: 55px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 12px;
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        /* MENU */
+
+        nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 22px;
+            font-weight: bold;
+            padding-bottom: 6px;
+            border-bottom: 3px solid transparent;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        nav a.active {
+            border-bottom: 3px solid white;
+            opacity: 1;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 45vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+            background:
+                radial-gradient(
+                    circle at center,
+                    #30205c 0%,
+                    #0d0d16 65%
+                );
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: clamp(50px, 8vw, 80px);
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #d51cff;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #bbb;
+        }
+
+        /* SPRÁVY */
+
+        .news-section {
+            padding: 80px 8%;
+        }
+
+        .news-title {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 45px;
+        }
+
+        .news-title span {
+            color: #d51cff;
+        }
+
+        .latest-news {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        /* KARTA ČLÁNKU */
+
+        .news-card {
+            display: grid;
+
+            grid-template-columns:
+                minmax(280px, 1fr)
+                minmax(300px, 1fr);
+
+            background: #181824;
+
+            border: 1px solid #292938;
+
+            border-radius: 22px;
+
+            overflow: hidden;
+
+            text-decoration: none;
+
+            color: white;
+
+            transition: 0.25s;
+
+            box-shadow:
+                0 15px 50px
+                rgba(0,0,0,0.3);
+        }
+
+        .news-card:hover {
+            transform: translateY(-7px);
+
+            border-color: #8b45ff;
+
+            box-shadow:
+                0 20px 60px
+                rgba(108,44,255,0.2);
+        }
+
+        .news-image-box {
+            min-height: 360px;
+            background: #11111b;
+            overflow: hidden;
+        }
+
+        .news-image-box img {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+            transition: 0.4s;
+        }
+
+        .news-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .news-content {
+            padding: 45px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .news-label {
+            display: inline-block;
+
+            width: fit-content;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6c2cff,
+                    #d51cff
+                );
+
+            padding: 8px 16px;
+
+            border-radius: 30px;
+
+            font-size: 13px;
+            font-weight: bold;
+
+            margin-bottom: 20px;
+        }
+
+        .news-content h2 {
+            font-size: 28px;
+            line-height: 1.25;
+            margin-bottom: 20px;
+        }
+
+        .news-content p {
+            color: #aaa;
+
+            font-size: 17px;
+
+            line-height: 1.7;
+
+            margin-bottom: 25px;
+        }
+
+        .read-more {
+            color: #d51cff;
+
+            font-weight: bold;
+
+            font-size: 17px;
+        }
+
+        .news-card:hover .read-more {
+            color: white;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 35px;
+            background: #090910;
+            color: #777;
+        }
+
+        .social {
+            margin-top: 15px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 18px;
+        }
+
+        .social a {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            width: 45px;
+            height: 45px;
+
+            text-decoration: none;
+
+            border-radius: 50%;
+
+            transition: 0.2s;
+        }
+
+        .social a:hover {
+            transform: scale(1.12);
+        }
+
+        .social img {
+            width: 38px;
+            height: 38px;
+
+            object-fit: contain;
+
+            border-radius: 8px;
+        }
+
+        /* MOBIL */
+
+        @media (max-width: 850px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            nav a {
+                margin: 5px 8px;
+            }
+
+            .news-card {
+                grid-template-columns: 1fr;
+            }
+
+            .news-image-box {
+                min-height: 320px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .hero h1 {
+                font-size: 55px;
+            }
+
+            .logo-text {
+                font-size: 23px;
+            }
+
+            .news-content {
+                padding: 28px 22px;
+            }
+
+            .news-content h2 {
+                font-size: 24px;
+            }
+
+            .news-image-box {
+                min-height: 280px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HLAVIČKA -->
+
+    <header>
+
+        <a
+            class="logo-link"
+            href="https://jaroacjak.github.io/radioklub/#domov"
+            title="Rádio Klub – Domov"
+        >
+
+            <img
+                class="logo-image"
+                src="https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/44153165/44153165-1756027969361-fe65b85dada35.jpg"
+                alt="Rádio Klub"
+            >
+
+            <span class="logo-text">
+                Rádio Klub
+            </span>
+
+        </a>
+
+
+        <!-- MENU -->
+
+        <nav>
+
+            <a href="https://jaroacjak.github.io/radioklub/#domov">
+                Domov
+            </a>
+
+            <a href="program.html">
+                Program
+            </a>
+
+            <a href="onas.html">
+                O nás
+            </a>
+
+            <a href="moderatori.html">
+                Moderátori
+            </a>
+
+            <a href="dopravnyservis.html">
+                Dopravný servis
+            </a>
+
+            <a
+                href="spravy.html"
+                class="active"
+            >
+                Správy
+            </a>
+
+            <a href="podcast.html">
+                Podcast
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                Rádio <span>Správy</span>
+            </h1>
+
+            <p>
+                Aktuálne informácie a novinky
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SPRÁVY -->
+
+    <main>
+
+        <section class="news-section">
+
+            <h2 class="news-title">
+                📰 Najstarší <span>článok</span>
+            </h2>
+
+
+            <div class="latest-news">
+
+                <a
+                    href="skryte-posolstva-vo-finale-squid-game-reziser-odhaluje-vyznam-zaverecnych-scen-toto-vas-dostane.html"
+                    class="news-card"
+                >
+
+                    <div class="news-image-box">
+
+                        <img
+                            src="https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/514506387_122118101372880563_6646150823789960867_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1350&ctp=s1080x1350&_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_ohc=970lEj_ecm4Q7kNvwHgjSUV&_nc_oc=AdpubSx9a0wyPKsU7rszV_xDAQbXlvoc_cGz8Ekjw5q_ODdKfPAw85eXQoo80uNGRiU&_nc_zt=23&_nc_ht=scontent-vie1-1.xx&_nc_gid=I1ypr1hHOVmIV_AnUDoFdQ&_nc_ss=7b2a8&oh=00_AQEYkrEw5-izaglLN3nBEr-Ghv4cSa81BVpX9Nue3qzvuA&oe=6A8B9467"
+                            alt="Skryté posolstvá vo finále Squid Game"
+                        >
+
+                    </div>
+
+
+                    <div class="news-content">
+
+                        <div class="news-label">
+                            NAJSTARŠÍ ČLÁNOK
+                        </div>
+
+                        <h2>
+                            Skryté posolstvá vo finále Squid Game:
+                            Režisér odhaľuje význam záverečných scén.
+                            Toto vás dostane
+                        </h2>
+
+                        <p>
+                            Objavte skryté významy a posolstvá,
+                            ktoré sa nachádzajú v záverečných scénach
+                            populárneho seriálu Squid Game.
+                        </p>
+
+                        <div class="read-more">
+                            Prečítať článok →
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Rádio Klub.
+            Všetky práva vyhradené.
+        </p>
+
+
+        <div class="social">
+
+            <!-- YOUTUBE -->
+
+            <a
+                href="https://youtube.com/@radioklubsk?si=EdVbZFttInCv1r5e"
+                target="_blank"
+                rel="noopener"
+                aria-label="YouTube"
+                title="YouTube"
+            >
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRluxvnOBRSErZP_KFyE1_WJhpbSP77KBZmWH1KTXqPGQ&s=10"
+                    alt="YouTube"
+                >
+            </a>
+
+
+            <!-- INSTAGRAM -->
+
+            <a
+                href="https://www.instagram.com/radioklubsk?igsh=cXBqMDZ6YWkycmxo"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+                title="Instagram"
+            >
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5osI0qmctv4jqC_8kp4HJidRE1Zzhadm6Lo3g4SyYoQ&s=10"
+                    alt="Instagram"
+                >
+            </a>
+
+
+            <!-- FACEBOOK -->
+
+            <a
+                href="https://www.facebook.com/radioklubsk?locale=sk_SK"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook Rádio Klub"
+                title="Facebook Rádio Klub"
+            >
+                <img
+                    src="https://static.vecteezy.com/system/resources/previews/018/930/476/non_2x/facebook-logo-facebook-icon-transparent-free-png.png"
+                    alt="Facebook Rádio Klub"
+                >
+            </a>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
