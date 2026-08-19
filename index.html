@@ -29,7 +29,6 @@
 
         header {
             background: linear-gradient(135deg, #6c2cff, #d51cff);
-
             padding: 20px 8%;
 
             display: flex;
@@ -97,11 +96,10 @@
 
         nav a.active {
             border-bottom: 3px solid white;
-            opacity: 1;
         }
 
         /* =========================
-           HLAVNÁ SEKCIA
+           DOMOV
         ========================= */
 
         .hero {
@@ -143,7 +141,7 @@
         }
 
         /* =========================
-           LIVE STATUS
+           LIVE
         ========================= */
 
         .live {
@@ -181,7 +179,7 @@
         }
 
         /* =========================
-           TLAČIDLO RÁDIA
+           PLAY
         ========================= */
 
         .play-button {
@@ -195,6 +193,7 @@
                 );
 
             color: white;
+
             text-decoration: none;
 
             padding: 17px 40px;
@@ -202,6 +201,7 @@
             border-radius: 35px;
 
             font-size: 18px;
+
             font-weight: bold;
 
             transition: 0.2s;
@@ -232,74 +232,26 @@
         }
 
         /* =========================
-           PROGRAM
+           INFO
         ========================= */
 
-        .program {
-            display: grid;
-
-            grid-template-columns:
-                repeat(
-                    auto-fit,
-                    minmax(220px, 1fr)
-                );
-
-            gap: 20px;
-
-            max-width: 1100px;
+        .info-box {
+            max-width: 900px;
 
             margin: auto;
-        }
-
-        .card {
-            background: #181824;
-
-            padding: 25px;
-
-            border-radius: 18px;
-
-            border: 1px solid #292938;
-
-            transition: 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-7px);
-
-            border-color: #8b45ff;
-        }
-
-        .time {
-            color: #d51cff;
-
-            font-weight: bold;
-
-            margin-bottom: 10px;
-        }
-
-        .card h3 {
-            margin-bottom: 8px;
-        }
-
-        .card p {
-            color: #aaa;
-        }
-
-        /* =========================
-           O NÁS
-        ========================= */
-
-        .about {
-            background: #12121c;
 
             text-align: center;
+
+            background: #181824;
+
+            padding: 35px;
+
+            border-radius: 20px;
+
+            border: 1px solid #292938;
         }
 
-        .about p {
-            max-width: 750px;
-
-            margin: auto;
-
+        .info-box p {
             color: #bbb;
 
             line-height: 1.7;
@@ -323,22 +275,44 @@
 
         .social {
             margin-top: 15px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 18px;
         }
 
         .social a {
-            color: #d51cff;
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            width: 45px;
+            height: 45px;
 
             text-decoration: none;
 
-            margin: 0 10px;
-
-            font-size: 22px;
+            border-radius: 50%;
 
             transition: 0.2s;
         }
 
         .social a:hover {
-            color: white;
+            transform: scale(1.12);
+        }
+
+        .social img {
+            width: 38px;
+            height: 38px;
+
+            object-fit: contain;
+
+            border-radius: 8px;
         }
 
         /* =========================
@@ -357,7 +331,7 @@
             }
 
             nav a {
-                margin: 0 8px;
+                margin: 5px 8px;
             }
 
             .hero h1 {
@@ -374,10 +348,12 @@
 <body>
 
     <!-- =========================
-         HLAVIČKA / DOMOV
+         HLAVIČKA
     ========================= -->
 
     <header>
+
+        <!-- LOGO -->
 
         <a
             class="logo-link"
@@ -397,9 +373,10 @@
 
         </a>
 
-        <nav>
 
-            <!-- DOMOV -->
+        <!-- MENU -->
+
+        <nav>
 
             <a
                 href="https://jaroacjak.github.io/radioklub/#domov"
@@ -408,37 +385,25 @@
                 Domov
             </a>
 
-            <!-- PROGRAM -->
-
-            <a href="#program">
+            <a href="program.html">
                 Program
             </a>
 
-            <!-- O NÁS -->
-
-            <a href="#onas">
+            <a href="onas.html">
                 O nás
             </a>
-
-            <!-- MODERÁTORI -->
 
             <a href="moderatori.html">
                 Moderátori
             </a>
 
-            <!-- DOPRAVNÝ SERVIS -->
-
             <a href="dopravnyservis.html">
                 Dopravný servis
             </a>
 
-            <!-- SPRÁVY -->
-
             <a href="spravy.html">
                 Správy
             </a>
-
-            <!-- PODCAST -->
 
             <a href="podcast.html">
                 Podcast
@@ -449,11 +414,11 @@
     </header>
 
 
-    <main>
+    <!-- =========================
+         DOMOV
+    ========================= -->
 
-        <!-- =========================
-             DOMOV
-        ========================= -->
+    <main>
 
         <section
             class="hero"
@@ -461,6 +426,8 @@
         >
 
             <div class="hero-content">
+
+                <!-- LIVE -->
 
                 <div class="live">
 
@@ -470,19 +437,25 @@
 
                 </div>
 
+
+                <!-- NÁZOV -->
+
                 <h1>
                     Rádio <span>Klub</span>
                 </h1>
+
+
+                <!-- POPIS -->
 
                 <p>
                     Hudba, zábava a dobrá nálada
                     24 hodín denne.
                 </p>
 
-                <!--
-                    OTVORÍ STREAM.HTML
-                    V NOVOM OKNE
-                -->
+
+                <!-- =========================
+                     OTVORENIE PREHRÁVAČA
+                ========================= -->
 
                 <a
                     href="stream.html"
@@ -507,120 +480,30 @@
 
 
         <!-- =========================
-             PROGRAM
+             INFO
         ========================= -->
 
-        <section id="program">
+        <section>
 
             <h2>
-                📻 Program
+                📻 Rádio Klub
             </h2>
 
-            <div class="program">
+            <div class="info-box">
 
-                <!-- RANNÝ KLUB -->
+                <p>
+                    Vitaj na oficiálnej stránke
+                    Rádio Klub.
+                </p>
 
-                <div class="card">
+                <br>
 
-                    <div class="time">
-                        08:00 – 10:00
-                    </div>
-
-                    <h3>
-                        Ranný Klub
-                    </h3>
-
-                    <p>
-                        Najlepšia hudba
-                        na začiatok dňa.
-                    </p>
-
-                </div>
-
-
-                <!-- KLUB MIX -->
-
-                <div class="card">
-
-                    <div class="time">
-                        10:00 – 13:00
-                    </div>
-
-                    <h3>
-                        Klub Mix
-                    </h3>
-
-                    <p>
-                        Hudobný mix
-                        plný energie.
-                    </p>
-
-                </div>
-
-
-                <!-- POPOLUDNIE -->
-
-                <div class="card">
-
-                    <div class="time">
-                        13:00 – 16:00
-                    </div>
-
-                    <h3>
-                        Popoludnie
-                    </h3>
-
-                    <p>
-                        Hity, novinky
-                        a zaujímavosti.
-                    </p>
-
-                </div>
-
-
-                <!-- VEČERNÝ KLUB -->
-
-                <div class="card">
-
-                    <div class="time">
-                        18:00 – 21:00
-                    </div>
-
-                    <h3>
-                        Večerný Klub
-                    </h3>
-
-                    <p>
-                        Najväčšie hity
-                        až do večera.
-                    </p>
-
-                </div>
+                <p>
+                    Hudba, zábava a dobrá nálada
+                    24 hodín denne.
+                </p>
 
             </div>
-
-        </section>
-
-
-        <!-- =========================
-             O NÁS
-        ========================= -->
-
-        <section
-            class="about"
-            id="onas"
-        >
-
-            <h2>
-                O Rádio Klub
-            </h2>
-
-            <p>
-                Rádio Klub prináša hudbu,
-                zábavu a dobrú náladu.
-                Počúvaj nás online
-                kdekoľvek a kedykoľvek.
-            </p>
 
         </section>
 
@@ -638,6 +521,7 @@
             Všetky práva vyhradené.
         </p>
 
+
         <div class="social">
 
             <!-- INSTAGRAM -->
@@ -649,7 +533,12 @@
                 aria-label="Instagram"
                 title="Instagram"
             >
-                ◎
+
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5osI0qmctv4jqC_8kp4HJidRE1Zzhadm6Lo3g4SyYoQ&s=10"
+                    alt="Instagram"
+                >
+
             </a>
 
 
@@ -662,18 +551,30 @@
                 aria-label="YouTube"
                 title="YouTube"
             >
-                ▶
+
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRluxvnOBRSErZP_KFyE1_WJhpbSP77KBZmWH1KTXqPGQ&s=10"
+                    alt="YouTube"
+                >
+
             </a>
 
 
             <!-- FACEBOOK -->
 
             <a
-                href="#"
-                aria-label="Facebook"
-                title="Facebook"
+                href="https://www.facebook.com/radioklubsk?locale=sk_SK"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook Rádio Klub"
+                title="Facebook Rádio Klub"
             >
-                f
+
+                <img
+                    src="https://static.vecteezy.com/system/resources/previews/018/930/476/non_2x/facebook-logo-facebook-icon-transparent-free-png.png"
+                    alt="Facebook Rádio Klub"
+                >
+
             </a>
 
         </div>
