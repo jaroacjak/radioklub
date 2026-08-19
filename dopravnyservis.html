@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+
+<html lang="sk">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Dopravný servis – Rádio Klub</title>
+
+<style>
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: #0d0d16;
+        color: white;
+        min-height: 100vh;
+    }
+
+    /* HLAVIČKA */
+
+    header {
+        background: linear-gradient(
+            135deg,
+            #6c2cff,
+            #d51cff
+        );
+
+        padding: 20px 8%;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .logo-link {
+        display: flex;
+        align-items: center;
+        color: white;
+        text-decoration: none;
+    }
+
+    .logo-image {
+        width: 55px;
+        height: 55px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-right: 12px;
+
+        border: 2px solid rgba(255,255,255,0.4);
+    }
+
+    .logo-text {
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    /* MENU */
+
+    nav {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 22px;
+        font-weight: bold;
+        padding-bottom: 6px;
+
+        border-bottom: 3px solid transparent;
+
+        transition: 0.2s;
+    }
+
+    nav a:hover {
+        opacity: 0.7;
+    }
+
+    nav a.active {
+        border-bottom: 3px solid white;
+        opacity: 1;
+    }
+
+    /* HERO */
+
+    .hero {
+        padding: 70px 20px 50px;
+
+        text-align: center;
+
+        background:
+            radial-gradient(
+                circle at center,
+                #30205c 0%,
+                #0d0d16 70%
+            );
+    }
+
+    .hero-content {
+        max-width: 900px;
+        margin: auto;
+    }
+
+    .hero h1 {
+        font-size: clamp(40px, 7vw, 70px);
+        margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+        color: #d51cff;
+    }
+
+    .hero p {
+        color: #bbb;
+        font-size: 19px;
+        line-height: 1.6;
+    }
+
+    /* MAPA */
+
+    .map-section {
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 0 20px;
+    }
+
+    .map-box {
+        background: #181824;
+        border: 1px solid #292938;
+        border-radius: 25px;
+        overflow: hidden;
+
+        box-shadow:
+            0 20px 60px
+            rgba(0,0,0,0.35);
+    }
+
+    .map-header {
+        padding: 30px;
+        text-align: center;
+    }
+
+    .map-header h2 {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+
+    .map-header p {
+        color: #999;
+        line-height: 1.6;
+    }
+
+    .map-frame {
+        width: 100%;
+        height: 650px;
+        background: #11111b;
+    }
+
+    .map-frame iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    .map-link {
+        display: inline-block;
+        margin-top: 15px;
+
+        color: white;
+        text-decoration: none;
+
+        background: linear-gradient(
+            135deg,
+            #6c2cff,
+            #d51cff
+        );
+
+        padding: 13px 22px;
+        border-radius: 25px;
+
+        font-weight: bold;
+    }
+
+    /* NAHLÁSENIE UDALOSTI */
+
+    .report-section {
+        max-width: 900px;
+        margin: 70px auto 80px;
+        padding: 0 20px;
+    }
+
+    .report-box {
+        background: #181824;
+        border: 1px solid #292938;
+        border-radius: 25px;
+        padding: 40px;
+
+        box-shadow:
+            0 20px 60px
+            rgba(0,0,0,0.35);
+    }
+
+    .report-box h2 {
+        font-size: 32px;
+        margin-bottom: 12px;
+    }
+
+    .report-description {
+        color: #999;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    .report-form {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .report-form label {
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    .report-form input,
+    .report-form select,
+    .report-form textarea {
+        width: 100%;
+
+        background: #11111b;
+        color: white;
+
+        border: 1px solid #292938;
+        border-radius: 12px;
+
+        padding: 14px;
+
+        font-family: Arial, sans-serif;
+        font-size: 15px;
+
+        outline: none;
+    }
+
+    .report-form input:focus,
+    .report-form select:focus,
+    .report-form textarea:focus {
+        border-color: #8b45ff;
+    }
+
+    .report-form textarea {
+        min-height: 140px;
+        resize: vertical;
+    }
+
+    .report-form input[type="file"] {
+        cursor: pointer;
+    }
+
+    .file-info {
+        color: #888;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    /* NÁHĽAD FOTKY */
+
+    .image-preview {
+        display: none;
+
+        width: 100%;
+        max-height: 400px;
+
+        object-fit: contain;
+
+        background: #11111b;
+
+        border: 1px solid #292938;
+        border-radius: 15px;
+
+        margin-top: 5px;
+    }
+
+    /* TLAČIDLO */
+
+    .report-button {
+        border: none;
+
+        background: linear-gradient(
+            135deg,
+            #6c2cff,
+            #d51cff
+        );
+
+        color: white;
+
+        padding: 15px 25px;
+        border-radius: 25px;
+
+        font-weight: bold;
+        font-size: 16px;
+
+        cursor: pointer;
+
+        margin-top: 10px;
+
+        transition: 0.2s;
+    }
+
+    .report-button:hover {
+        transform: translateY(-2px);
+    }
+
+    .report-button:disabled {
+        opacity: 0.6;
+        cursor: wait;
+    }
+
+    /* ÚSPECH */
+
+    .success-message {
+        display: none;
+
+        background: #17251c;
+
+        border: 1px solid #315c3d;
+
+        color: #9ee6ae;
+
+        border-radius: 12px;
+
+        padding: 15px;
+        margin-top: 20px;
+
+        line-height: 1.5;
+    }
+
+    /* CHYBA */
+
+    .error-message {
+        display: none;
+
+        background: #2a171b;
+
+        border: 1px solid #6b303b;
+
+        color: #ffabb8;
+
+        border-radius: 12px;
+
+        padding: 15px;
+        margin-top: 20px;
+
+        line-height: 1.5;
+    }
+
+    /* FOOTER */
+
+    footer {
+        text-align: center;
+
+        padding: 35px;
+
+        background: #090910;
+
+        color: #777;
+    }
+
+    .social {
+        margin-top: 15px;
+    }
+
+    .social a {
+        color: #d51cff;
+
+        text-decoration: none;
+
+        margin: 0 10px;
+
+        font-size: 22px;
+
+        transition: 0.2s;
+    }
+
+    .social a:hover {
+        color: white;
+    }
+
+    /* MOBIL */
+
+    @media (max-width: 850px) {
+
+        header {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        nav {
+            justify-content: center;
+        }
+
+        nav a {
+            margin: 5px 8px;
+        }
+
+        .map-frame {
+            height: 500px;
+        }
+
+    }
+
+    @media (max-width: 600px) {
+
+        .logo-text {
+            font-size: 23px;
+        }
+
+        .report-box {
+            padding: 25px 20px;
+        }
+
+        .map-frame {
+            height: 450px;
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- HLAVIČKA -->
+
+<header>
+
+    <a
+        class="logo-link"
+        href="https://jaroacjak.github.io/radioklub/#domov"
+        title="Rádio Klub – Domov"
+    >
+
+        <img
+            class="logo-image"
+            src="https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/44153165/44153165-1756027969361-fe65b85dada35.jpg"
+            alt="Rádio Klub"
+        >
+
+        <span class="logo-text">
+            Rádio Klub
+        </span>
+
+    </a>
+
+    <nav>
+
+        <a href="https://jaroacjak.github.io/radioklub/#domov">
+            Domov
+        </a>
+
+        <a href="program.html">
+            Program
+        </a>
+
+        <a href="onas.html">
+            O nás
+        </a>
+
+        <a href="moderatori.html">
+            Moderátori
+        </a>
+
+        <a
+            href="dopravnyservis.html"
+            class="active"
+        >
+            Dopravný servis
+        </a>
+
+        <a href="spravy.html">
+            Správy
+        </a>
+
+    </nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Dopravný
+            <span>servis</span>
+        </h1>
+
+        <p>
+            Aktuálna dopravná situácia,
+            dopravné obmedzenia a hlásenia
+            od poslucháčov Rádia Klub.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- MAPA -->
+
+<section class="map-section">
+
+    <div class="map-box">
+
+        <div class="map-header">
+
+            <h2>
+                🗺️ Dopravná mapa
+            </h2>
+
+            <p>
+                Sledujte aktuálnu situáciu
+                a stav ciest.
+            </p>
+
+            <a
+                class="map-link"
+                href="https://www.zjazdnost.sk/map/view.html"
+                target="_blank"
+                rel="noopener"
+            >
+                Otvoriť dopravnú mapu
+            </a>
+
+        </div>
+
+        <div class="map-frame">
+
+            <iframe
+                src="https://www.zjazdnost.sk/map/view.html"
+                title="Dopravná mapa Zjazdnosť"
+                loading="lazy"
+            ></iframe>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- NAHLÁSENIE DOPRAVNEJ UDALOSTI -->
+
+<section class="report-section">
+
+    <div class="report-box">
+
+        <h2>
+            🚨 Nahlásiť dopravnú udalosť
+        </h2>
+
+        <p class="report-description">
+
+            Videli ste dopravnú nehodu,
+            zápchu alebo inú udalosť?
+
+            <br><br>
+
+            Pošlite nám informácie.
+            Môžete priložiť aj fotografiu.
+
+        </p>
+
+        <form
+            class="report-form"
+            id="reportForm"
+            action="https://formspree.io/f/xblzlrra"
+            method="POST"
+            enctype="multipart/form-data"
+        >
+
+            <input
+                type="hidden"
+                name="_subject"
+                value="Nové hlásenie z Dopravného servisu Rádio Klub"
+            >
+
+            <input
+                type="hidden"
+                name="Zdroj"
+                value="Dopravný servis Rádio Klub"
+            >
+
+            <!-- MENO -->
+
+            <label for="reportName">
+                Vaše meno
+            </label>
+
+            <input
+                type="text"
+                id="reportName"
+                name="Meno"
+                placeholder="Vaše meno"
+                maxlength="50"
+                required
+            >
+
+            <!-- EMAIL -->
+
+            <label for="reportEmail">
+                📧 E-mailová adresa
+            </label>
+
+            <input
+                type="email"
+                id="reportEmail"
+                name="email"
+                placeholder="vas@email.sk"
+                maxlength="100"
+                required
+            >
+
+            <!-- MIESTO -->
+
+            <label for="reportLocation">
+                📍 Miesto udalosti
+            </label>
+
+            <input
+                type="text"
+                id="reportLocation"
+                name="Miesto udalosti"
+                placeholder="Napr. Veľká Bytča – hlavná cesta"
+                maxlength="150"
+                required
+            >
+
+            <!-- TYP UDALOSTI -->
+
+            <label for="reportType">
+                🚗 Typ udalosti
+            </label>
+
+            <select
+                id="reportType"
+                name="Typ udalosti"
+                required
+            >
+
+                <option value="">
+                    Vyberte typ udalosti
+                </option>
+
+                <option value="Dopravná nehoda">
+                    🚗 Dopravná nehoda
+                </option>
+
+                <option value="Zápcha">
+                    🚦 Zápcha
+                </option>
+
+                <option value="Prekážka na ceste">
+                    ⚠️ Prekážka na ceste
+                </option>
+
+                <option value="Uzávierka">
+                    ⛔ Uzávierka
+                </option>
+
+                <option value="Iné">
+                    📍 Iné
+                </option>
+
+            </select>
+
+            <!-- POPIS -->
+
+            <label for="reportDescription">
+                📝 Popis udalosti
+            </label>
+
+            <textarea
+                id="reportDescription"
+                name="Popis udalosti"
+                placeholder="Napíšte, čo sa stalo..."
+                maxlength="1000"
+                required
+            ></textarea>
+
+            <!-- FOTKA -->
+
+            <label for="reportPhoto">
+                📷 Priložiť obrázok
+            </label>
+
+            <input
+                type="file"
+                id="reportPhoto"
+                name="Fotografia"
+                accept="image/*"
+            >
+
+            <p class="file-info">
+                Môžete priložiť fotografiu
+                dopravnej udalosti.
+            </p>
+
+            <!-- NÁHĽAD FOTKY -->
+
+            <img
+                id="imagePreview"
+                class="image-preview"
+                alt="Náhľad priloženého obrázka"
+            >
+
+            <!-- ODOSLAŤ -->
+
+            <button
+                type="submit"
+                class="report-button"
+                id="reportButton"
+            >
+                🚨 Odoslať hlásenie
+            </button>
+
+        </form>
+
+        <!-- ÚSPEŠNÁ SPRÁVA -->
+
+        <div
+            class="success-message"
+            id="successMessage"
+        >
+
+            ✅ Ďakujeme!
+
+            Vaše dopravné hlásenie
+            bolo úspešne odoslané
+            do Rádia Klub.
+
+        </div>
+
+        <!-- CHYBOVÁ SPRÁVA -->
+
+        <div
+            class="error-message"
+            id="errorMessage"
+        >
+
+            ❌ Hlásenie sa nepodarilo odoslať.
+
+            Skúste to prosím znova.
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 Rádio Klub.
+        Všetky práva vyhradené.
+    </p>
+
+    <div class="social">
+
+        <a
+            href="https://youtube.com/@radioklubsk?si=EdVbZFttInCv1r5e"
+            target="_blank"
+            rel="noopener"
+            aria-label="YouTube"
+            title="YouTube"
+        >
+            ▶
+        </a>
+
+        <a
+            href="https://www.instagram.com/radioklubsk?igsh=cXBqMDZ6YWkycmxo"
+            target="_blank"
+            rel="noopener"
+            aria-label="Instagram"
+            title="Instagram"
+        >
+            ◎
+        </a>
+
+        <a
+            href="https://www.facebook.com/radioklubsk?locale=sk_SK"
+            target="_blank"
+            rel="noopener"
+            aria-label="Facebook"
+            title="Facebook"
+        >
+            f
+        </a>
+
+    </div>
+
+</footer>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+    /* PREMENNÉ */
+
+    const reportForm =
+        document.getElementById(
+            "reportForm"
+        );
+
+    const reportPhoto =
+        document.getElementById(
+            "reportPhoto"
+        );
+
+    const imagePreview =
+        document.getElementById(
+            "imagePreview"
+        );
+
+    const reportButton =
+        document.getElementById(
+            "reportButton"
+        );
+
+    const successMessage =
+        document.getElementById(
+            "successMessage"
+        );
+
+    const errorMessage =
+        document.getElementById(
+            "errorMessage"
+        );
+
+    /* NÁHĽAD FOTKY */
+
+    reportPhoto.addEventListener(
+        "change",
+        function() {
+
+            const file =
+                reportPhoto.files[0];
+
+            if (!file) {
+
+                imagePreview.style.display =
+                    "none";
+
+                imagePreview.removeAttribute(
+                    "src"
+                );
+
+                return;
+
+            }
+
+            if (
+                !file.type.startsWith(
+                    "image/"
+                )
+            ) {
+
+                alert(
+                    "Vyberte prosím obrázok."
+                );
+
+                reportPhoto.value = "";
+
+                imagePreview.style.display =
+                    "none";
+
+                return;
+
+            }
+
+            const reader =
+                new FileReader();
+
+            reader.onload =
+                function(event) {
+
+                    imagePreview.src =
+                        event.target.result;
+
+                    imagePreview.style.display =
+                        "block";
+
+                };
+
+            reader.readAsDataURL(
+                file
+            );
+
+        }
+    );
+
+    /* ODOSLANIE FORMULÁRA */
+
+    reportForm.addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+            successMessage.style.display =
+                "none";
+
+            errorMessage.style.display =
+                "none";
+
+            reportButton.disabled =
+                true;
+
+            reportButton.textContent =
+                "⏳ Odosielam hlásenie...";
+
+            const formData =
+                new FormData(
+                    reportForm
+                );
+
+            try {
+
+                const response =
+                    await fetch(
+                        reportForm.action,
+                        {
+                            method: "POST",
+
+                            body: formData,
+
+                            headers: {
+                                "Accept":
+                                    "application/json"
+                            }
+                        }
+                    );
+
+                if (response.ok) {
+
+                    successMessage.style.display =
+                        "block";
+
+                    reportForm.reset();
+
+                    imagePreview.style.display =
+                        "none";
+
+                    imagePreview.removeAttribute(
+                        "src"
+                    );
+
+                    successMessage.scrollIntoView(
+                        {
+                            behavior: "smooth",
+                            block: "center"
+                        }
+                    );
+
+                } else {
+
+                    errorMessage.style.display =
+                        "block";
+
+                }
+
+            } catch (error) {
+
+                console.error(error);
+
+                errorMessage.style.display =
+                    "block";
+
+            }
+
+            reportButton.disabled =
+                false;
+
+            reportButton.textContent =
+                "🚨 Odoslať hlásenie";
+
+        }
+    );
+
+</script>
+```
+
+</body>
+
+</html>
