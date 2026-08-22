@@ -25,28 +25,22 @@
             min-height: 100vh;
         }
 
-        /* =========================
-           HLAVIČKA
-        ========================= */
+        /* HLAVIČKA */
 
         header {
             background: linear-gradient(135deg, #6c2cff, #d51cff);
             padding: 20px 8%;
-
             display: flex;
             justify-content: space-between;
             align-items: center;
-
             position: sticky;
             top: 0;
-
             z-index: 100;
         }
 
         .logo-link {
             display: flex;
             align-items: center;
-
             color: white;
             text-decoration: none;
         }
@@ -54,12 +48,9 @@
         .logo-image {
             width: 55px;
             height: 55px;
-
             object-fit: cover;
             border-radius: 50%;
-
             margin-right: 12px;
-
             border: 2px solid rgba(255,255,255,0.4);
         }
 
@@ -68,9 +59,7 @@
             font-weight: bold;
         }
 
-        /* =========================
-           MENU
-        ========================= */
+        /* MENU */
 
         nav {
             display: flex;
@@ -81,15 +70,10 @@
         nav a {
             color: white;
             text-decoration: none;
-
             margin-left: 22px;
-
             font-weight: bold;
-
             padding-bottom: 6px;
-
             border-bottom: 3px solid transparent;
-
             transition: 0.2s;
         }
 
@@ -102,21 +86,15 @@
             opacity: 1;
         }
 
-        /* =========================
-           HERO
-        ========================= */
+        /* HERO */
 
         .hero {
             min-height: 45vh;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             text-align: center;
-
             padding: 60px 20px;
-
             background:
                 radial-gradient(
                     circle at center,
@@ -143,9 +121,7 @@
             color: #bbb;
         }
 
-        /* =========================
-           SPRÁVY
-        ========================= */
+        /* SPRÁVY */
 
         .news-section {
             padding: 80px 8%;
@@ -153,9 +129,7 @@
 
         .news-title {
             text-align: center;
-
             font-size: 38px;
-
             margin-bottom: 45px;
         }
 
@@ -166,11 +140,12 @@
         .latest-news {
             max-width: 1000px;
             margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
         }
 
-        /* =========================
-           KARTA ČLÁNKU
-        ========================= */
+        /* KARTA ČLÁNKU */
 
         .news-card {
             display: grid;
@@ -210,9 +185,7 @@
 
         .news-image-box {
             min-height: 360px;
-
             background: #11111b;
-
             overflow: hidden;
         }
 
@@ -235,9 +208,7 @@
             padding: 45px;
 
             display: flex;
-
             flex-direction: column;
-
             justify-content: center;
         }
 
@@ -258,7 +229,6 @@
             border-radius: 30px;
 
             font-size: 13px;
-
             font-weight: bold;
 
             margin-bottom: 20px;
@@ -266,9 +236,7 @@
 
         .news-content h2 {
             font-size: 28px;
-
             line-height: 1.25;
-
             margin-bottom: 20px;
         }
 
@@ -294,17 +262,12 @@
             color: white;
         }
 
-        /* =========================
-           FOOTER
-        ========================= */
+        /* FOOTER */
 
         footer {
             text-align: center;
-
             padding: 35px;
-
             background: #090910;
-
             color: #777;
         }
 
@@ -350,15 +313,12 @@
             border-radius: 8px;
         }
 
-        /* =========================
-           MOBIL
-        ========================= */
+        /* MOBIL */
 
         @media (max-width: 850px) {
 
             header {
                 flex-direction: column;
-
                 gap: 15px;
             }
 
@@ -407,13 +367,9 @@
 
 <body>
 
-    <!-- =========================
-         HLAVIČKA
-    ========================= -->
+    <!-- HLAVIČKA -->
 
     <header>
-
-        <!-- LOGO -->
 
         <a
             class="logo-link"
@@ -434,26 +390,16 @@
         </a>
 
 
-        <!-- =========================
-             HORNÉ MENU
-        ========================= -->
+        <!-- MENU -->
 
         <nav>
 
-            <a
-                href="https://jaroacjak.github.io/radioklub/#domov"
-            >
+            <a href="https://jaroacjak.github.io/radioklub/#domov">
                 Domov
             </a>
 
             <a href="program.html">
                 Program
-            </a>
-
-            <!-- DOPLNENÉ MENU -->
-
-            <a href="playlist.html">
-                Playlist
             </a>
 
             <a href="onas.html">
@@ -484,9 +430,7 @@
     </header>
 
 
-    <!-- =========================
-         HERO
-    ========================= -->
+    <!-- HERO -->
 
     <section class="hero">
 
@@ -505,20 +449,65 @@
     </section>
 
 
-    <!-- =========================
-         SPRÁVY
-    ========================= -->
+    <!-- SPRÁVY -->
 
     <main>
 
         <section class="news-section">
 
             <h2 class="news-title">
-                📰 Najstarší <span>článok</span>
+                📰 Najnovšie <span>správy</span>
             </h2>
 
 
             <div class="latest-news">
+
+
+                <!-- NOVÝ ČLÁNOK -->
+
+                <a
+                    href="uvodnekolonovesezonytiposslovenskejhokejovejligyponuknezaujimavysúbojdvochnedavnychucastnikovnajvyssejsutazevktoromhumenneprivitanovezamky.html"
+                    class="news-card"
+                >
+
+                    <div class="news-image-box">
+
+                        <img
+                            src="https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/514064313_122118110222880563_2924311053300656901_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1350&ctp=s1080x1350&_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_ohc=oJz4tNWVzk4Q7kNvwESl-8f&_nc_oc=AdqeDC-v6jFwFwDiBTwwlfAXilGWZaCjpi8LoihzCVa15eh9L2pQU4RdfW766rMbeFk&_nc_zt=23&_nc_ht=scontent-vie1-1.xx&_nc_gid=gY6bOcsz4rjJ7xLaBFg-3A&_nc_ss=7b2a8&oh=00_AQF-y_AgZOBNjh1x5xCUHVKUd4DjkwExQTjzeCVe1iRkxA&oe=6A8F2212"
+                            alt="Úvodné kolo novej sezóny Tipos Slovenskej hokejovej ligy"
+                        >
+
+                    </div>
+
+
+                    <div class="news-content">
+
+                        <div class="news-label">
+                            NOVÝ ČLÁNOK
+                        </div>
+
+                        <h2>
+                            Úvodné kolo novej sezóny Tipos Slovenskej
+                            hokejovej ligy ponúkne zaujímavý súboj
+                            dvoch nedávnych účastníkov najvyššej súťaže
+                        </h2>
+
+                        <p>
+                            V Humennom privítajú Nové Zámky
+                            v zaujímavom súboji úvodného kola
+                            novej sezóny.
+                        </p>
+
+                        <div class="read-more">
+                            Prečítať článok →
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- PÔVODNÝ ČLÁNOK -->
 
                 <a
                     href="skryte-posolstva-vo-finale-squid-game-reziser-odhaluje-vyznam-zaverecnych-scen-toto-vas-dostane.html"
@@ -568,9 +557,7 @@
     </main>
 
 
-    <!-- =========================
-         FOOTER
-    ========================= -->
+    <!-- FOOTER -->
 
     <footer>
 
@@ -591,12 +578,10 @@
                 aria-label="YouTube"
                 title="YouTube"
             >
-
                 <img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRluxvnOBRSErZP_KFyE1_WJhpbSP77KBZmWH1KTXqPGQ&s=10"
                     alt="YouTube"
                 >
-
             </a>
 
 
@@ -609,12 +594,10 @@
                 aria-label="Instagram"
                 title="Instagram"
             >
-
                 <img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5osI0qmctv4jqC_8kp4HJidRE1Zzhadm6Lo3g4SyYoQ&s=10"
                     alt="Instagram"
                 >
-
             </a>
 
 
@@ -627,12 +610,10 @@
                 aria-label="Facebook Rádio Klub"
                 title="Facebook Rádio Klub"
             >
-
                 <img
                     src="https://static.vecteezy.com/system/resources/previews/018/930/476/non_2x/facebook-logo-facebook-icon-transparent-free-png.png"
                     alt="Facebook Rádio Klub"
                 >
-
             </a>
 
         </div>
@@ -641,4 +622,3 @@
 
 </body>
 </html>
-```
