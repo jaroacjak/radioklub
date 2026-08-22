@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Slovenskí hokejisti v NHL: Prádel a Svrček mieria do Detroitu – Rádio Klub</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0d0d16;
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* ==============================
+           HLAVIČKA
+        ============================== */
+
+        header {
+            background: linear-gradient(
+                135deg,
+                #6c2cff,
+                #d51cff
+            );
+
+            padding: 20px 8%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 100;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo-image {
+            width: 55px;
+            height: 55px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            margin-right: 12px;
+
+            border: 2px solid
+                rgba(255,255,255,0.4);
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        /* ==============================
+           MENU
+        ============================== */
+
+        nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+
+            text-decoration: none;
+
+            margin-left: 22px;
+
+            font-weight: bold;
+
+            padding-bottom: 6px;
+
+            border-bottom: 3px solid transparent;
+
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        nav a.active {
+            border-bottom: 3px solid white;
+            opacity: 1;
+        }
+
+        /* ==============================
+           HERO SECTION
+        ============================== */
+
+        .article-hero {
+            padding: 60px 8% 40px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #30205c 0%,
+                    #0d0d16 70%
+                );
+
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .category-tag {
+            display: inline-block;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6c2cff,
+                    #d51cff
+                );
+
+            padding: 8px 18px;
+
+            border-radius: 30px;
+
+            font-size: 14px;
+            font-weight: bold;
+
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .article-hero h1 {
+            font-size: clamp(32px, 5vw, 52px);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .article-hero h1 span {
+            color: #d51cff;
+        }
+
+        .article-meta {
+            color: #aaa;
+            font-size: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .article-meta span {
+            color: #d51cff;
+            font-weight: bold;
+        }
+
+        .author-photo {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #d51cff;
+        }
+
+        /* ==============================
+           OBSAH ČLÁNKU
+        ============================== */
+
+        .article-container {
+            max-width: 850px;
+            margin: auto;
+            padding: 40px 8% 80px;
+        }
+
+        .main-image-wrapper {
+            width: 100%;
+            max-height: 500px;
+            border-radius: 22px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            border: 1px solid #292938;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+        }
+
+        .main-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .article-body {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #ddd;
+        }
+
+        .article-body p {
+            margin-bottom: 25px;
+        }
+
+        .highlight-box {
+            background: #181824;
+            border-left: 4px solid #d51cff;
+            border-radius: 0 16px 16px 0;
+            padding: 25px 30px;
+            margin: 35px 0;
+        }
+
+        .highlight-box h3 {
+            color: white;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .highlight-box ul {
+            list-style: none;
+        }
+
+        .highlight-box li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            color: #bbb;
+        }
+
+        .highlight-box li::before {
+            content: "•";
+            color: #d51cff;
+            font-size: 24px;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        .highlight-box li strong {
+            color: white;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 40px;
+            color: #d51cff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.2s;
+        }
+
+        .back-link:hover {
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        /* ==============================
+           FOOTER
+        ============================== */
+
+        footer {
+            text-align: center;
+            padding: 35px;
+            background: #090910;
+            color: #777;
+        }
+
+        .social {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            text-decoration: none;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+
+        .social a:hover {
+            transform: scale(1.12);
+        }
+
+        .social img {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        /* ==============================
+           MOBIL
+        ============================== */
+
+        @media (max-width: 850px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            nav a {
+                margin: 5px 8px;
+            }
+
+            .article-hero {
+                padding-top: 40px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .logo-text {
+                font-size: 23px;
+            }
+
+            .article-body {
+                font-size: 16px;
+            }
+
+            .highlight-box {
+                padding: 20px;
+            }
+
+            .main-image-wrapper {
+                max-height: 300px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ==============================
+         HLAVIČKA
+    ============================== -->
+
+    <header>
+
+        <a
+            class="logo-link"
+            href="https://jaroacjak.github.io/radioklub/#domov"
+            title="Rádio Klub – Domov"
+        >
+
+            <img
+                class="logo-image"
+                src="https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/44153165/44153165-1756027969361-fe65b85dada35.jpg"
+                alt="Rádio Klub"
+            >
+
+            <span class="logo-text">
+                Rádio Klub
+            </span>
+
+        </a>
+
+        <!-- MENU -->
+
+        <nav>
+
+            <a
+                href="https://jaroacjak.github.io/radioklub/#domov"
+            >
+                Domov
+            </a>
+
+            <a
+                href="program.html"
+            >
+                Program
+            </a>
+
+            <a
+                href="onas.html"
+            >
+                O nás
+            </a>
+
+            <a
+                href="moderatori.html"
+            >
+                Moderátori
+            </a>
+
+            <a
+                href="dopravnyservis.html"
+            >
+                Dopravný servis
+            </a>
+
+            <a
+                href="spravy.html"
+                class="active"
+            >
+                Správy
+            </a>
+
+            <a
+                href="podcast.html"
+            >
+                Podcast
+            </a>
+
+        </nav>
+
+    </header>
+
+    <!-- ==============================
+         HERO SECTION ČLÁNKU
+    ============================== -->
+
+    <section class="article-hero">
+
+        <div class="hero-container">
+
+            <div class="category-tag">
+                Hokej / NHL
+            </div>
+
+            <h1>
+                Slovenskí hokejisti v NHL: <span>Prádel a Svrček</span> mieria do Detroitu
+            </h1>
+
+            <div class="article-meta">
+                <img
+                    src="https://i.postimg.cc/WbxqNfmN/FB-IMG-1787123977583.jpg"
+                    alt="Jakub Brezani"
+                    class="author-photo"
+                >
+                <div>Autor: <span>Jakub Brezani</span></div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ==============================
+         MAIN CONTENT
+    ============================== -->
+
+    <main class="article-container">
+
+        <div class="main-image-wrapper">
+
+            <img
+                src="https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/514311652_122118119936880563_8698399076978685441_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1350&ctp=s1080x1350&_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=QM8WUuG98BIQ7kNvwG5Z1rC&_nc_oc=AdoiwnEgw188Ts2kD7wzL2WwTv4DPSTbmjDLcCD8TvE6upUcWuZdAQgCOFKHK7lmWSE&_nc_zt=23&_nc_ht=scontent-vie1-1.xx&_nc_gid=uHvk641n31d8Qyy7FgjnBA&_nc_ss=7b2a8&oh=00_AQHlvdk_Vp8BlYc1uUyt2EWART5NM9Zu5XD7e2FFxTc3MQ&oe=6A8F2C98"
+                alt="Slovenskí hokejisti Michal Prádel a Michal Svrček zamierili do Detroit Red Wings"
+            >
+
+        </div>
+
+        <article class="article-body">
+
+            <p>
+                Slovenskí hokejisti Michal Prádel a Michal Svrček zamierili v drafte NHL 2025 do tímu Detroit Red Wings. Brankára Prádela si Detroit vybral v 3. kole z 75. miesta a útočníka Svrčka vo 4. kole zo 119. miesta.
+            </p>
+
+            <div class="highlight-box">
+
+                <h3>📌 Podrobnosti draftu</h3>
+
+                <ul>
+                    <li>
+                        <strong>Michal Prádel:</strong> brankár, 75. miesto (3. kolo)
+                    </li>
+                    <li>
+                        <strong>Michal Svrček:</strong> útočník, 119. miesto (4. kolo)
+                    </li>
+                    <li>
+                        <strong>Tím:</strong> Detroit Red Wings
+                    </li>
+                </ul>
+
+            </div>
+
+        </article>
+
+        <a href="spravy.html" class="back-link">
+            ← Späť na všetky správy
+        </a>
+
+    </main>
+
+    <!-- ==============================
+         FOOTER
+    ============================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Rádio Klub.
+            Všetky práva vyhradené.
+        </p>
+
+        <div class="social">
+
+            <!-- YOUTUBE -->
+
+            <a
+                href="https://youtube.com/@radioklubsk?si=EdVbZFttInCv1r5e"
+                target="_blank"
+                rel="noopener"
+                aria-label="YouTube"
+                title="YouTube"
+            >
+
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRluxvnOBRSErZP_KFyE1_WJhpbSP77KBZmWH1KTXqPGQ&s=10"
+                    alt="YouTube"
+                >
+
+            </a>
+
+            <!-- INSTAGRAM -->
+
+            <a
+                href="https://www.instagram.com/radioklubsk?igsh=cXBqMDZ6YWkycmxo"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+                title="Instagram"
+            >
+
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5osI0qmctv4jqC_8kp4HJidRE1Zzhadm6Lo3g4SyYoQ&s=10"
+                    alt="Instagram"
+                >
+
+            </a>
+
+            <!-- FACEBOOK -->
+
+            <a
+                href="https://www.facebook.com/radioklubsk?locale=sk_SK"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook Rádio Klub"
+                title="Facebook Rádio Klub"
+            >
+
+                <img
+                    src="https://static.vecteezy.com/system/resources/previews/018/930/476/non_2x/facebook-logo-facebook-icon-transparent-free-png.png"
+                    alt="Facebook Rádio Klub"
+                >
+
+            </a>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
