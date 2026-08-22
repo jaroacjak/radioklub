@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="sk">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        EURO U21 na Slovensku sa skončilo – Anglicko získalo titul majstra Európy – Rádio Klub
+    </title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0d0d16;
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* ==============================
+           HLAVIČKA
+        ============================== */
+
+        header {
+            background: linear-gradient(
+                135deg,
+                #6c2cff,
+                #d51cff
+            );
+
+            padding: 20px 8%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 1000;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo-image {
+            width: 55px;
+            height: 55px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            margin-right: 12px;
+
+            border: 2px solid
+                rgba(255,255,255,0.4);
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        /* ==============================
+           MENU
+        ============================== */
+
+        nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+
+            text-decoration: none;
+
+            margin-left: 22px;
+
+            font-weight: bold;
+
+            padding-bottom: 6px;
+
+            border-bottom: 3px solid transparent;
+
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        nav a.active {
+            border-bottom: 3px solid white;
+            opacity: 1;
+        }
+
+        /* ==============================
+           HLAVIČKA ČLÁNKU
+        ============================== */
+
+        .article-hero {
+            padding: 80px 20px 60px;
+
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #30205c 0%,
+                    #0d0d16 70%
+                );
+        }
+
+        .article-category {
+            display: inline-block;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6c2cff,
+                    #d51cff
+                );
+
+            padding: 9px 18px;
+
+            border-radius: 30px;
+
+            font-size: 13px;
+            font-weight: bold;
+
+            margin-bottom: 25px;
+        }
+
+        .article-hero h1 {
+            max-width: 1100px;
+
+            margin: auto;
+
+            font-size:
+                clamp(32px, 5vw, 65px);
+
+            line-height: 1.2;
+        }
+
+        /* ==============================
+           INFORMÁCIE O ČLÁNKU
+        ============================== */
+
+        .article-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+
+            gap: 25px;
+
+            max-width: 900px;
+
+            margin: 35px auto 0;
+        }
+
+        .author-box {
+            display: flex;
+            align-items: center;
+
+            text-align: left;
+
+            background: #181824;
+
+            border: 1px solid #292938;
+
+            border-radius: 60px;
+
+            padding: 10px 22px 10px 10px;
+        }
+
+        .author-image {
+            width: 70px;
+            height: 70px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border: 3px solid #d51cff;
+
+            margin-right: 15px;
+        }
+
+        .author-details {
+            display: flex;
+            flex-direction: column;
+
+            gap: 4px;
+        }
+
+        .author-label {
+            color: #888;
+
+            font-size: 13px;
+        }
+
+        .author-name {
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: bold;
+        }
+
+        .article-date {
+            background: #181824;
+
+            border: 1px solid #292938;
+
+            border-radius: 30px;
+
+            padding: 16px 22px;
+
+            color: #bbb;
+
+            font-size: 15px;
+        }
+
+        /* ==============================
+           OBSAH ČLÁNKU
+        ============================== */
+
+        .article-section {
+            max-width: 950px;
+
+            margin: auto;
+
+            padding: 70px 20px 90px;
+        }
+
+        .article-box {
+            background: #181824;
+
+            border: 1px solid #292938;
+
+            border-radius: 25px;
+
+            padding: 50px;
+
+            box-shadow:
+                0 20px 60px
+                rgba(0,0,0,0.35);
+        }
+
+        .article-main-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 35px;
+            border: 1px solid #292938;
+        }
+
+        .article-box h2 {
+            font-size: 24px;
+            color: #fff;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .article-box p {
+            color: #d0d0d5;
+
+            font-size: 19px;
+
+            line-height: 1.9;
+
+            margin-bottom: 30px;
+        }
+
+        .article-box ul {
+            color: #d0d0d5;
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            padding-left: 25px;
+        }
+
+        .article-box li {
+            margin-bottom: 10px;
+        }
+
+        .article-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ==============================
+           ZDIEĽANIE
+        ============================== */
+
+        .share-section {
+            margin-top: 40px;
+
+            text-align: center;
+        }
+
+        .share-section h2 {
+            font-size: 25px;
+
+            margin-bottom: 22px;
+        }
+
+        .share-buttons {
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+        }
+
+        .share-button {
+            border: none;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 13px 20px;
+
+            border-radius: 30px;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+            font-family: Arial, sans-serif;
+        }
+
+        .share-button:hover {
+            transform:
+                translateY(-3px);
+        }
+
+        .share-facebook {
+            background: #1877f2;
+        }
+
+        .share-whatsapp {
+            background: #25d366;
+        }
+
+        .share-x {
+            background: #111111;
+
+            border: 1px solid #444;
+        }
+
+        .share-email {
+            background:
+                linear-gradient(
+                    135deg,
+                    #6c2cff,
+                    #d51cff
+                );
+        }
+
+        .share-copy {
+            background: #292938;
+        }
+
+        .share-system {
+            background:
+                linear-gradient(
+                    135deg,
+                    #6c2cff,
+                    #d51cff
+                );
+        }
+
+        .copy-message {
+            display: none;
+
+            margin-top: 15px;
+
+            color: #9ee6ae;
+
+            font-size: 15px;
+        }
+
+        /* ==============================
+           TLAČIDLO SPÄŤ
+        ============================== */
+
+        .back-section {
+            text-align: center;
+
+            margin-top: 45px;
+        }
+
+        .back-button {
+            display: inline-block;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6c2cff,
+                    #d51cff
+                );
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 15px 28px;
+
+            border-radius: 30px;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .back-button:hover {
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 10px 30px
+                rgba(108,44,255,0.3);
+        }
+
+        /* ==============================
+           FOOTER
+        ============================== */
+
+        footer {
+            text-align: center;
+
+            padding: 35px;
+
+            background: #090910;
+
+            color: #777;
+        }
+
+        .social {
+            margin-top: 15px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 18px;
+        }
+
+        .social a {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            width: 45px;
+            height: 45px;
+
+            text-decoration: none;
+
+            border-radius: 50%;
+
+            transition: 0.2s;
+        }
+
+        .social a:hover {
+            transform: scale(1.12);
+        }
+
+        .social img {
+            width: 38px;
+            height: 38px;
+
+            object-fit: contain;
+
+            border-radius: 8px;
+        }
+
+        /* ==============================
+           MOBIL
+        ============================== */
+
+        @media (max-width: 850px) {
+
+            header {
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            nav a {
+                margin: 5px 8px;
+            }
+
+            .article-box {
+                padding: 35px 28px;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .logo-text {
+                font-size: 23px;
+            }
+
+            .article-hero {
+                padding:
+                    60px 20px
+                    45px;
+            }
+
+            .article-box {
+                padding: 28px 20px;
+            }
+
+            .article-box p {
+                font-size: 17px;
+            }
+
+            .article-info {
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            .author-box {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .article-date {
+                width: 100%;
+            }
+
+            .share-button {
+                width: 100%;
+                max-width: 320px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- ==============================
+         HLAVIČKA
+    ============================== -->
+
+    <header>
+
+        <a
+            class="logo-link"
+            href="https://jaroacjak.github.io/radioklub/#domov"
+            title="Rádio Klub – Domov"
+        >
+
+            <img
+                class="logo-image"
+                src="https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/44153165/44153165-1756027969361-fe65b85dada35.jpg"
+                alt="Rádio Klub"
+            >
+
+            <span class="logo-text">
+                Rádio Klub
+            </span>
+
+        </a>
+
+
+        <nav>
+
+            <a
+                href="https://jaroacjak.github.io/radioklub/#domov"
+            >
+                Domov
+            </a>
+
+            <a
+                href="program.html"
+            >
+                Program
+            </a>
+
+            <a
+                href="onas.html"
+            >
+                O nás
+            </a>
+
+            <a
+                href="moderatori.html"
+            >
+                Moderátori
+            </a>
+
+            <a
+                href="dopravnyservis.html"
+            >
+                Dopravný servis
+            </a>
+
+            <a
+                href="spravy.html"
+                class="active"
+            >
+                Správy
+            </a>
+
+            <a
+                href="podcast.html"
+            >
+                Podcast
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ==============================
+         HLAVIČKA ČLÁNKU
+    ============================== -->
+
+    <section class="article-hero">
+
+        <div class="article-category">
+            ⚽ FUTBAL
+        </div>
+
+
+        <h1>
+            EURO U21 na Slovensku sa skončilo – Anglicko získalo titul majstra Európy
+        </h1>
+
+
+        <!-- INFORMÁCIE O AUTOROVI -->
+
+        <div class="article-info">
+
+            <div class="author-box">
+
+                <img
+                    class="author-image"
+                    src="https://i.postimg.cc/WbxqNfmN/FB-IMG-1787123977583.jpg"
+                    alt="Jakub Brezani"
+                >
+
+                <div class="author-details">
+
+                    <span class="author-label">
+                        Vytvoril pre Rádio Klub
+                    </span>
+
+                    <span class="author-name">
+                        Jakub Brezani
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="article-date">
+                📅 29. 6. 2026
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         OBSAH ČLÁNKU
+    ============================== -->
+
+    <main>
+
+        <section class="article-section">
+
+            <article class="article-box">
+
+                <!-- HLAVNÝ OBRÁZOK ČLÁNKU -->
+                <img
+                    class="article-main-image"
+                    src="https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/514688577_122118113294880563_6025834467112577341_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1350&ctp=s1080x1350&_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=SgTNyp62Qt0Q7kNvwFQhXMv&_nc_oc=Adr2UUqXNu2czq7x2h-XHqiOvyhxgz4NwuSL_Im9wAgHFeT6IJ7PDAfacHOD6AykBtQ&_nc_zt=23&_nc_ht=scontent-vie1-1.xx&_nc_gid=-ZB18ysDqRa58xW4q8Ovlg&_nc_ss=7b2a8&oh=00_AQFDUhNGIFuGBp5HjwbiBaqZJ2HB1j8Kdf4TYKndUnap4g&oe=6A8F21A6"
+                    alt="EURO U21 2025 Slovensko"
+                >
+
+                <p>
+                    Majstrovstvá Európy vo futbale hráčov do 21 rokov (EURO U21) 2025 sa na Slovensku skončili 28. júna 2025 víťazstvom <strong>Anglicka</strong>, ktoré vo finále na Národnom futbalovom štadióne v Bratislave zdolalo Nemecko <strong>3:2 po predĺžení</strong>. 🏆⚽
+                </p>
+
+                <h2>Podrobnosti o turnaji</h2>
+
+                <ul>
+                    <li><strong>Termín a miesto:</strong> Turnaj prebiehal od 11. do 28. júna 2025 v ôsmich slovenských mestách.</li>
+                    <li><strong>Finálový zápas:</strong> Anglicko – Nemecko 3:2 po predĺžení (víťazný gól strelil v 92. minúte Jonathan Rowe).</li>
+                    <li><strong>Účinkovanie Slovenska:</strong> Slovenská reprezentácia do 21 rokov sa zúčastnila na domácom šampionáte v A-skupine, kde po jednej výhre (nad Rumunskom 2:1) a dvoch prehrách (so Španielskom a Talianskom) nepostúpila do vyraďovacej fázy.</li>
+                </ul>
+
+            </article>
+
+
+            <!-- ==============================
+                 ZDIEĽANIE ČLÁNKU
+            ============================== -->
+
+            <section class="share-section">
+
+                <h2>
+                    📤 Zdieľať tento článok
+                </h2>
+
+
+                <div class="share-buttons">
+
+                    <a
+                        id="facebookShare"
+                        class="share-button share-facebook"
+                        href="#"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Facebook
+                    </a>
+
+
+                    <a
+                        id="whatsappShare"
+                        class="share-button share-whatsapp"
+                        href="#"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        WhatsApp
+                    </a>
+
+
+                    <a
+                        id="xShare"
+                        class="share-button share-x"
+                        href="#"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        X
+                    </a>
+
+
+                    <a
+                        id="emailShare"
+                        class="share-button share-email"
+                        href="#"
+                    >
+                        ✉️ E-mail
+                    </a>
+
+
+                    <button
+                        type="button"
+                        id="copyShare"
+                        class="share-button share-copy"
+                    >
+                        🔗 Kopírovať odkaz
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="systemShare"
+                        class="share-button share-system"
+                    >
+                        📤 Zdieľať
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="copyMessage"
+                    class="copy-message"
+                >
+                    ✅ Odkaz na článok bol skopírovaný.
+                </div>
+
+            </section>
+
+
+            <!-- ==============================
+                 SPÄŤ NA SPRÁVY
+            ============================== -->
+
+            <div class="back-section">
+
+                <a
+                    href="spravy.html"
+                    class="back-button"
+                >
+                    ← Späť na správy
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==============================
+         FOOTER
+    ============================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Rádio Klub.
+            Všetky práva vyhradené.
+        </p>
+
+
+        <div class="social">
+
+
+            <!-- YOUTUBE -->
+
+            <a
+                href="https://youtube.com/@radioklubsk?si=EdVbZFttInCv1r5e"
+                target="_blank"
+                rel="noopener"
+                aria-label="YouTube"
+                title="YouTube"
+            >
+
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRluxvnOBRSErZP_KFyE1_WJhpbSP77KBZmWH1KTXqPGQ&s=10"
+                    alt="YouTube"
+                >
+
+            </a>
+
+
+            <!-- INSTAGRAM -->
+
+            <a
+                href="https://www.instagram.com/radioklubsk?igsh=cXBqMDZ6YWkycmxo"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+                title="Instagram"
+            >
+
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5osI0qmctv4jqC_8kp4HJidRE1Zzhadm6Lo3g4SyYoQ&s=10"
+                    alt="Instagram"
+                >
+
+            </a>
+
+
+            <!-- FACEBOOK -->
+
+            <a
+                href="https://www.facebook.com/radioklubsk?locale=sk_SK"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook Rádio Klub"
+                title="Facebook Rádio Klub"
+            >
+
+                <img
+                    src="https://static.vecteezy.com/system/resources/previews/018/930/476/non_2x/facebook-logo-facebook-icon-transparent-free-png.png"
+                    alt="Facebook Rádio Klub"
+                >
+
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ==============================
+         JAVASCRIPT – ZDIEĽANIE
+    ============================== -->
+
+    <script>
+
+        const articleTitle =
+            document.title;
+
+        const articleUrl =
+            window.location.href;
+
+
+        const facebookShare =
+            document.getElementById(
+                "facebookShare"
+            );
+
+        const whatsappShare =
+            document.getElementById(
+                "whatsappShare"
+            );
+
+        const xShare =
+            document.getElementById(
+                "xShare"
+            );
+
+        const emailShare =
+            document.getElementById(
+                "emailShare"
+            );
+
+        const copyShare =
+            document.getElementById(
+                "copyShare"
+            );
+
+        const systemShare =
+            document.getElementById(
+                "systemShare"
+            );
+
+        const copyMessage =
+            document.getElementById(
+                "copyMessage"
+            );
+
+
+        /* FACEBOOK */
+
+        facebookShare.href =
+            "https://www.facebook.com/sharer/sharer.php?u=" +
+            encodeURIComponent(
+                articleUrl
+            );
+
+
+        /* WHATSAPP */
+
+        whatsappShare.href =
+            "https://wa.me/?text=" +
+            encodeURIComponent(
+                articleTitle +
+                " " +
+                articleUrl
+            );
+
+
+        /* X */
+
+        xShare.href =
+            "https://twitter.com/intent/tweet?text=" +
+            encodeURIComponent(
+                articleTitle
+            ) +
+            "&url=" +
+            encodeURIComponent(
+                articleUrl
+            );
+
+
+        /* E-MAIL */
+
+        emailShare.href =
+            "mailto:?subject=" +
+            encodeURIComponent(
+                articleTitle
+            ) +
+            "&body=" +
+            encodeURIComponent(
+                articleTitle +
+                "\n\n" +
+                articleUrl
+            );
+
+
+        /* KOPÍROVANIE ODKAZU */
+
+        copyShare.addEventListener(
+            "click",
+            async function () {
+
+                try {
+
+                    await navigator
+                        .clipboard
+                        .writeText(
+                            articleUrl
+                        );
+
+                    copyMessage.style.display =
+                        "block";
+
+
+                    setTimeout(
+                        function () {
+
+                            copyMessage.style.display =
+                                "none";
+
+                        },
+                        3000
+                    );
+
+                } catch (error) {
+
+                    const textArea =
+                        document.createElement(
+                            "textarea"
+                        );
+
+
+                    textArea.value =
+                        articleUrl;
+
+
+                    document.body.appendChild(
+                        textArea
+                    );
+
+
+                    textArea.select();
+
+
+                    document.execCommand(
+                        "copy"
+                    );
+
+
+                    document.body.removeChild(
+                        textArea
+                    );
+
+
+                    copyMessage.style.display =
+                        "block";
+
+
+                    setTimeout(
+                        function () {
+
+                            copyMessage.style.display =
+                                "none";
+
+                        },
+                        3000
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* SYSTÉMOVÉ ZDIEĽANIE */
+
+        systemShare.addEventListener(
+            "click",
+            async function () {
+
+                if (
+                    navigator.share
+                ) {
+
+                    try {
+
+                        await navigator.share(
+                            {
+                                title:
+                                    articleTitle,
+
+                                text:
+                                    "Pozrite si tento článok z Rádio Klub.",
+
+                                url:
+                                    articleUrl
+                            }
+                        );
+
+                    } catch (error) {
+
+                        console.log(
+                            "Zdieľanie bolo zrušené alebo sa nepodarilo."
+                        );
+
+                    }
+
+                } else {
+
+                    try {
+
+                        await navigator
+                            .clipboard
+                            .writeText(
+                                articleUrl
+                            );
+
+                        copyMessage.style.display =
+                            "block";
+
+
+                        setTimeout(
+                            function () {
+
+                                copyMessage.style.display =
+                                    "none";
+
+                        },
+                        3000
+                    );
+
+                    } catch (error) {
+
+                        alert(
+                            "Nepodarilo sa zdieľať odkaz."
+                        );
+
+                    }
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
