@@ -2,7 +2,11 @@
 <html lang="sk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Správy – Rádio Klub</title>
 
@@ -25,22 +29,33 @@
             min-height: 100vh;
         }
 
-        /* HLAVIČKA */
+        /* ==============================
+           HLAVIČKA
+        ============================== */
 
         header {
-            background: linear-gradient(135deg, #6c2cff, #d51cff);
+            background: linear-gradient(
+                135deg,
+                #6c2cff,
+                #d51cff
+            );
+
             padding: 20px 8%;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
+
             position: sticky;
             top: 0;
+
             z-index: 100;
         }
 
         .logo-link {
             display: flex;
             align-items: center;
+
             color: white;
             text-decoration: none;
         }
@@ -48,10 +63,15 @@
         .logo-image {
             width: 55px;
             height: 55px;
+
             object-fit: cover;
+
             border-radius: 50%;
+
             margin-right: 12px;
-            border: 2px solid rgba(255,255,255,0.4);
+
+            border: 2px solid
+                rgba(255,255,255,0.4);
         }
 
         .logo-text {
@@ -59,7 +79,9 @@
             font-weight: bold;
         }
 
-        /* MENU */
+        /* ==============================
+           MENU
+        ============================== */
 
         nav {
             display: flex;
@@ -69,11 +91,17 @@
 
         nav a {
             color: white;
+
             text-decoration: none;
+
             margin-left: 22px;
+
             font-weight: bold;
+
             padding-bottom: 6px;
+
             border-bottom: 3px solid transparent;
+
             transition: 0.2s;
         }
 
@@ -86,15 +114,21 @@
             opacity: 1;
         }
 
-        /* HERO */
+        /* ==============================
+           HERO
+        ============================== */
 
         .hero {
             min-height: 45vh;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             text-align: center;
+
             padding: 60px 20px;
+
             background:
                 radial-gradient(
                     circle at center,
@@ -108,7 +142,9 @@
         }
 
         .hero h1 {
-            font-size: clamp(50px, 8vw, 80px);
+            font-size:
+                clamp(50px, 8vw, 80px);
+
             margin-bottom: 15px;
         }
 
@@ -121,7 +157,9 @@
             color: #bbb;
         }
 
-        /* SPRÁVY */
+        /* ==============================
+           SPRÁVY
+        ============================== */
 
         .news-section {
             padding: 80px 8%;
@@ -129,7 +167,9 @@
 
         .news-title {
             text-align: center;
+
             font-size: 38px;
+
             margin-bottom: 45px;
         }
 
@@ -140,12 +180,16 @@
         .latest-news {
             max-width: 1000px;
             margin: auto;
+
             display: flex;
             flex-direction: column;
+
             gap: 35px;
         }
 
-        /* KARTA ČLÁNKU */
+        /* ==============================
+           KARTA ČLÁNKU
+        ============================== */
 
         .news-card {
             display: grid;
@@ -174,7 +218,8 @@
         }
 
         .news-card:hover {
-            transform: translateY(-7px);
+            transform:
+                translateY(-7px);
 
             border-color: #8b45ff;
 
@@ -185,7 +230,9 @@
 
         .news-image-box {
             min-height: 360px;
+
             background: #11111b;
+
             overflow: hidden;
         }
 
@@ -201,7 +248,8 @@
         }
 
         .news-card:hover img {
-            transform: scale(1.05);
+            transform:
+                scale(1.05);
         }
 
         .news-content {
@@ -236,7 +284,9 @@
 
         .news-content h2 {
             font-size: 28px;
+
             line-height: 1.25;
+
             margin-bottom: 20px;
         }
 
@@ -256,18 +306,25 @@
             font-weight: bold;
 
             font-size: 17px;
+
+            transition: 0.2s;
         }
 
         .news-card:hover .read-more {
             color: white;
         }
 
-        /* FOOTER */
+        /* ==============================
+           FOOTER
+        ============================== */
 
         footer {
             text-align: center;
+
             padding: 35px;
+
             background: #090910;
+
             color: #777;
         }
 
@@ -287,7 +344,6 @@
             display: flex;
 
             align-items: center;
-
             justify-content: center;
 
             width: 45px;
@@ -301,7 +357,8 @@
         }
 
         .social a:hover {
-            transform: scale(1.12);
+            transform:
+                scale(1.12);
         }
 
         .social img {
@@ -313,7 +370,9 @@
             border-radius: 8px;
         }
 
-        /* MOBIL */
+        /* ==============================
+           MOBIL
+        ============================== */
 
         @media (max-width: 850px) {
 
@@ -360,6 +419,10 @@
             .news-image-box {
                 min-height: 280px;
             }
+
+            .news-title {
+                font-size: 30px;
+            }
         }
 
     </style>
@@ -367,7 +430,9 @@
 
 <body>
 
-    <!-- HLAVIČKA -->
+    <!-- ==============================
+         HLAVIČKA
+    ============================== -->
 
     <header>
 
@@ -389,28 +454,37 @@
 
         </a>
 
-
         <!-- MENU -->
 
         <nav>
 
-            <a href="https://jaroacjak.github.io/radioklub/#domov">
+            <a
+                href="https://jaroacjak.github.io/radioklub/#domov"
+            >
                 Domov
             </a>
 
-            <a href="program.html">
+            <a
+                href="program.html"
+            >
                 Program
             </a>
 
-            <a href="onas.html">
+            <a
+                href="onas.html"
+            >
                 O nás
             </a>
 
-            <a href="moderatori.html">
+            <a
+                href="moderatori.html"
+            >
                 Moderátori
             </a>
 
-            <a href="dopravnyservis.html">
+            <a
+                href="dopravnyservis.html"
+            >
                 Dopravný servis
             </a>
 
@@ -421,7 +495,9 @@
                 Správy
             </a>
 
-            <a href="podcast.html">
+            <a
+                href="podcast.html"
+            >
                 Podcast
             </a>
 
@@ -429,8 +505,9 @@
 
     </header>
 
-
-    <!-- HERO -->
+    <!-- ==============================
+         HERO
+    ============================== -->
 
     <section class="hero">
 
@@ -448,53 +525,100 @@
 
     </section>
 
-
-    <!-- SPRÁVY -->
+    <!-- ==============================
+         SPRÁVY
+    ============================== -->
 
     <main>
 
         <section class="news-section">
 
             <h2 class="news-title">
-                📰 Najnovšie <span>správy</span>
+                📰 <span>Správy</span> Rádio Klub
             </h2>
-
 
             <div class="latest-news">
 
+                <!-- ==============================
+                     NOVÝ ČLÁNOK – EURO U21
+                ============================== -->
 
-                <!-- NOVÝ ČLÁNOK -->
+                <a
+                    href="eurou21naslovenskusaskoniclo-anglickoziskalotitulmajstaeuropy.html"
+                    class="news-card"
+                    title="EURO U21 na Slovensku sa skončilo – Anglicko získalo titul majstra Európy"
+                >
+
+                    <div class="news-image-box">
+
+                        <img
+                            src="https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/514688577_122118113294880563_6025834467112577341_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1350&ctp=s1080x1350&_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=SgTNyp62Qt0Q7kNvwFQhXMv&_nc_oc=Adr2UUqXNu2czq7x2h-XHqiOvyhxgz4NwuSL_Im9wAgHFeT6IJ7PDAfacHOD6AykBtQ&_nc_zt=23&_nc_ht=scontent-vie1-1.xx&_nc_gid=-ZB18ysDqRa58xW4q8Ovlg&_nc_ss=7b2a8&oh=00_AQFDUhNGIFuGBp5HjwbiBaqZJ2HB1j8Kdf4TYKndUnap4g&oe=6A8F21A6"
+                            alt="EURO U21 na Slovensku – Anglicko získalo titul majstra Európy"
+                        >
+
+                    </div>
+
+                    <div class="news-content">
+
+                        <div class="news-label">
+                            ŠPORT
+                        </div>
+
+                        <h2>
+                            EURO U21 na Slovensku sa skončilo.
+                            Anglicko získalo titul
+                            majstra Európy
+                        </h2>
+
+                        <p>
+                            Majstrovstvá Európy hráčov do 21 rokov
+                            na Slovensku poznajú svojho víťaza.
+                            Kliknite a prečítajte si celý článok.
+                        </p>
+
+                        <div class="read-more">
+                            Prečítať článok →
+                        </div>
+
+                    </div>
+
+                </a>
+
+                <!-- ==============================
+                     HOKEJOVÝ ČLÁNOK
+                ============================== -->
 
                 <a
                     href="uvodnekolonovesezonytiposslovenskejhokejovejligyponuknezaujimavysúbojdvochnedavnychucastnikovnajvyssejsutazevktoromhumenneprivitanovezamky.html"
                     class="news-card"
+                    title="Úvodné kolo novej sezóny TIPOS Slovenskej hokejovej ligy"
                 >
 
                     <div class="news-image-box">
 
                         <img
                             src="https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/514064313_122118110222880563_2924311053300656901_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1350&ctp=s1080x1350&_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_ohc=oJz4tNWVzk4Q7kNvwESl-8f&_nc_oc=AdqeDC-v6jFwFwDiBTwwlfAXilGWZaCjpi8LoihzCVa15eh9L2pQU4RdfW766rMbeFk&_nc_zt=23&_nc_ht=scontent-vie1-1.xx&_nc_gid=gY6bOcsz4rjJ7xLaBFg-3A&_nc_ss=7b2a8&oh=00_AQF-y_AgZOBNjh1x5xCUHVKUd4DjkwExQTjzeCVe1iRkxA&oe=6A8F2212"
-                            alt="Úvodné kolo novej sezóny Tipos Slovenskej hokejovej ligy"
+                            alt="Úvodné kolo TIPOS Slovenskej hokejovej ligy"
                         >
 
                     </div>
 
-
                     <div class="news-content">
 
                         <div class="news-label">
-                            NOVÝ ČLÁNOK
+                            HOKEJ
                         </div>
 
                         <h2>
-                            Úvodné kolo novej sezóny Tipos Slovenskej
-                            hokejovej ligy ponúkne zaujímavý súboj
-                            dvoch nedávnych účastníkov najvyššej súťaže
+                            Úvodné kolo novej sezóny
+                            TIPOS Slovenskej hokejovej ligy
+                            ponúkne zaujímavé súboje
                         </h2>
 
                         <p>
-                            V Humennom privítajú Nové Zámky
-                            v zaujímavom súboji úvodného kola
+                            Humenné privíta Nové Zámky,
+                            Žiar nad Hronom nastúpi proti Dubnici
+                            a ďalšie tímy odohrajú prvé zápasy
                             novej sezóny.
                         </p>
 
@@ -506,12 +630,14 @@
 
                 </a>
 
-
-                <!-- PÔVODNÝ ČLÁNOK -->
+                <!-- ==============================
+                     NAJSTARŠÍ ČLÁNOK
+                ============================== -->
 
                 <a
                     href="skryte-posolstva-vo-finale-squid-game-reziser-odhaluje-vyznam-zaverecnych-scen-toto-vas-dostane.html"
                     class="news-card"
+                    title="Skryté posolstvá vo finále Squid Game"
                 >
 
                     <div class="news-image-box">
@@ -523,7 +649,6 @@
 
                     </div>
 
-
                     <div class="news-content">
 
                         <div class="news-label">
@@ -532,7 +657,8 @@
 
                         <h2>
                             Skryté posolstvá vo finále Squid Game:
-                            Režisér odhaľuje význam záverečných scén.
+                            Režisér odhaľuje význam
+                            záverečných scén.
                             Toto vás dostane
                         </h2>
 
@@ -556,8 +682,9 @@
 
     </main>
 
-
-    <!-- FOOTER -->
+    <!-- ==============================
+         FOOTER
+    ============================== -->
 
     <footer>
 
@@ -565,7 +692,6 @@
             © 2026 Rádio Klub.
             Všetky práva vyhradené.
         </p>
-
 
         <div class="social">
 
@@ -578,12 +704,13 @@
                 aria-label="YouTube"
                 title="YouTube"
             >
+
                 <img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRluxvnOBRSErZP_KFyE1_WJhpbSP77KBZmWH1KTXqPGQ&s=10"
                     alt="YouTube"
                 >
-            </a>
 
+            </a>
 
             <!-- INSTAGRAM -->
 
@@ -594,12 +721,13 @@
                 aria-label="Instagram"
                 title="Instagram"
             >
+
                 <img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5osI0qmctv4jqC_8kp4HJidRE1Zzhadm6Lo3g4SyYoQ&s=10"
                     alt="Instagram"
                 >
-            </a>
 
+            </a>
 
             <!-- FACEBOOK -->
 
@@ -610,10 +738,12 @@
                 aria-label="Facebook Rádio Klub"
                 title="Facebook Rádio Klub"
             >
+
                 <img
                     src="https://static.vecteezy.com/system/resources/previews/018/930/476/non_2x/facebook-logo-facebook-icon-transparent-free-png.png"
                     alt="Facebook Rádio Klub"
                 >
+
             </a>
 
         </div>
