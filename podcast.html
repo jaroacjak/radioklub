@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="sk">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Podcast – Rádio Klub</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0d0d16;
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* ==============================
+           HLAVIČKA
+        ============================== */
+
+        header {
+            background: linear-gradient(
+                135deg,
+                #6c2cff,
+                #d51cff
+            );
+
+            padding: 20px 8%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 1000;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo-image {
+            width: 55px;
+            height: 55px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            margin-right: 12px;
+
+            border: 2px solid
+                rgba(255,255,255,0.4);
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        /* ==============================
+           MENU
+        ============================== */
+
+        nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+
+            text-decoration: none;
+
+            margin-left: 22px;
+
+            font-weight: bold;
+
+            padding-bottom: 6px;
+
+            border-bottom: 3px solid transparent;
+
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        nav a.active {
+            border-bottom: 3px solid white;
+        }
+
+        /* ==============================
+           HERO
+        ============================== */
+
+        .hero {
+            padding: 80px 20px 60px;
+
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #30205c 0%,
+                    #0d0d16 70%
+                );
+        }
+
+        .hero-content {
+            max-width: 950px;
+            margin: auto;
+        }
+
+        .category {
+            display: inline-block;
+
+            background: #191925;
+
+            color: #d51cff;
+
+            padding: 10px 18px;
+
+            border-radius: 30px;
+
+            font-weight: bold;
+
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size:
+                clamp(42px, 8vw, 75px);
+
+            line-height: 1.1;
+
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #d51cff;
+        }
+
+        .hero p {
+            color: #aaa;
+
+            font-size: 18px;
+
+            line-height: 1.7;
+        }
+
+        /* ==============================
+           LIVE VIDEO
+        ============================== */
+
+        .live-section {
+            max-width: 1100px;
+
+            margin: 50px auto;
+
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+
+            font-size: 34px;
+
+            margin-bottom: 30px;
+        }
+
+        .section-title span {
+            color: #d51cff;
+        }
+
+        .live-box {
+            background: #181824;
+
+            border: 1px solid #292938;
+
+            border-radius: 25px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 20px 60px
+                rgba(0,0,0,0.35);
+        }
+
+        .video-container {
+            position: relative;
+
+            width: 100%;
+
+            padding-top: 56.25%;
+
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            border: 0;
+        }
+
+        .live-info {
+            padding: 30px;
+
+            text-align: center;
+        }
+
+        .live-info h2 {
+            font-size: 28px;
+
+            margin-bottom: 12px;
+        }
+
+        .live-info p {
+            color: #aaa;
+
+            line-height: 1.6;
+        }
+
+        /* ==============================
+           PLATFORMY
+        ============================== */
+
+        .platform-section {
+            max-width: 1100px;
+
+            margin: 70px auto;
+
+            padding: 0 20px;
+        }
+
+        .platform-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(240px, 1fr)
+                );
+
+            gap: 22px;
+        }
+
+        .platform-card {
+            background: #181824;
+
+            border: 1px solid #292938;
+
+            border-radius: 22px;
+
+            padding: 30px;
+
+            text-align: center;
+
+            text-decoration: none;
+
+            color: white;
+
+            transition: 0.25s;
+
+            box-shadow:
+                0 15px 45px
+                rgba(0,0,0,0.25);
+        }
+
+        .platform-card:hover {
+            transform:
+                translateY(-7px);
+
+            border-color: #8b45ff;
+
+            box-shadow:
+                0 20px 60px
+                rgba(108,44,255,0.2);
+        }
+
+        .platform-logo {
+            width: 80px;
+            height: 80px;
+
+            object-fit: contain;
+
+            border-radius: 15px;
+
+            margin-bottom: 20px;
+
+            background: white;
+
+            padding: 5px;
+        }
+
+        .platform-card h3 {
+            font-size: 22px;
+
+            margin-bottom: 12px;
+        }
+
+        .platform-card p {
+            color: #aaa;
+
+            line-height: 1.6;
+        }
+
+        /* ==============================
+           EPIZÓDY
+        ============================== */
+
+        .episodes-section {
+            max-width: 1100px;
+
+            margin: 70px auto 90px;
+
+            padding: 0 20px;
+        }
+
+        .episodes-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(280px, 1fr)
+                );
+
+            gap: 25px;
+        }
+
+        .episode-card {
+            background: #181824;
+
+            border: 1px solid #292938;
+
+            border-radius: 22px;
+
+            padding: 30px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            min-height: 250px;
+
+            transition: 0.25s;
+        }
+
+        .episode-card:hover {
+            transform:
+                translateY(-7px);
+
+            border-color: #8b45ff;
+
+            box-shadow:
+                0 20px 60px
+                rgba(108,44,255,0.18);
+        }
+
+        .episode-number {
+            color: #d51cff;
+
+            font-weight: bold;
+
+            font-size: 14px;
+
+            margin-bottom: 15px;
+        }
+
+        .episode-card h3 {
+            font-size: 24px;
+
+            line-height: 1.35;
+
+            margin-bottom: 15px;
+        }
+
+        .episode-card p {
+            color: #aaa;
+
+            line-height: 1.7;
+
+            margin-bottom: 25px;
+
+            flex-grow: 1;
+        }
+
+        .episode-button {
+            display: inline-block;
+
+            text-align: center;
+
+            text-decoration: none;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6c2cff,
+                    #d51cff
+                );
+
+            padding: 13px 20px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .episode-button:hover {
+            transform:
+                translateY(-2px);
+        }
+
+        /* ==============================
+           FOOTER
+        ============================== */
+
+        footer {
+            text-align: center;
+
+            padding: 35px;
+
+            background: #090910;
+
+            color: #777;
+        }
+
+        .social {
+            margin-top: 15px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 18px;
+        }
+
+        .social a {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            width: 45px;
+            height: 45px;
+
+            text-decoration: none;
+
+            border-radius: 50%;
+
+            transition: 0.2s;
+        }
+
+        .social a:hover {
+            transform: scale(1.12);
+        }
+
+        .social img {
+            width: 38px;
+            height: 38px;
+
+            object-fit: contain;
+
+            border-radius: 8px;
+        }
+
+        /* ==============================
+           MOBIL
+        ============================== */
+
+        @media (max-width: 850px) {
+
+            header {
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            nav a {
+                margin: 5px 8px;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .logo-text {
+                font-size: 23px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .live-info {
+                padding: 25px 20px;
+            }
+
+            .platform-card,
+            .episode-card {
+                padding: 25px 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- ==============================
+     HLAVIČKA
+============================== -->
+
+<header>
+
+    <a
+        class="logo-link"
+        href="https://jaroacjak.github.io/radioklub/#domov"
+        title="Rádio Klub – Domov"
+    >
+
+        <img
+            class="logo-image"
+            src="https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/44153165/44153165-1756027969361-fe65b85dada35.jpg"
+            alt="Rádio Klub"
+        >
+
+        <span class="logo-text">
+            Rádio Klub
+        </span>
+
+    </a>
+
+
+    <nav>
+
+        <a
+            href="https://jaroacjak.github.io/radioklub/#domov"
+        >
+            Domov
+        </a>
+
+        <a
+            href="program.html"
+        >
+            Program
+        </a>
+
+        <a
+            href="onas.html"
+        >
+            O nás
+        </a>
+
+        <a
+            href="moderatori.html"
+        >
+            Moderátori
+        </a>
+
+        <a
+            href="dopravnyservis.html"
+        >
+            Dopravný servis
+        </a>
+
+        <a
+            href="spravy.html"
+        >
+            Správy
+        </a>
+
+        <a
+            href="podcast.html"
+            class="active"
+        >
+            Podcast
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- ==============================
+     HERO
+============================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="category">
+            🎙️ RÁDIO KLUB PODCAST
+        </div>
+
+        <h1>
+            Rádio Klub
+            <span>Podcast</span>
+        </h1>
+
+        <p>
+            Vypočujte si podcasty, rozhovory
+            a relácie Rádia Klub.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     LIVE VIDEO
+============================== -->
+
+<section class="live-section">
+
+    <h2 class="section-title">
+        📺 Podcast <span>naživo</span>
+    </h2>
+
+    <div class="live-box">
+
+        <div class="video-container">
+
+            <iframe
+                src="https://www.youtube.com/embed/JXxrQHHgiB8"
+                title="Podcast Rádio Klub"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+            ></iframe>
+
+        </div>
+
+
+        <div class="live-info">
+
+            <h2>
+                Podcast – Podcasting Rádio Klub
+            </h2>
+
+            <p>
+                Sledujte a počúvajte Podcast Rádio Klub.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     KDE POČÚVAŤ
+============================== -->
+
+<section class="platform-section">
+
+    <h2 class="section-title">
+        🎧 Kde nás môžete <span>počúvať</span>
+    </h2>
+
+
+    <div class="platform-grid">
+
+
+        <!-- MYTUNER -->
+
+        <a
+            class="platform-card"
+            href="https://mytuner-radio.com/podcast/radio-klub-podcasting-radio-klub-1002723"
+            target="_blank"
+            rel="noopener"
+        >
+
+            <img
+                class="platform-logo"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-1QBzORelHHA55Y2j8imkxu2pLW7wn12KtgasJ0ZMxg&s=10"
+                alt="myTuner"
+            >
+
+            <h3>
+                myTuner
+            </h3>
+
+            <p>
+                Podcast – Podcasting Rádio Klub
+            </p>
+
+        </a>
+
+
+        <!-- SPOTIFY -->
+
+        <a
+            class="platform-card"
+            href="https://open.spotify.com/show/2wjBGWTt8Mu9lpllnQg5RT"
+            target="_blank"
+            rel="noopener"
+        >
+
+            <img
+                class="platform-logo"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8Y7h7ahwt1xacxBHpCO2iQK1nUNEBtwhtArUnhceDGQ&s=10"
+                alt="Spotify"
+            >
+
+            <h3>
+                Spotify
+            </h3>
+
+            <p>
+                Počúvajte Podcast Rádio Klub na Spotify.
+            </p>
+
+        </a>
+
+
+        <!-- YOUTUBE MUSIC -->
+
+        <a
+            class="platform-card"
+            href="https://music.youtube.com/playlist?list=PLprU8T6hnfLe6rJckIKlN7NKC1Y8yuF95"
+            target="_blank"
+            rel="noopener"
+        >
+
+            <img
+                class="platform-logo"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRoBoe742N7fyGUF7RukRr4mZ_DxDMQHFET81tBcdVjg&s=10"
+                alt="YouTube Music"
+            >
+
+            <h3>
+                Podcast na YouTube Music
+            </h3>
+
+            <p>
+                Vypočujte si Podcast Rádio Klub
+                cez YouTube Music.
+            </p>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     EPIZÓDY
+============================== -->
+
+<section class="episodes-section">
+
+    <h2 class="section-title">
+        🎙️ Podcast Rádio Klub <span>epizódy</span>
+    </h2>
+
+
+    <div class="episodes-grid">
+
+
+        <!-- PODCAST #1 -->
+
+        <article class="episode-card">
+
+            <div class="episode-number">
+                PODCAST #1
+            </div>
+
+            <h3>
+                Podcast – Podcasting Rádio Klub #1
+            </h3>
+
+            <p>
+                Vypočujte si prvú epizódu
+                Podcastu Rádio Klub.
+            </p>
+
+            <a
+                class="episode-button"
+                href="https://www.youtube.com/results?search_query=Podcast+Podcasting+R%C3%A1dio+Klub+%231"
+                target="_blank"
+                rel="noopener"
+            >
+                ▶ Počúvať podcast
+            </a>
+
+        </article>
+
+
+        <!-- PODCAST #2 -->
+
+        <article class="episode-card">
+
+            <div class="episode-number">
+                PODCAST #2
+            </div>
+
+            <h3>
+                Podcast – Podcasting Rádio Klub #2 – Jakub Brezáni
+            </h3>
+
+            <p>
+                Druhá epizóda Podcastu Rádio Klub
+                s hosťom Jakubom Brezánim.
+            </p>
+
+            <a
+                class="episode-button"
+                href="https://www.youtube.com/results?search_query=Podcast+Podcasting+R%C3%A1dio+Klub+%232+Jakub+Brez%C3%A1ni"
+                target="_blank"
+                rel="noopener"
+            >
+                ▶ Počúvať podcast
+            </a>
+
+        </article>
+
+
+        <!-- PODCAST #3 -->
+
+        <article class="episode-card">
+
+            <div class="episode-number">
+                PODCAST #3
+            </div>
+
+            <h3>
+                Podcast Rádio Klub #3
+            </h3>
+
+            <p>
+                Tretia epizóda Podcastu Rádio Klub.
+            </p>
+
+            <a
+                class="episode-button"
+                href="https://www.youtube.com/results?search_query=Podcast+R%C3%A1dio+Klub+%233"
+                target="_blank"
+                rel="noopener"
+            >
+                ▶ Počúvať podcast
+            </a>
+
+        </article>
+
+
+        <!-- PODCAST #4 -->
+
+        <article class="episode-card">
+
+            <div class="episode-number">
+                PODCAST #4
+            </div>
+
+            <h3>
+                Podcast Rádio Klub #4
+            </h3>
+
+            <p>
+                Štvrtá epizóda Podcastu Rádio Klub.
+            </p>
+
+            <a
+                class="episode-button"
+                href="https://www.youtube.com/results?search_query=Podcast+R%C3%A1dio+Klub+%234"
+                target="_blank"
+                rel="noopener"
+            >
+                ▶ Počúvať podcast
+            </a>
+
+        </article>
+
+
+        <!-- PODCAST #5 -->
+
+        <article class="episode-card">
+
+            <div class="episode-number">
+                PODCAST #5
+            </div>
+
+            <h3>
+                Podcast Rádio Klub #5
+            </h3>
+
+            <p>
+                Piata epizóda Podcastu Rádio Klub.
+            </p>
+
+            <a
+                class="episode-button"
+                href="https://www.youtube.com/results?search_query=Podcast+R%C3%A1dio+Klub+%235"
+                target="_blank"
+                rel="noopener"
+            >
+                ▶ Počúvať podcast
+            </a>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     FOOTER
+============================== -->
+
+<footer>
+
+    <p>
+        © 2026 Rádio Klub.
+        Všetky práva vyhradené.
+    </p>
+
+
+    <div class="social">
+
+        <a
+            href="https://youtube.com/@radioklubsk?si=EdVbZFttInCv1r5e"
+            target="_blank"
+            rel="noopener"
+            aria-label="YouTube"
+            title="YouTube"
+        >
+
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRluxvnOBRSErZP_KFyE1_WJhpbSP77KBZmWH1KTXqPGQ&s=10"
+                alt="YouTube"
+            >
+
+        </a>
+
+
+        <a
+            href="https://www.instagram.com/radioklubsk?igsh=cXBqMDZ6YWkycmxo"
+            target="_blank"
+            rel="noopener"
+            aria-label="Instagram"
+            title="Instagram"
+        >
+
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5osI0qmctv4jqC_8kp4HJidRE1Zzhadm6Lo3g4SyYoQ&s=10"
+                alt="Instagram"
+            >
+
+        </a>
+
+
+        <a
+            href="https://www.facebook.com/radioklubsk?locale=sk_SK"
+            target="_blank"
+            rel="noopener"
+            aria-label="Facebook Rádio Klub"
+            title="Facebook Rádio Klub"
+        >
+
+            <img
+                src="https://static.vecteezy.com/system/resources/previews/018/930/476/non_2x/facebook-logo-facebook-icon-transparent-free-png.png"
+                alt="Facebook Rádio Klub"
+            >
+
+        </a>
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>
+```
