@@ -266,6 +266,65 @@
             color: white;
         }
 
+        /* ==============================
+           ZDIEĽANIE ČLÁNKU
+        ============================== */
+
+        .share-section {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #292938;
+        }
+
+        .share-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        }
+
+        .share-fb {
+            background: #1877f2;
+        }
+
+        .share-tw {
+            background: #1da1f2;
+        }
+
+        .share-wa {
+            background: #25d366;
+        }
+
+        .share-copy {
+            background: #6c2cff;
+        }
+
         .back-link {
             display: inline-flex;
             align-items: center;
@@ -363,6 +422,14 @@
 
             .main-image-wrapper {
                 max-height: 300px;
+            }
+
+            .share-buttons {
+                flex-direction: column;
+            }
+
+            .share-btn {
+                justify-content: center;
             }
         }
 
@@ -516,6 +583,55 @@
 
         </article>
 
+        <!-- ZDIEĽANIE -->
+
+        <div class="share-section">
+
+            <div class="share-title">
+                📢 Zdieľajte tento článok:
+            </div>
+
+            <div class="share-buttons">
+
+                <a
+                    href="https://www.facebook.com/sharer/sharer.php?u=https://jaroacjak.github.io/radioklub/slovenskihokejistianidohnlpredelasvrcekmieriacidodetroiu.html"
+                    target="_blank"
+                    rel="noopener"
+                    class="share-btn share-fb"
+                >
+                    Facebook
+                </a>
+
+                <a
+                    href="https://twitter.com/intent/tweet?url=https://jaroacjak.github.io/radioklub/slovenskihokejistianidohnlpredelasvrcekmieriacidodetroiu.html&text=Slovenskí hokejisti v NHL: Prádel a Svrček mieria do Detroitu"
+                    target="_blank"
+                    rel="noopener"
+                    class="share-btn share-tw"
+                >
+                    X (Twitter)
+                </a>
+
+                <a
+                    href="https://api.whatsapp.com/send?text=Slovenskí hokejisti v NHL: Prádel a Svrček mieria do Detroitu %20 https://jaroacjak.github.io/radioklub/slovenskihokejistianidohnlpredelasvrcekmieriacidodetroiu.html"
+                    target="_blank"
+                    rel="noopener"
+                    class="share-btn share-wa"
+                >
+                    WhatsApp
+                </a>
+
+                <button
+                    onclick="copyArticleLink()"
+                    class="share-btn share-copy"
+                    id="copyBtn"
+                >
+                    Skopírovať odkaz
+                </button>
+
+            </div>
+
+        </div>
+
         <a href="spravy.html" class="back-link">
             ← Späť na všetky správy
         </a>
@@ -589,6 +705,18 @@
         </div>
 
     </footer>
+
+    <script>
+        function copyArticleLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const btn = document.getElementById('copyBtn');
+                btn.innerText = 'Skopírované! ✓';
+                setTimeout(() => {
+                    btn.innerText = 'Skopírovať odkaz';
+                }, 2500);
+            });
+        }
+    </script>
 
 </body>
 </html>
